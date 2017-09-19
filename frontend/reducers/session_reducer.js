@@ -1,8 +1,8 @@
-import merge from 'lodash-merge';
+import merge from 'lodash/merge';
 
 import {RECEIVE_CURRENT_USER} from '../actions/session_actions';
 
-export const sessionReducer = (sessionSlice, action) => {
+export const sessionReducer = (sessionSlice = {}, action) => {
   Object.freeze(sessionSlice);
   let newSlice;
   switch(action.type) {
