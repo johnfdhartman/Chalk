@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.login = login;
   window.logout = logout;
   window.signup = signup;
+  window.guest = {username: 'guest', password: 'password'};
   const store = configureStore;
   ReactDOM.render(
     <Root store={store}/>,
