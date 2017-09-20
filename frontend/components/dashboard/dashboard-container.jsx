@@ -1,8 +1,13 @@
 import React from 'react';
+import {logout} from '../../actions/session_actions';
+import {connect} from 'react-redux';
+import Dashboard from './dashboard';
 
-//dummy code so app.jsx can route properly
-const DashboardContainer = () => (
-  <h3>Dashboard!</h3>
-);
+const mapStateToProps = (state) => ({
 
-export default DashboardContainer;
+});
+
+const mapDispatchToProps = (dispatch) => ({
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

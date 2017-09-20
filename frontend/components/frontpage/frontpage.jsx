@@ -1,5 +1,4 @@
 import React from 'react';
-
 class Frontpage extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +21,8 @@ class Frontpage extends React.Component {
       buttonAction(this.state)
     );
   }
+
+
 
   render() {
     return (
