@@ -6,8 +6,8 @@ export const sessionErrorsReducer = (sessionErrorsSlice ={}, action) => {
   let newSlice;
   switch(action.type) {
     case RECEIVE_SESSION_ERRORS:
-      newSlice = merge(action.sessionErrors, sessionErrorsSlice);
-      return newSlice;
+    console.log(action);
+      return action.sessionErrors;
 
     default:
       return sessionErrorsSlice;

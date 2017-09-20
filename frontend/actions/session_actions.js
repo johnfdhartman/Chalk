@@ -16,7 +16,7 @@ export const receiveSessionErrors = (sessionErrors) => ({
 export const signup = (user) => (dispatch) => (
   Api.signup(user).then(
     outUser => dispatch(receiveCurrentUser(outUser)),
-    errors => dispatch(receiveSessionErrors(errors))
+    errors => dispatch(receiveSessionErrors(errors.responseJSON))
   )
 );
 
@@ -24,7 +24,7 @@ export const signup = (user) => (dispatch) => (
 export const login = (user) => (dispatch) => (
   Api.login(user).then(
     outUser => dispatch(receiveCurrentUser(outUser)),
-    errors => dispatch(receiveSessionErrors(errors))
+    errors => dispatch(receiveSessionErrors(errors.responseJSON))
   )
 );
 

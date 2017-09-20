@@ -4,7 +4,7 @@ import {login, signup} from '../../actions/session_actions';
 import Frontpage from './frontpage';
 
 const mapStateToProps = (state) => ({
-  
+  sessionErrors: state.errors.sessionErrors
 });
 
 const mapDispatchToProps = (dispatch) => ({

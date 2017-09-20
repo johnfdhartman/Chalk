@@ -22,9 +22,27 @@ class Frontpage extends React.Component {
     );
   }
 
+  renderSessionErrors() {
+    console.log('this.props.sessionErrors',this.props.sessionErrors);
+    let errors = Object.values(this.props.sessionErrors).map( (error) => (
+      <li>{error}</li>)
+      );
+    // let sessionErrors = errors.map( (error) => (
+    //   <li>{error}</li>
+    //   )
+    // );
+    return (
+      <ul id='errors-list'>
+        {errors}
+      </ul>
+    );
+  }
+
 
 
   render() {
+    // console.log(this.props.sessionErrors);
+    let errors = this.renderSessionErrors.bind(this)();
     return (
       <div id='frontpage'>
         <h3>Frontpage component!</h3>
@@ -57,6 +75,7 @@ class Frontpage extends React.Component {
               Sign up!
           </button>
         </div>
+        <div id='errors'>{errors}</div>
       </div>
     );
   }
