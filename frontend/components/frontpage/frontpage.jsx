@@ -6,6 +6,10 @@ class Frontpage extends React.Component {
       username: '',
       password: ''
     };
+    this.description = (<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+     Scelerisque eleifend donec pretium vulputate sapien nec sagittis aliquam.
+     Ipsum consequat nisl vel pretium lectus </div>);
   }
 
   handleInput(field) {
@@ -51,20 +55,25 @@ class Frontpage extends React.Component {
     let errors = this.renderSessionErrors.bind(this)();
     return (
       <div id='frontpage'>
-        <h3>Frontpage component!</h3>
+        <h3>PleaseHireMe.website</h3>
+        <div id='description'>
+          {this.description}
+        </div>
         <div id='auth-fields'>
-          <label>Username
+          <div id='username-field'>
+            <label>Username</label>
             <input
               type='text'
               value={this.state.username}
               onChange={this.handleInput('username').bind(this)}/>
-          </label>
-          <label>Password
+          </div>
+          <div id='password-field'>
+            <label>Password</label>
             <input
               type='password'
               value={this.state.password}
               onChange={this.handleInput('password').bind(this)} />
-          </label>
+          </div>
         </div>
 
         <div id='auth-buttons'>
@@ -72,13 +81,13 @@ class Frontpage extends React.Component {
             id='login'
             onClick={this.handleButtonClick(this.props.login)}
             >
-              Login!
+              LOGIN
           </button>
           <button
             id='signup'
             onClick={this.handleButtonClick(this.props.signup)}
             >
-              Sign up!
+              SIGN UP
           </button>
         </div>
         <div id='errors'>{errors}</div>
