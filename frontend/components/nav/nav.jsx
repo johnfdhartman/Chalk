@@ -1,6 +1,4 @@
 import React from 'react';
-import {handleButtonClick} from '../../util/component_util';
-
 class Nav extends React.Component {
   constructor(props) {
     super(props);

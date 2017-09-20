@@ -7,7 +7,6 @@ import DashboardContainer from './dashboard/dashboard-container';
 
 const App = () => (
   <div>
-    <h2>App! Hooray!</h2>
     <Switch>
       <AuthRoute path='/frontpage' component={FrontPageContainer}/>
       <ProtectedRoute exact path='/' component={DashboardContainer}/>

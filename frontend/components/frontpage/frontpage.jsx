@@ -23,17 +23,23 @@ class Frontpage extends React.Component {
   }
 
   renderSessionErrors() {
-    console.log('this.props.sessionErrors',this.props.sessionErrors);
-    let errors = Object.values(this.props.sessionErrors).map( (error) => (
-      <li>{error}</li>)
-      );
+    // console.log('this.props.sessionErrors',this.props.sessionErrors);
+
+    // let errors = (this.props.sessionErrors.errors ?
+    //   this.props.sessionErrors.errors
+    //   : []);
     // let sessionErrors = errors.map( (error) => (
     //   <li>{error}</li>
     //   )
     // );
+    console.log(this.props.sessionErrors);
+    const errorEls = this.props.sessionErrors.map( error =>
+      (<li key={error}>{error}</li>)
+    );
+    console.log(errorEls);
     return (
       <ul id='errors-list'>
-        {errors}
+        {errorEls}
       </ul>
     );
   }

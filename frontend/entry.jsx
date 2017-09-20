@@ -6,14 +6,14 @@ import {login, logout, signup} from './actions/session_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
-
+  let preloadedState = {};
+  preloadedState.errors = {sessionErrors: []};
   if (window.currentUser) {
-    const preloadedState = {session: {currentUser: window.currentUser}};
-    store = configureStore(preloadedState);
+    preloadedState.session = {currentUser: window.currentUser};
+    console.log(preloadedState);
     delete window.currentUser;
-  } else {
-    store = configureStore();
   }
+  store = configureStore(preloadedState);
 
   //For testing purposes only
   window.login = login;
