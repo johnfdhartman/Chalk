@@ -2,7 +2,12 @@
   "name": "Chalk",
   "private": true,
   "scripts": {
-    "start": "webpack --config webpack.config.js"
+    "start": "webpack --config webpack.config.js",
+    "postinstall": "webpack"
+  },
+  "engines": {
+    "node": "4.1.1",
+    "npm": "2.1.x"
   },
   "dependencies": {
     "babel-core": "^6.26.0",
