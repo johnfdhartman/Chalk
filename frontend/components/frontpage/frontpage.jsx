@@ -26,6 +26,13 @@ class Frontpage extends React.Component {
     );
   }
 
+  handleDemoClick(event) {
+    this.props.login({
+      username: 'guest',
+      password: 'password'
+    });
+  }
+
   renderSessionErrors() {
     // console.log('this.props.sessionErrors',this.props.sessionErrors);
 
@@ -88,6 +95,13 @@ class Frontpage extends React.Component {
             onClick={this.handleButtonClick(this.props.signup)}
             >
               SIGN UP
+          </button>
+
+          <button
+            id='demo'
+            onClick={this.handleDemoClick.bind(this)}
+            >
+            DEMO
           </button>
         </div>
         <div id='errors'>{errors}</div>
