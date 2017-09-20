@@ -1,0 +1,96 @@
+
+#frontpage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+#frontpage h3 {
+  font-weight: bold;
+  font-size: 4vw;
+  letter-spacing: 20px;
+  margin-top: 3%;
+}
+
+#frontpage > #description {
+  padding: 3%;
+  width:60%;
+  text-align: center;
+}
+
+#auth-fields {
+}
+
+#auth-fields div {
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 115%;
+}
+
+#frontpage > #auth-fields {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+ #auth-fields label {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  font-size: 2.5vw;
+}
+
+input {
+  font-size: 2.5vw;
+}
+
+#auth-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#auth-buttons button {
+  font-size: 3.5vw;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: white;
+  background-color: transparent;
+  border-radius: 30px;
+  width: 20%;
+  border: solid white 5px;
+  margin: 3%;
+  transition: background-color 0.04s, border-color 0.04s, color 0.1s;
+  outline: none;
+}
+
+#auth-buttons button:hover {
+  background-color: #75ceff;
+  border: solid #75ceff 5px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.5s, border-color 0.05s, color 0.1s;
+}
+
+.errors-enter {
+  opacity: 0.01;
+  background-color: red;
+}
+
+.errors-enter.errors-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+  background-color: red;
+}
+
+.errors {
+  opacity: 0;
+  list-style-type: none;
+  padding: 10px;
+  color: white;
+  background-color: #bc0000;
+}

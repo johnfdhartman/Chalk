@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 class Frontpage extends React.Component {
   constructor(props) {
     super(props);
@@ -34,24 +35,28 @@ class Frontpage extends React.Component {
   }
 
   renderSessionErrors() {
-    // console.log('this.props.sessionErrors',this.props.sessionErrors);
-
-    // let errors = (this.props.sessionErrors.errors ?
-    //   this.props.sessionErrors.errors
-    //   : []);
-    // let sessionErrors = errors.map( (error) => (
-    //   <li>{error}</li>
-    //   )
+    //
+    // if (this.props.sessionErrors.length === 0) {
+    //   return (null);
+    // }
+    //
+    // const errorEls = this.props.sessionErrors.map( error =>
+    //   (<li key={error}>{error}</li>)
     // );
-    console.log(this.props.sessionErrors);
-    const errorEls = this.props.sessionErrors.map( error =>
-      (<li key={error}>{error}</li>)
+    const errorEls = this.props.sessionErrors.map (error =>
+      (<div key={error}>{error}</div>)
     );
     console.log(errorEls);
-    return (
-      <ul id='errors-list'>
-        {errorEls}
-      </ul>
+
+      return (
+        <div id='errors-list'>
+          <ReactCSSTransitionGroup
+              transitionName="errors"
+              transitionEnterTimeout={1000}
+              transitionLeaveTimeout={2000}>
+                {errorEls}
+            </ReactCSSTransitionGroup>
+        </div>
     );
   }
 
@@ -104,7 +109,7 @@ class Frontpage extends React.Component {
             DEMO
           </button>
         </div>
-        <div id='errors'>{errors}</div>
+        {this.renderSessionErrors.bind(this)()}
       </div>
     );
   }
