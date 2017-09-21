@@ -9,7 +9,6 @@ class Dashboard extends React.Component {
   render(){
     return(
       <div>
-        <div><NavContainer /></div>
         <div id='dashboard'>
           <h1>Dashboard Presentational!</h1>
 

@@ -52,8 +52,8 @@ class Frontpage extends React.Component {
         <div id='errors-list'>
           <ReactCSSTransitionGroup
               transitionName="errors"
-              transitionEnterTimeout={1000}
-              transitionLeaveTimeout={2000}>
+              transitionEnterTimeout={300}
+              transitionLeaveTimeout={500}>
                 {errorEls}
             </ReactCSSTransitionGroup>
         </div>
@@ -91,12 +91,14 @@ class Frontpage extends React.Component {
         <div id='auth-buttons'>
           <button
             id='login'
+            className='black-button'
             onClick={this.handleButtonClick(this.props.login)}
             >
               LOGIN
           </button>
           <button
             id='signup'
+            className='black-button'
             onClick={this.handleButtonClick(this.props.signup)}
             >
               SIGN UP
@@ -104,6 +106,7 @@ class Frontpage extends React.Component {
 
           <button
             id='demo'
+            className='black-button'
             onClick={this.handleDemoClick.bind(this)}
             >
             DEMO

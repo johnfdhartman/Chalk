@@ -1,0 +1,12 @@
+footer {
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: black;
+  height: 8vh;
+}
+
+footer > div {
+  padding-left: 20px;
+}

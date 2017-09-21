@@ -17,26 +17,24 @@
 @import './frontpage.scss';
 @import './nav.scss';
 @import './dashboard.scss';
+@import './footer.scss';
 main {
   font-family: 'Open Sans', sans-serif;
-  padding: 5%;
   font-size: 2vw;
-  background-image: url('chalkboard2');
-  background-color: 'black';
   color: white;
 }
 
 button {
   display: inline-block;
   font-family: 'Yanone Kaffeesatz', sans-serif;
-  color: white;
+
   background-color: transparent;
   border-radius: 30px;
   width: 20%;
-  border: solid white 3px;
+
   margin: 3%;
   transition: background-color 0.1s ease-in, border-color 0.1s ease-in, color 0.1s,
-    letter-spacing 0.1s ease-in, border-radius 0.3s ease-in;
+    letter-spacing 0.1s ease-in, border-radius 0.1s ease-in;
   outline: none;
   letter-spacing: 2px;
 }
@@ -47,7 +45,22 @@ button:hover {
   color: black;
   cursor: pointer;
   transition: background-color 0.2s, border-color 0.2s,
-    color 0.1s, letter-spacing 0.2s, border-radius 0.3s;
+    color 0.1s, letter-spacing 0.2s, border-radius 0.1s;
   letter-spacing: 5px;
   border-radius: 5px;
+}
+
+.black-button {
+
+  color: white;
+  border: solid white 3px;
+}
+
+.white-button {
+  color: black;
+  border: solid black 3px;
+}
+
+.white-button:hover {
+  color: white;
 }

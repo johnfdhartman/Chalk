@@ -1,10 +1,12 @@
 
+
 #frontpage {
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100%;
+  height: 92vh;
+  background-image: url('chalkboard2');
 }
 
 #frontpage h3 {
@@ -76,6 +78,14 @@ input {
   // background-color: red;
 }
 
+.errors-leave {
+  opacity: 0.99;
+}
+
+.errors-leave.errors-leave-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
 
 #errors-list {
   opacity: 1;
