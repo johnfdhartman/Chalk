@@ -1,0 +1,340 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+ margin:0;
+ padding:0;
+ border:0;
+ outline:0;
+ font-size:100%;
+ vertical-align:baseline;
+ background:transparent;
+}
+body {
+ line-height:1;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+ display:block;
+}
+nav ul {
+ list-style:none;
+}
+blockquote, q {
+ quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content:'';
+ content:none;
+}
+a {
+ margin:0;
+ padding:0;
+ font-size:100%;
+ vertical-align:baseline;
+ background:transparent;
+}
+/* change colours to suit your needs */
+ins {
+ background-color:#ff9;
+ color:#000;
+ text-decoration:none;
+}
+/* change colours to suit your needs */
+mark {
+ background-color:#ff9;
+ color:#000;
+ font-style:italic;
+ font-weight:bold;
+}
+del {
+ text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+ border-bottom:1px dotted;
+ cursor:help;
+}
+table {
+ border-collapse:collapse;
+ border-spacing:0;
+}
+/* change border colour to suit your needs */
+hr {
+ display:block;
+ height:1px;
+ border:0;
+ border-top:1px solid #cccccc;
+ margin:1em 0;
+ padding:0;
+}
+input, select {
+ vertical-align:middle;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+
+
+
+ */
+/* line 3, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#frontpage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 92vh;
+  background-image: url("chalkboard2");
+}
+
+/* line 12, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#frontpage h3 {
+  font-weight: bold;
+  font-size: 4vw;
+  letter-spacing: 20px;
+  margin-top: 3%;
+}
+
+/* line 19, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#frontpage > #description {
+  padding: 3%;
+  width: 60%;
+  text-align: center;
+}
+
+/* line 28, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-fields div {
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 115%;
+}
+
+/* line 36, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#frontpage > #auth-fields {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 43, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-fields label {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  font-size: 2.5vw;
+}
+
+/* line 50, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+input {
+  font-size: 2.5vw;
+  border: none;
+  border-radius: 5px;
+}
+
+/* line 57, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* line 63, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-buttons button {
+  font-size: 3.5vw;
+}
+
+/* line 67, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-buttons button:hover {
+  background-color: #75ceff;
+}
+
+/* line 71, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+.errors-enter {
+  opacity: 0.01;
+}
+
+/* line 75, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+.errors-enter.errors-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+/* line 81, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+.errors-leave {
+  opacity: 0.99;
+}
+
+/* line 85, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+.errors-leave.errors-leave-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+/* line 90, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#errors-list {
+  opacity: 1;
+  list-style-type: none;
+  padding: 10px;
+  color: white;
+}
+
+/* line 4, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border-bottom: 2px dashed black;
+  height: 12vh;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+/* line 16, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav h3 {
+  font-size: 3vw;
+  letter-spacing: 2px;
+}
+
+/* line 22, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav button {
+  font-size: 2vw;
+}
+
+/* line 26, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav #search {
+  height: 8vh;
+  margin-left: 3%;
+}
+
+/* line 35, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav #session-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 12vw;
+}
+
+/* line 47, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+#logout {
+  width: 100%;
+}
+
+/* line 51, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+#profile {
+  background-image: url("profile_icon");
+  background-position: 50% 50%;
+  background-size: cover;
+  width: 5.5%;
+  padding: 3%;
+  border: none;
+}
+
+/* line 60, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav #welcome {
+  font-size: 2.5vw;
+  margin-bottom: 10px;
+}
+
+/* line 2, /Users/john/Desktop/Chalk/app/assets/stylesheets/dashboard.scss */
+#dashboard {
+  color: black;
+  height: 80vh;
+}
+
+/* line 7, /Users/john/Desktop/Chalk/app/assets/stylesheets/dashboard.scss */
+#dashboard h1 {
+  font-size: 3vw;
+}
+
+/* line 1, /Users/john/Desktop/Chalk/app/assets/stylesheets/footer.scss */
+footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: black;
+  height: 8vh;
+}
+
+/* line 10, /Users/john/Desktop/Chalk/app/assets/stylesheets/footer.scss */
+footer > div {
+  padding-left: 20px;
+}
+
+/* line 22, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+main {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2vw;
+  color: white;
+}
+
+/* line 28, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+button {
+  display: inline-block;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  background-color: transparent;
+  border-radius: 30px;
+  width: 20%;
+  margin: 3%;
+  transition: background-color 0.1s ease-in, border-color 0.1s ease-in, color 0.1s, letter-spacing 0.1s ease-in, border-radius 0.1s ease-in;
+  outline: none;
+  letter-spacing: 2px;
+}
+
+/* line 43, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+button:hover {
+  background-color: #75ceff;
+  border: solid #75ceff 3px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.1s, letter-spacing 0.2s, border-radius 0.1s;
+  letter-spacing: 5px;
+  border-radius: 5px;
+}
+
+/* line 54, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+.black-button {
+  color: white;
+  border: solid white 3px;
+}
+
+/* line 60, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+.white-button {
+  color: black;
+  border: solid black 3px;
+}
+
+/* line 65, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+.white-button:hover {
+  color: white;
+}
