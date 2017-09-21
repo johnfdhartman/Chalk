@@ -4,6 +4,7 @@ import {AuthRoute, ProtectedRoute} from '../util/route_util';
 import FrontPageContainer from './frontpage/frontpage_container';
 import NavContainer from './nav/nav_container';
 import DashboardContainer from './dashboard/dashboard-container';
+import CreateBoardContainer from './board/create/create_board_container';
 import {Footer} from './footer/footer';
 
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
     <div>
       <Switch>
         <AuthRoute path='/frontpage' component={FrontPageContainer}/>
+        <ProtectedRoute path='/create' component={CreateBoardContainer}/>
         <ProtectedRoute exact path='/' component={DashboardContainer}/>
       </Switch>
     </div>
