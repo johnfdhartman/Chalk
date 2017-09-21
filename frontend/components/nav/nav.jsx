@@ -8,16 +8,20 @@ class Nav extends React.Component {
     this.props.logout();
   }
 
+
   render() {
     return(
-      <div>
+      <nav>
         <h3>Welcome, {this.props.currentUser.username}</h3>
         <button
           id='logout'
           onClick={this.handleLogout.bind(this)}>
-          Logout!
+          LOGOUT
         </button>
-      </div>
+        <button
+          id='profile'
+          > </button>
+      </nav>
     );
   }
 }

@@ -1,0 +1,30 @@
+//require_self
+
+
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+nav h3 {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3vw;
+  letter-spacing: 2px;
+}
+
+nav button {
+  font-size: 2.5vw;
+
+}
+
+nav button:hover {
+}
+
+#profile {
+  background-image: url('profile_icon');
+  background-position:50% 50%;
+  background-size: cover;
+  width: 5.5%;
+  padding: 3%;
+}

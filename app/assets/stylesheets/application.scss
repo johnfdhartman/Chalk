@@ -9,17 +9,44 @@
  * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
- *
- *= require_self
  *= require ./reset.css
+ *= require_self
+
  */
 
 @import './frontpage.scss';
-
+@import './nav.scss';
+@import './dashboard.scss';
 main {
   font-family: 'Open Sans', sans-serif;
   padding: 5%;
   font-size: 2vw;
   background-image: url('chalkboard2');
   color: white;
+}
+
+button {
+  display: inline-block;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  color: white;
+  background-color: transparent;
+  border-radius: 30px;
+  width: 20%;
+  border: solid white 3px;
+  margin: 3%;
+  transition: background-color 0.1s ease-in, border-color 0.1s ease-in, color 0.1s,
+    letter-spacing 0.1s ease-in, border-radius 0.3s ease-in;
+  outline: none;
+  letter-spacing: 2px;
+}
+
+button:hover {
+  background-color: #75ceff;
+  border: solid #75ceff 3px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s,
+    color 0.1s, letter-spacing 0.2s, border-radius 0.3s;
+  letter-spacing: 5px;
+  border-radius: 5px;
 }

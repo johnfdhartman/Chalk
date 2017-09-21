@@ -7,8 +7,9 @@ export const sessionReducer = (sessionSlice = {}, action) => {
   let newSlice;
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      newSlice = merge({}, sessionSlice);
-      newSlice.currentUser = action.currentUser;
+      // debugger;
+      newSlice = merge({}, action.currentUser);
+      // newSlice.currentUser = action.currentUser;
       return newSlice;
     default:
       return sessionSlice;

@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', () => {
   preloadedState.errors = {sessionErrors: []};
   if (window.currentUser) {
     preloadedState.session = {currentUser: window.currentUser};
-    console.log(preloadedState);
     delete window.currentUser;
   }
   store = configureStore(preloadedState);

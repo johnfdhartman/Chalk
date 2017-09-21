@@ -9,8 +9,18 @@ class Dashboard extends React.Component {
   render(){
     return(
       <div>
-        <h1>Dashboard Presentational!</h1>
         <div><NavContainer /></div>
+        <div id='dashboard'>
+          <h1>Dashboard Presentational!</h1>
+
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      In imperdiet ornare erat ac consequat. Nunc sed odio vitae metus
+      efficitur aliquet ut et orci. Pellentesque mollis enim non blandit congue.
+      Etiam nec lobortis tellus, non mattis ligula. Sed vehicula lacus vel justo pretium
+     consectetur. Morbi lacinia tellus sit amet metus facilisis porta. Maecenas tortor orci,
+     condimentum eu augue eget, luctus varius erat. Mauris in libero eu ipsum volutpat mollis.
+     Sed luctus dolor ullamcorper, efficitur urna non, dignissim sapien.
+        </div>
       </div>
     );
   }
