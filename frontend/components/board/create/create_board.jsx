@@ -103,15 +103,31 @@ class CreateBoard extends React.Component {
 
   handleChangeColor(color) {
     let brushState = merge({},this.state.brush);
-    console.log('this.state.brush1', this.state.brush);
     brushState.color = color;
-    console.log('this.state.brush2', this.state.brush);
     // console.log('this.state.brush', this.state.brush);
     return (event) => (
       this.setState({
         brush: brushState
       })
     );
+  }
+
+  handleChangeLineWidth(lineWidth) {
+    let brushState = merge({}, this.state.brush);
+    brushState.lineWidth = lineWidth;
+    console.log(brushState);
+    return (event) => (
+      this.setState({
+        brush: brushState
+      })
+    );
+  }
+
+  handleEraserClick(event) {
+    let brushState = merge({}, this.state.brush);
+    brushState.lineWidth = '20';
+    brushState.color = 'white';
+    this.setState({brush: brushState});
   }
 
   colorButtonElement(color) {
@@ -121,7 +137,20 @@ class CreateBoard extends React.Component {
     return(
       <button
         onClick={this.handleChangeColor.bind(this)(color)}
+        className='color-button'
         style={buttonStyle}/>
+    );
+  }
+
+  eraserElement() {
+    let eraserStyle = {
+      backgroundColor: 'white'
+    };
+    return(
+      <button
+        onClick={this.handleEraserClick.bind(this)}
+        style={eraserStyle}
+        className='eraser-button'/>
     );
   }
 
@@ -136,12 +165,10 @@ class CreateBoard extends React.Component {
           onMouseUp={this.handleMouseUp.bind(this)}
           onMouseMove={this.handleMouseMove.bind(this)}>
         </canvas>
-        <div>
           {this.colorButtonElement.bind(this)('black')}
-        </div>
-        <div>
-          {this.colorButtonElement.bind(this)('green')}
-        </div>
+          {this.colorButtonElement.bind(this)('red')}
+          {this.colorButtonElement.bind(this)('blue')}
+          {this.eraserElement.bind(this)()}
       </div>
     );
   }
