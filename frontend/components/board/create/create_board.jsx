@@ -1,5 +1,6 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
+import merge from 'lodash/merge';
 
 class CreateBoard extends React.Component {
   constructor(props){
@@ -101,9 +102,11 @@ class CreateBoard extends React.Component {
   }
 
   handleChangeColor(color) {
-    let brushState = this.state.brush;
+    let brushState = merge({},this.state.brush);
+    console.log('this.state.brush1', this.state.brush);
     brushState.color = color;
-    console.log('brushState', brushState);
+    console.log('this.state.brush2', this.state.brush);
+    // console.log('this.state.brush', this.state.brush);
     return (event) => (
       this.setState({
         brush: brushState
@@ -133,9 +136,12 @@ class CreateBoard extends React.Component {
           onMouseUp={this.handleMouseUp.bind(this)}
           onMouseMove={this.handleMouseMove.bind(this)}>
         </canvas>
-        {this.colorButtonElement.bind(this)('white')}
-        {this.colorButtonElement.bind(this)('black')}
-        {this.colorButtonElement.bind(this)('green')}
+        <div>
+          {this.colorButtonElement.bind(this)('black')}
+        </div>
+        <div>
+          {this.colorButtonElement.bind(this)('green')}
+        </div>
       </div>
     );
   }
