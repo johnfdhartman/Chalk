@@ -9,14 +9,16 @@ class CreateBoard extends React.Component {
         lineWidth: '5',
         color: 'green'
       },
-      pointer: {
-        x: 0,
-        y: 0
-      },
       lessonStartTime: Date.now(),
-      currentPath: [],
       paths: []
     };
+
+    this.pointer = {
+      x: 0,
+      y: 0
+    };
+
+    this.currentPath = [];
   }
 
   componentDidMount(){
@@ -33,8 +35,8 @@ class CreateBoard extends React.Component {
 
   startDrawing() {
     this.drawInterval = setInterval( () => {
-      let startPos = this.state.currentPath[this.state.currentPath.length -1];
-      let endPos = this.state.pointer;
+      let startPos = this.currentPath[this.currentPath.length -1];
+      let endPos = this.pointer;
       this.drawPath.bind(this)(startPos, endPos);
       this.addPosToPath(endPos);
     }, 16);
@@ -55,17 +57,13 @@ class CreateBoard extends React.Component {
   }
 
   addPosToPath(pos) {
-    let newPath = this.state.currentPath;
-    newPath.push(pos);
-    this.setState({
-      currentPath: newPath
-    });
+    this.currentPath.push(pos);
   }
 
   handleMouseDown(event) {
     // let currentPos = this.state.pointer;
     // this.drawPath({x:0, y:0}, currentPos);
-    this.addPosToPath.bind(this)(this.state.pointer);
+    this.addPosToPath.bind(this)(this.pointer);
     this.setState({pathStartTime: Date.now()});
     this.startDrawing.bind(this)();
   }
@@ -76,38 +74,36 @@ class CreateBoard extends React.Component {
     newPaths.push({
       startTime: this.state.pathStartTime - this.state.lessonStartTime,
       endTime: Date.now() - this.state.lessonStartTime,
-      path: this.state.currentPath
+      path: this.currentPath
     });
     this.setState({
       paths: newPaths,
-      currentPath: [],
       pathStartTime: null
     });
+    this.currentPath = [];
     console.log(this.state.paths);
   }
 
   handleMouseMove(event) {
     let {top, left} = this.state.canvas.getBoundingClientRect();
     // let oldPos = this.state.pointer.current;
-    this.setState({
-      pointer: {
-        x: event.pageX - left,
-        y: event.pageY - top
-      }
-    });
+    this.pointer = {
+      x: event.pageX - left,
+      y: event.pageY - top
+    };
   }
 
   getPointerPos(event) {
     return {
-      x: this.state.pointer.x,
-      y: this.state.pointer.y
+      x: this.pointer.x,
+      y: this.pointer.y
     };
   }
 
   handleChangeColor(color) {
     let brushState = this.state.brush;
     brushState.color = color;
-    // console.log('brushState', brushState);
+    console.log('brushState', brushState);
     return (event) => (
       this.setState({
         brush: brushState
