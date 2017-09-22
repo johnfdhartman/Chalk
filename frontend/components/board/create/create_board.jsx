@@ -142,6 +142,15 @@ class CreateBoard extends React.Component {
     );
   }
 
+  lineWidthButtonElement(lineWidth) {
+    return(
+      <button
+        onClick={this.handleChangeLineWidth.bind(this)(lineWidth)}
+        className='line-width-button'
+        >{lineWidth}</button>
+    );
+  }
+
   eraserElement() {
     let eraserStyle = {
       backgroundColor: 'white'
@@ -165,10 +174,17 @@ class CreateBoard extends React.Component {
           onMouseUp={this.handleMouseUp.bind(this)}
           onMouseMove={this.handleMouseMove.bind(this)}>
         </canvas>
+        <div id='color-buttons'>
           {this.colorButtonElement.bind(this)('black')}
           {this.colorButtonElement.bind(this)('red')}
           {this.colorButtonElement.bind(this)('blue')}
           {this.eraserElement.bind(this)()}
+        </div>
+        <div id='line-width-buttons'>
+          {this.lineWidthButtonElement.bind(this)('1')}
+          {this.lineWidthButtonElement.bind(this)('3')}
+          {this.lineWidthButtonElement.bind(this)('5')}
+        </div>
       </div>
     );
   }
