@@ -10,8 +10,14 @@ class CreateBoard extends React.Component {
         color: 'black'
       },
       pointer: {
-        x: 0,
-        y: 0
+        prev: {
+          x: 0,
+          y: 0
+        },
+        current: {
+          x: 0,
+          y: 0
+        }
       },
       active: false
     };
@@ -19,6 +25,8 @@ class CreateBoard extends React.Component {
 
   componentDidMount(){
     let canvas = findDOMNode(this.canvasRef);
+    canvas.width = '300';
+    canvas.height = '150';
     let context = canvas.getContext('2d');
     this.setState({
       canvas: canvas,
@@ -27,23 +35,42 @@ class CreateBoard extends React.Component {
     this.startDrawing.bind(this)();
   }
 
-  startDrawing(){
-    setInterval( ()=>console.log(this.state.pointer),
-    30);
+  startDrawing() {
+    setInterval( () => {
+      this.drawPath.bind(this)(
+        this.state.pointer.prev,
+        this.state.pointer.current
+      );
+    }, 30);
   }
 
 
+  drawPath (startPos, endPos) {
+    let context = this.state.context;
+    context.strokeStyle = 'black';
+    context.lineWidth = '2px';
+    context.beginPath();
+    context.moveTo(startPos.x, startPos.y);
+    context.lineTo(endPos.x, endPos.y);
+    context.closePath();
+    context.stroke();
+  }
 
   handleMouseDown(event) {
-    console.log(this.getPointerPos(event));
+    let currentPos = this.state.pointer;
+    this.drawPath({x:0, y:0}, currentPos);
   }
 
   handleMouseMove(event) {
     let {top, left} = this.state.canvas.getBoundingClientRect();
+    let oldPos = this.state.pointer.current;
     this.setState({
       pointer: {
-        x: event.pageX - left,
-        y: event.pageY - top
+        prev: oldPos,
+        current:{
+          x: event.pageX - left,
+          y: event.pageY - top
+        }
       }
     });
   }
