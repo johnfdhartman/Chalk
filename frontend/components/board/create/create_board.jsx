@@ -6,30 +6,16 @@ class CreateBoard extends React.Component {
     super(props);
     this.state = {
       brush: {
-        thickness: '3px',
+        lineWidth: '5',
         color: 'black'
       },
       pointer: {
-        prev: {
-          x: 0,
-          y: 0
-        },
-        current: {
-          x: 0,
-          y: 0
-        }
+        x: 0,
+        y: 0
       },
-      mostRecentLine: {
-        start: {
-          x: 0,
-          y: 0
-        },
-        end: {
-          x: 0,
-          y: 0
-        }
-      },
-      active: false
+      lessonStartTime: Date.now(),
+      currentPath: [],
+      paths: []
     };
   }
 
@@ -47,15 +33,10 @@ class CreateBoard extends React.Component {
 
   startDrawing() {
     this.drawInterval = setInterval( () => {
-      let startPos = this.state.mostRecentLine.end;
-      let endPos = this.state.pointer.current;
+      let startPos = this.state.currentPath[this.state.currentPath.length -1];
+      let endPos = this.state.pointer;
       this.drawPath.bind(this)(startPos, endPos);
-      this.setState({
-        mostRecentLine: {
-          start: startPos,
-          end: endPos
-        }
-      });
+      this.addPosToPath(endPos);
     }, 16);
   }
 
@@ -63,7 +44,9 @@ class CreateBoard extends React.Component {
   drawPath (startPos, endPos) {
     let context = this.state.context;
     context.strokeStyle = this.state.brush.color;
-    context.lineWidth = this.state.brush.width;
+    context.lineWidth = this.state.brush.lineWidth;
+    context.lineJoin = 'round';
+    context.lineCap = 'round';
     context.beginPath();
     context.moveTo(startPos.x, startPos.y);
     context.lineTo(endPos.x, endPos.y);
@@ -71,32 +54,45 @@ class CreateBoard extends React.Component {
     context.stroke();
   }
 
+  addPosToPath(pos) {
+    let newPath = this.state.currentPath;
+    newPath.push(pos);
+    this.setState({
+      currentPath: newPath
+    });
+  }
+
   handleMouseDown(event) {
     // let currentPos = this.state.pointer;
     // this.drawPath({x:0, y:0}, currentPos);
-    this.setState({
-      mostRecentLine: {
-        start: null,
-        end: this.state.pointer.current
-      }
-    });
+    this.addPosToPath.bind(this)(this.state.pointer);
+    this.setState({pathStartTime: Date.now()});
     this.startDrawing.bind(this)();
   }
 
   handleMouseUp(event) {
     clearInterval(this.drawInterval);
+    let newPaths = this.state.paths;
+    newPaths.push({
+      startTime: this.state.pathStartTime - this.state.lessonStartTime,
+      endTime: Date.now() - this.state.lessonStartTime,
+      path: this.state.currentPath
+    });
+    this.setState({
+      paths: newPaths,
+      currentPath: [],
+      pathStartTime: null
+    });
+    console.log(this.state.paths);
   }
 
   handleMouseMove(event) {
     let {top, left} = this.state.canvas.getBoundingClientRect();
     // let oldPos = this.state.pointer.current;
-    console.log('yeeee');
     this.setState({
       pointer: {
-        current:{
-          x: event.pageX - left,
-          y: event.pageY - top
-        }
+        x: event.pageX - left,
+        y: event.pageY - top
       }
     });
   }
