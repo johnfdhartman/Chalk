@@ -130,43 +130,50 @@ class CreateBoard extends React.Component {
     this.setState({brush: brushState});
   }
 
+  buttonIsActive(attr, value){
+    return (this.state.brush[attr] === value
+      ? 'active'
+      : 'inactive'
+    );
+  }
+
   colorButtonElement(color) {
     let buttonStyle = {
       backgroundColor: color
     };
+    let isActive = this.buttonIsActive.bind(this)('color', color);
+
     return(
       <button
         onClick={this.handleChangeColor.bind(this)(color)}
-        className='color-button'
+        className={`color-button ${isActive}`}
         style={buttonStyle}/>
     );
   }
 
   lineWidthButtonElement(lineWidth) {
+    let isActive = this.buttonIsActive.bind(this)('lineWidth', lineWidth);
     return(
       <button
         onClick={this.handleChangeLineWidth.bind(this)(lineWidth)}
-        className='line-width-button'
+        className={`line-width-button ${isActive}`}
         >{lineWidth}</button>
     );
   }
 
   eraserElement() {
-    let eraserStyle = {
-      backgroundColor: 'white'
-    };
+    let isActive = this.buttonIsActive.bind(this)('color', 'white');
     return(
       <button
         onClick={this.handleEraserClick.bind(this)}
-        style={eraserStyle}
-        className='eraser-button'/>
+        className = {`eraser ${isActive}`}/>
     );
   }
 
   render() {
 
     return(
-      <div>
+      <div id='create-board-wrapper'>
         <canvas
           ref={(canvas) => { this.canvasRef = canvas; }}
           id='board-canvas'
@@ -174,16 +181,20 @@ class CreateBoard extends React.Component {
           onMouseUp={this.handleMouseUp.bind(this)}
           onMouseMove={this.handleMouseMove.bind(this)}>
         </canvas>
-        <div id='color-buttons'>
-          {this.colorButtonElement.bind(this)('black')}
-          {this.colorButtonElement.bind(this)('red')}
-          {this.colorButtonElement.bind(this)('blue')}
+        <div id='create-board-control'>
+          <div id='palette'>
+            <div id='color-buttons'>
+              {this.colorButtonElement.bind(this)('black')}
+              {this.colorButtonElement.bind(this)('red')}
+              {this.colorButtonElement.bind(this)('blue')}
+            </div>
+            <div id='line-width-buttons'>
+              {this.lineWidthButtonElement.bind(this)('1')}
+              {this.lineWidthButtonElement.bind(this)('3')}
+              {this.lineWidthButtonElement.bind(this)('5')}
+            </div>
+          </div>
           {this.eraserElement.bind(this)()}
-        </div>
-        <div id='line-width-buttons'>
-          {this.lineWidthButtonElement.bind(this)('1')}
-          {this.lineWidthButtonElement.bind(this)('3')}
-          {this.lineWidthButtonElement.bind(this)('5')}
         </div>
       </div>
     );

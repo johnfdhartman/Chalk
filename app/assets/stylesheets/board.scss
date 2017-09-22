@@ -3,3 +3,52 @@
   width: 600px;
   background-color: #d8d8d8;
 }
+
+
+#create-board-wrapper button {
+  height: 20px;
+  width: 20px;
+  border: none;
+  margin: 5px;
+  border-radius: 3px;
+  outline: none;
+}
+
+#create-board-wrapper button:hover{
+  cursor:pointer;
+}
+
+#create-board-control {
+  display: flex;
+  justify-content: space-between;
+}
+
+#palette {
+  display: flex;
+  flex-direction: column;
+}
+
+#create-board-control .color-button.active {
+  border: 3px solid black;
+  outline: none;
+}
+
+#create-board-control .line-width-button.active {
+  background-color: black;
+  color: white;
+  transition: color 0.1s ease-in, background-color 0.1s ease-in;
+}
+
+#create-board-control .eraser {
+  height: 40px;
+  width: 40px;
+  background-image: url('http://res.cloudinary.com/dce7smh6y/image/upload/v1506119230/eraser-icon_nbvxhq.png');
+  background-position:50% 50%;
+  background-color: white;
+  background-size: cover;
+  border: none;
+}
+
+#create-board-control .eraser.active {
+  background-color: #75ceff;
+}
