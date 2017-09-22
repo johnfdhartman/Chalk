@@ -7,8 +7,8 @@ class CreateBoard extends React.Component {
     super(props);
     this.state = {
       brush: {
-        lineWidth: '5',
-        color: 'green'
+        lineWidth: '3',
+        color: 'black'
       },
       lessonStartTime: Date.now(),
       paths: []
@@ -115,7 +115,6 @@ class CreateBoard extends React.Component {
   handleChangeLineWidth(lineWidth) {
     let brushState = merge({}, this.state.brush);
     brushState.lineWidth = lineWidth;
-    console.log(brushState);
     return (event) => (
       this.setState({
         brush: brushState
