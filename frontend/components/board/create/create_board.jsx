@@ -1,7 +1,7 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 import merge from 'lodash/merge';
-
+import fscreen from 'fscreen';
 class CreateBoard extends React.Component {
   constructor(props){
     super(props);
@@ -24,8 +24,12 @@ class CreateBoard extends React.Component {
 
   componentDidMount(){
     let canvas = findDOMNode(this.canvasRef);
-    canvas.width = '600';
-    canvas.height = '300';
+    let width = Math.max(document.documentElement.clientWidth,
+      window.innerWidth || 0);
+    let height = Math.max(document.documentElement.clientHeight,
+    window.innerHeight || 0);
+    canvas.width = width;
+    canvas.height = height;
     let context = canvas.getContext('2d');
     this.setState({
       canvas: canvas,
@@ -67,6 +71,7 @@ class CreateBoard extends React.Component {
     this.addPosToPath.bind(this)(this.pointer);
     this.setState({pathStartTime: Date.now()});
     this.startDrawing.bind(this)();
+    fscreen.requestFullscreen(this.wrapperRef);
   }
 
   handleMouseUp(event) {
@@ -172,7 +177,9 @@ class CreateBoard extends React.Component {
   render() {
 
     return(
-      <div id='create-board-wrapper'>
+      <div id='create-board-wrapper'
+        ref={(wrapper) => { this.wrapperRef = wrapper;}}
+        allowFullScreen='true'>
         <canvas
           ref={(canvas) => { this.canvasRef = canvas; }}
           id='board-canvas'

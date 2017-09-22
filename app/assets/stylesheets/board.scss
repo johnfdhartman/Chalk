@@ -1,9 +1,13 @@
 #board-canvas {
-  height: 300px;
-  width: 600px;
   background-color: white;
   border-bottom: 3px dashed black;
   border-radius: 20px;
+  height: 70vh;
+}
+
+#create-board-wrapper {
+  height: 80vh;
+  width: 100vh;
 }
 
 
