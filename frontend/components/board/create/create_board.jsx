@@ -7,7 +7,7 @@ class CreateBoard extends React.Component {
     this.state = {
       brush: {
         lineWidth: '5',
-        color: 'black'
+        color: 'green'
       },
       pointer: {
         x: 0,
@@ -104,16 +104,43 @@ class CreateBoard extends React.Component {
     };
   }
 
+  handleChangeColor(color) {
+    let brushState = this.state.brush;
+    brushState.color = color;
+    // console.log('brushState', brushState);
+    return (event) => (
+      this.setState({
+        brush: brushState
+      })
+    );
+  }
+
+  colorButtonElement(color) {
+    let buttonStyle = {
+      backgroundColor: color
+    };
+    return(
+      <button
+        onClick={this.handleChangeColor.bind(this)(color)}
+        style={buttonStyle}/>
+    );
+  }
+
   render() {
 
     return(
-      <canvas
-        ref={(canvas) => { this.canvasRef = canvas; }}
-        id='board-canvas'
-        onMouseDown={this.handleMouseDown.bind(this)}
-        onMouseUp={this.handleMouseUp.bind(this)}
-        onMouseMove={this.handleMouseMove.bind(this)}>
-      </canvas>
+      <div>
+        <canvas
+          ref={(canvas) => { this.canvasRef = canvas; }}
+          id='board-canvas'
+          onMouseDown={this.handleMouseDown.bind(this)}
+          onMouseUp={this.handleMouseUp.bind(this)}
+          onMouseMove={this.handleMouseMove.bind(this)}>
+        </canvas>
+        {this.colorButtonElement.bind(this)('white')}
+        {this.colorButtonElement.bind(this)('black')}
+        {this.colorButtonElement.bind(this)('green')}
+      </div>
     );
   }
 }
