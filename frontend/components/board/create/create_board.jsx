@@ -19,36 +19,51 @@ class CreateBoard extends React.Component {
           y: 0
         }
       },
+      mostRecentLine: {
+        start: {
+          x: 0,
+          y: 0
+        },
+        end: {
+          x: 0,
+          y: 0
+        }
+      },
       active: false
     };
   }
 
   componentDidMount(){
     let canvas = findDOMNode(this.canvasRef);
-    canvas.width = '300';
-    canvas.height = '150';
+    canvas.width = '600';
+    canvas.height = '300';
     let context = canvas.getContext('2d');
     this.setState({
       canvas: canvas,
       context: context,
     });
-    this.startDrawing.bind(this)();
+    // this.startDrawing.bind(this)();
   }
 
   startDrawing() {
-    setInterval( () => {
-      this.drawPath.bind(this)(
-        this.state.pointer.prev,
-        this.state.pointer.current
-      );
-    }, 30);
+    this.drawInterval = setInterval( () => {
+      let startPos = this.state.mostRecentLine.end;
+      let endPos = this.state.pointer.current;
+      this.drawPath.bind(this)(startPos, endPos);
+      this.setState({
+        mostRecentLine: {
+          start: startPos,
+          end: endPos
+        }
+      });
+    }, 16);
   }
 
 
   drawPath (startPos, endPos) {
     let context = this.state.context;
-    context.strokeStyle = 'black';
-    context.lineWidth = '2px';
+    context.strokeStyle = this.state.brush.color;
+    context.lineWidth = this.state.brush.width;
     context.beginPath();
     context.moveTo(startPos.x, startPos.y);
     context.lineTo(endPos.x, endPos.y);
@@ -57,16 +72,27 @@ class CreateBoard extends React.Component {
   }
 
   handleMouseDown(event) {
-    let currentPos = this.state.pointer;
-    this.drawPath({x:0, y:0}, currentPos);
+    // let currentPos = this.state.pointer;
+    // this.drawPath({x:0, y:0}, currentPos);
+    this.setState({
+      mostRecentLine: {
+        start: null,
+        end: this.state.pointer.current
+      }
+    });
+    this.startDrawing.bind(this)();
+  }
+
+  handleMouseUp(event) {
+    clearInterval(this.drawInterval);
   }
 
   handleMouseMove(event) {
     let {top, left} = this.state.canvas.getBoundingClientRect();
-    let oldPos = this.state.pointer.current;
+    // let oldPos = this.state.pointer.current;
+    console.log('yeeee');
     this.setState({
       pointer: {
-        prev: oldPos,
         current:{
           x: event.pageX - left,
           y: event.pageY - top
@@ -89,6 +115,7 @@ class CreateBoard extends React.Component {
         ref={(canvas) => { this.canvasRef = canvas; }}
         id='board-canvas'
         onMouseDown={this.handleMouseDown.bind(this)}
+        onMouseUp={this.handleMouseUp.bind(this)}
         onMouseMove={this.handleMouseMove.bind(this)}>
       </canvas>
     );
