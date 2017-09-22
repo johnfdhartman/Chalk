@@ -30,14 +30,14 @@ class Nav extends React.Component {
           </div>
           <button
             id='logout'
-            className='white-button'
+            className='nav-button white-button'
             onClick={this.handleLogout.bind(this)}>
             LOGOUT
           </button>
         </div>
         <button
           id='profile'
-          className='white-button'
+          className='nav-button white-button'
           > </button>
 
       </nav>

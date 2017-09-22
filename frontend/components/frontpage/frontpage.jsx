@@ -91,14 +91,14 @@ class Frontpage extends React.Component {
         <div id='auth-buttons'>
           <button
             id='login'
-            className='black-button'
+            className='nav-button black-button'
             onClick={this.handleButtonClick(this.props.login)}
             >
               LOGIN
           </button>
           <button
             id='signup'
-            className='black-button'
+            className='nav-button black-button'
             onClick={this.handleButtonClick(this.props.signup)}
             >
               SIGN UP
@@ -106,7 +106,7 @@ class Frontpage extends React.Component {
 
           <button
             id='demo'
-            className='black-button'
+            className='nav-button black-button'
             onClick={this.handleDemoClick.bind(this)}
             >
             DEMO
