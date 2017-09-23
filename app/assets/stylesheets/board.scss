@@ -2,12 +2,28 @@
   background-color: white;
   border-bottom: 3px dashed black;
   border-radius: 20px;
-  height: 70vh;
+  height: 90vh;
+  width: 100vw;
+}
+
+#board-canvas:fullscreen {
+  height: 90vh;
+  width: 50vw;
 }
 
 #create-board-wrapper {
-  height: 80vh;
-  width: 100vh;
+  height: 100vh;
+  width: 100vw;
+}
+
+#create-board-wrapper:fullscreen {
+  height: 100vh;
+  width: 50vw;
+}
+
+#create-board-control:fullscreen {
+  height:10vh;
+  width:50vw;
 }
 
 
@@ -26,6 +42,7 @@
 
 #create-board-control {
   display: flex;
+  height: 10vh;
   justify-content: space-between;
 }
 

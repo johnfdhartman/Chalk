@@ -18,6 +18,9 @@ class Nav extends React.Component {
   }
 
   render() {
+    if (this.props.location.pathname === '/create') {
+      return (<div></div>);
+    }
     return(
       <nav>
         <div id='logo'>LOGO</div>

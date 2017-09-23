@@ -27,7 +27,7 @@ class CreateBoard extends React.Component {
     let width = Math.max(document.documentElement.clientWidth,
       window.innerWidth || 0);
     let height = Math.max(document.documentElement.clientHeight,
-    window.innerHeight || 0);
+      window.innerHeight || 0);
     canvas.width = width;
     canvas.height = height;
     let context = canvas.getContext('2d');
