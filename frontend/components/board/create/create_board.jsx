@@ -2,6 +2,7 @@ import React from 'react';
 import {findDOMNode} from 'react-dom';
 import merge from 'lodash/merge';
 import fscreen from 'fscreen';
+import ClockContainer from '../../clock/clock_container';
 class CreateBoard extends React.Component {
   constructor(props){
     super(props);
@@ -27,7 +28,7 @@ class CreateBoard extends React.Component {
     let width = Math.max(document.documentElement.clientWidth,
       window.innerWidth || 0);
     let height = Math.max(document.documentElement.clientHeight,
-      window.innerHeight || 0);
+      window.innerHeight || 0) * 0.9;
     canvas.width = width;
     canvas.height = height;
     let context = canvas.getContext('2d');
@@ -110,7 +111,9 @@ class CreateBoard extends React.Component {
   handleChangeColor(color) {
     let brushState = merge({},this.state.brush);
     brushState.color = color;
-    // console.log('this.state.brush', this.state.brush);
+    if (this.state.brush.color === 'white') {
+      brushState.lineWidth= '3';
+    }
     return (event) => (
       this.setState({
         brush: brushState
@@ -130,7 +133,7 @@ class CreateBoard extends React.Component {
 
   handleEraserClick(event) {
     let brushState = merge({}, this.state.brush);
-    brushState.lineWidth = '20';
+    brushState.lineWidth = '40';
     brushState.color = 'white';
     this.setState({brush: brushState});
   }
@@ -201,6 +204,7 @@ class CreateBoard extends React.Component {
               {this.lineWidthButtonElement.bind(this)('5')}
             </div>
           </div>
+          <ClockContainer/>
           {this.eraserElement.bind(this)()}
         </div>
       </div>
