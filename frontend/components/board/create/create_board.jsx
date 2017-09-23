@@ -3,6 +3,7 @@ import {findDOMNode} from 'react-dom';
 import merge from 'lodash/merge';
 import fscreen from 'fscreen';
 import CreateClockContainer from '../../create_clock/create_clock_container';
+import Modal from 'react-modal';
 class CreateBoard extends React.Component {
   constructor(props){
     super(props);
@@ -12,7 +13,8 @@ class CreateBoard extends React.Component {
         color: 'black'
       },
       lessonStartTime: Date.now(),
-      paths: []
+      paths: [],
+      modalIsOpen: false
     };
 
     this.pointer = {
@@ -178,12 +180,33 @@ class CreateBoard extends React.Component {
     );
   }
 
+
+  saveBoard() {
+    this.props.updateCreateBoardStage('post-finished');
+  }
+
+
+  saveModal() {
+    return (
+      <Modal
+        isOpen={(this.props.createBoardStage === 'finished')}
+        >
+        hey kiddo wanna save?
+        <button
+          onClick={this.saveBoard.bind(this)}>
+          ya
+        </button>
+      </Modal>
+    );
+  }
+
   render() {
 
     return(
       <div id='create-board-wrapper'
         ref={(wrapper) => { this.wrapperRef = wrapper;}}
         allowFullScreen='true'>
+        {this.saveModal()}
         <canvas
           ref={(canvas) => { this.canvasRef = canvas; }}
           id='board-canvas'

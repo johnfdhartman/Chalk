@@ -7,7 +7,7 @@ class CreateClock extends React.Component {
     super(props);
 
     this.state = {
-      //three stages: start, running, finish
+      //three stages: start, running, finished, post-finished
       stage: 'start',
       time: {
         minutes: 0,
@@ -38,7 +38,7 @@ class CreateClock extends React.Component {
   }
 
   handleClick(event) {
-    let newStage;
+    let newStage = 'post-finished';
     if (this.state.stage === 'start') {
       newStage = 'running';
       this.runClock.bind(this)();
@@ -46,8 +46,9 @@ class CreateClock extends React.Component {
       newStage = 'finished';
       clearInterval(this.clockInterval);
     } else if (this.state.stage === 'finished') {
-      newStage = 'finished';
+      newStage = 'post-finished';
     }
+    this.props.updateCreateBoardStage(newStage);
     this.setState({stage: newStage});
   }
 
@@ -61,6 +62,9 @@ class CreateClock extends React.Component {
 
       case 'finished':
         return `Finished Recording`;
+
+      case 'post-finished':
+        return 'Finished Recording';
     }
   }
 
