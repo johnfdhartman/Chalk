@@ -6,7 +6,7 @@ class Clock extends React.Component {
     super(props);
 
     this.state = {
-      isActive: 'inactive',
+      active: false,
       time: {
         minutes: 0,
         seconds: 0
@@ -36,13 +36,27 @@ class Clock extends React.Component {
       1000);
   }
 
+  isActiveClass() {
+    return (this.state.active ? 'active' : 'inactive');
+  }
 
+  handleClick(event) {
+    this.setState({
+      active: !(this.state.active)
+    });
+    if (this.state.active) {
+      this.runClock.bind(this)();
+    } else {
+      clearInterval(this.clockInterval);
+    }
+  }
 
   render() {
     return(
       <button
         id='clock'
-        className={`clock ${this.state.isActive}`}>
+        className={`clock ${this.isActiveClass.bind(this)}`}
+        onClick={this.handleClick.bind(this)}>
         {this.state.time.minutes}:{this.state.time.seconds}
       </button>
     );
