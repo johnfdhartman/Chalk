@@ -71,7 +71,7 @@ class CreateBoard extends React.Component {
     this.addPosToPath.bind(this)(this.pointer);
     this.setState({pathStartTime: Date.now()});
     this.startDrawing.bind(this)();
-    fscreen.requestFullscreen(this.wrapperRef);
+    // fscreen.requestFullscreen(this.wrapperRef);
   }
 
   handleMouseUp(event) {
@@ -80,7 +80,8 @@ class CreateBoard extends React.Component {
     newPaths.push({
       startTime: this.state.pathStartTime - this.state.lessonStartTime,
       endTime: Date.now() - this.state.lessonStartTime,
-      path: this.currentPath
+      path: this.currentPath,
+      brush: this.state.brush
     });
     this.setState({
       paths: newPaths,
