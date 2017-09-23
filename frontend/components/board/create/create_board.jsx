@@ -2,7 +2,7 @@ import React from 'react';
 import {findDOMNode} from 'react-dom';
 import merge from 'lodash/merge';
 import fscreen from 'fscreen';
-import ClockContainer from '../../clock/clock_container';
+import CreateClockContainer from '../../create_clock/create_clock_container';
 class CreateBoard extends React.Component {
   constructor(props){
     super(props);
@@ -204,7 +204,7 @@ class CreateBoard extends React.Component {
               {this.lineWidthButtonElement.bind(this)('5')}
             </div>
           </div>
-          <ClockContainer/>
+          <CreateClockContainer/>
           {this.eraserElement.bind(this)()}
         </div>
       </div>

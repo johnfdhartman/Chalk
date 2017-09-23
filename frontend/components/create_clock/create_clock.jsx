@@ -1,12 +1,14 @@
+
 import React from 'react';
 import merge from 'lodash/merge';
 
-class Clock extends React.Component {
+class CreateClock extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      active: false,
+      //three stages: start, running, finish
+      stage: 'start',
       time: {
         minutes: 0,
         seconds: 0
@@ -14,9 +16,6 @@ class Clock extends React.Component {
     };
   }
 
-  componentDidMount() {
-    this.runClock.bind(this)();
-  }
 
   tick() {
     let currentTime = merge({}, this.state.time);
@@ -36,26 +35,25 @@ class Clock extends React.Component {
       1000);
   }
 
-  isActiveClass() {
-    return (this.state.active ? 'active' : 'inactive');
-  }
-
   handleClick(event) {
-    this.setState({
-      active: !(this.state.active)
-    });
-    if (this.state.active) {
+    let newStage;
+    if (this.state.stage === 'start') {
+      newStage = 'running';
       this.runClock.bind(this)();
-    } else {
+    } else if (this.state.stage === 'running') {
+      newStage = 'finished';
       clearInterval(this.clockInterval);
+    } else if (this.state.stage === 'finished') {
+      newStage = 'finished';
     }
+    this.setState({stage: newStage});
   }
 
   render() {
     return(
       <button
         id='clock'
-        className={`clock ${this.isActiveClass.bind(this)}`}
+        className={`clock ${this.state.stage}`}
         onClick={this.handleClick.bind(this)}>
         {this.state.time.minutes}:{this.state.time.seconds}
       </button>
@@ -63,4 +61,4 @@ class Clock extends React.Component {
   }
 
 }
-export default Clock;
+export default CreateClock;

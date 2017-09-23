@@ -1,6 +1,6 @@
 
 import {connect} from 'react-redux';
-import Clock from './clock';
+import CreateClock from './create_clock';
 
 const mapStateToProps = (state) => ({
 
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => ({
 
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Clock);
+export default connect(mapStateToProps, mapDispatchToProps)(CreateClock);
