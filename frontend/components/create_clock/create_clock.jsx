@@ -17,6 +17,8 @@ class CreateClock extends React.Component {
   }
 
 
+
+
   tick() {
     let currentTime = merge({}, this.state.time);
     if (currentTime.seconds < 60) {
@@ -49,13 +51,26 @@ class CreateClock extends React.Component {
     this.setState({stage: newStage});
   }
 
+  displayText() {
+    switch(this.state.stage) {
+      case 'start':
+        return 'Start Recording';
+
+      case 'running':
+        return `${this.state.time.minutes}:${this.state.time.seconds}`;
+
+      case 'finished':
+        return `Finished Recording`;
+    }
+  }
+
   render() {
     return(
       <button
         id='clock'
         className={`clock ${this.state.stage}`}
         onClick={this.handleClick.bind(this)}>
-        {this.state.time.minutes}:{this.state.time.seconds}
+        {this.displayText.bind(this)()}
       </button>
     );
   }
