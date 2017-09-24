@@ -183,7 +183,7 @@ class CreateBoard extends React.Component {
 
 
   saveBoard() {
-    this.props.updateCreateBoardStage('post-finished');
+    // this.props.updateCreateBoardStage('post-finished');
     this.props.saveBoard({
       title: this.state.title,
       paths: this.state.paths,
@@ -197,12 +197,14 @@ class CreateBoard extends React.Component {
   }
 
   renderErrors() {
-    return (this.props.createBoardErrors.map(
+    let errors = this.props.createBoardErrors.map(
       (error) => (<li>{error}</li>)
-    ));
+    );
+    return (<ul className='errors'>{errors}</ul>);
   }
 
   saveModal() {
+    let myErrors = this.renderErrors.bind(this)();
     return (
       <Modal
         isOpen={(this.props.createBoardStage === 'finished')}
@@ -220,9 +222,7 @@ class CreateBoard extends React.Component {
           onClick={this.saveBoard.bind(this)}>
           ya
         </button>
-        <ul className='errors'>
-          {this.renderErrors.bind(this)}
-        </ul>
+        {myErrors}
       </Modal>
     );
   }
