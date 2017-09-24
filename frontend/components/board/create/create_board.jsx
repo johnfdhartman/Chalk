@@ -14,7 +14,8 @@ class CreateBoard extends React.Component {
       },
       lessonStartTime: Date.now(),
       paths: [],
-      modalIsOpen: false
+      modalIsOpen: false,
+      title: ''
     };
 
     this.pointer = {
@@ -183,7 +184,16 @@ class CreateBoard extends React.Component {
 
   saveBoard() {
     this.props.updateCreateBoardStage('post-finished');
-    this.props.saveBoard(this.state.paths);
+    this.props.saveBoard({
+      title: 'blah',
+      paths: this.state.paths,
+    });
+  }
+
+  handleTitleInput(event) {
+    this.setState({
+      title: event.target.value
+    });
   }
 
 
@@ -195,7 +205,6 @@ class CreateBoard extends React.Component {
         hey kiddo wanna save?
         <button
           onClick={this.saveBoard.bind(this)}>
-          ya
         </button>
       </Modal>
     );
