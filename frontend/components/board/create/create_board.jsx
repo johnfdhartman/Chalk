@@ -205,20 +205,38 @@ class CreateBoard extends React.Component {
 
   saveModal() {
     let myErrors = this.renderErrors.bind(this)();
+    let modalStyle = {
+      content : {
+        height: '30vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)'
+      }
+    };
     return (
       <Modal
+        id='create-modal'
         isOpen={(this.props.createBoardStage === 'finished')}
         contentLabel='Modal'
+        style={modalStyle}
         >
-        hey kiddo wanna save?
+        <div className='modal-content'>hey kiddo wanna save?</div>
         <div>
-          <label>Title</label>
+          <label className='modal-label'>Title</label>
           <input type='text'
             className='title-input'
             value={this.state.title}
             onChange={this.handleTitleInput.bind(this)}/>
         </div>
         <button
+          className='modal-button'
           onClick={this.saveBoard.bind(this)}>
           ya
         </button>

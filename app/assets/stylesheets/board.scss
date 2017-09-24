@@ -76,7 +76,50 @@
   background-color: #75ceff;
 }
 
-#create-board-wrapper input {
+.create-modal {
+  height: 30vh;
+  width: 20vw;
+}
+
+.modal-content {
+  font-size: 3vh;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+.title-input {
   border: 1px solid black;
   border-radius: 3px;
+}
+
+.modal-button {
+  display: inline-block;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3vw;
+  border: 1px solid black;
+  background-color: transparent;
+  border-radius: 30px;
+  width: 50%;
+  height: 30%;
+  margin: 3%;
+  transition: background-color 0.1s ease-in, border-color 0.1s ease-in, color 0.1s,
+    letter-spacing 0.1s ease-in, border-radius 0.1s ease-in;
+  outline: none;
+  letter-spacing: 2px;
+}
+
+.modal-button:hover {
+  background-color: #75ceff;
+  border: solid #75ceff 3px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.1s, border-color 0.1s,
+    color 0.1s, letter-spacing 0.1s, border-radius 0.1s;
+  letter-spacing: 5px;
+  border-radius: 20px;
+}
+
+.modal-label {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3vw;
+  margin-right: 5%; 
 }
