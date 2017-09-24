@@ -207,11 +207,12 @@ class CreateBoard extends React.Component {
     let myErrors = this.renderErrors.bind(this)();
     let modalStyle = {
       content : {
-        height: '30vh',
+        height: '20vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'space-between',
+        paddingBottom: '0',
         top                   : '50%',
         left                  : '50%',
         right                 : 'auto',
@@ -227,9 +228,8 @@ class CreateBoard extends React.Component {
         contentLabel='Modal'
         style={modalStyle}
         >
-        <div className='modal-content'>hey kiddo wanna save?</div>
+        <div className='modal-content'>Give your lesson a title!</div>
         <div>
-          <label className='modal-label'>Title</label>
           <input type='text'
             className='title-input'
             value={this.state.title}
@@ -238,7 +238,7 @@ class CreateBoard extends React.Component {
         <button
           className='modal-button'
           onClick={this.saveBoard.bind(this)}>
-          ya
+          SAVE
         </button>
         {myErrors}
       </Modal>

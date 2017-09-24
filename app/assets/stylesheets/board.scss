@@ -100,7 +100,7 @@
   border-radius: 30px;
   width: 50%;
   height: 30%;
-  margin: 3%;
+  margin-top: 2%;
   transition: background-color 0.1s ease-in, border-color 0.1s ease-in, color 0.1s,
     letter-spacing 0.1s ease-in, border-radius 0.1s ease-in;
   outline: none;
@@ -121,5 +121,5 @@
 .modal-label {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 3vw;
-  margin-right: 5%; 
+  margin-right: 5%;
 }
