@@ -185,7 +185,7 @@ class CreateBoard extends React.Component {
   saveBoard() {
     this.props.updateCreateBoardStage('post-finished');
     this.props.saveBoard({
-      title: 'blah',
+      title: this.state.title,
       paths: this.state.paths,
     });
   }
@@ -203,8 +203,15 @@ class CreateBoard extends React.Component {
         isOpen={(this.props.createBoardStage === 'finished')}
         >
         hey kiddo wanna save?
+        <div>
+          <label>Title</label>
+          <input type='text'
+            value={this.state.title}
+            onChange={this.handleTitleInput.bind(this)}/>
+        </div>
         <button
           onClick={this.saveBoard.bind(this)}>
+          ya
         </button>
       </Modal>
     );
