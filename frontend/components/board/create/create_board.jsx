@@ -183,6 +183,7 @@ class CreateBoard extends React.Component {
 
   saveBoard() {
     this.props.updateCreateBoardStage('post-finished');
+    this.props.saveBoard(this.state.paths);
   }
 
 
