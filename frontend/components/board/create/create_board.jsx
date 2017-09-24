@@ -196,16 +196,23 @@ class CreateBoard extends React.Component {
     });
   }
 
+  renderErrors() {
+    return (this.props.createBoardErrors.map(
+      (error) => (<li>{error}</li>)
+    ));
+  }
 
   saveModal() {
     return (
       <Modal
         isOpen={(this.props.createBoardStage === 'finished')}
+        contentLabel='Modal'
         >
         hey kiddo wanna save?
         <div>
           <label>Title</label>
           <input type='text'
+            className='title-input'
             value={this.state.title}
             onChange={this.handleTitleInput.bind(this)}/>
         </div>
@@ -213,6 +220,9 @@ class CreateBoard extends React.Component {
           onClick={this.saveBoard.bind(this)}>
           ya
         </button>
+        <ul className='errors'>
+          {this.renderErrors.bind(this)}
+        </ul>
       </Modal>
     );
   }

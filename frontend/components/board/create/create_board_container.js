@@ -4,7 +4,8 @@ import CreateBoard from './create_board.jsx';
 import {updateCreateBoardStage, saveBoard} from '../../../actions/create_board_actions';
 
 const mapStateToProps = (state) => ({
-  createBoardStage: state.createBoard.createBoardStage
+  createBoardStage: state.createBoard.createBoardStage,
+  createBoardErrors: state.errors.createBoardErrors
 });
 
 const mapDispatchToProps = (dispatch) => ({

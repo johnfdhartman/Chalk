@@ -22,6 +22,6 @@ export const receiveBoardErrors = createBoardErrors => ({
 export const saveBoard = (board) => (dispatch) => (
   Api.saveBoard(board).then(
     (successData) => dispatch(successfulSaveBoard(successData)),
-    (errors) => dispatch(receiveBoardErrors(errors))
+    (errors) => dispatch(receiveBoardErrors(errors.responseJSON.errors))
   )
 );
