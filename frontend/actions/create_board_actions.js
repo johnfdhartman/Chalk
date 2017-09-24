@@ -14,9 +14,9 @@ export const successfulSaveBoard = successData => ({
   successData
 });
 
-export const receiveBoardErrors = boardErrors => ({
+export const receiveBoardErrors = createBoardErrors => ({
   type: RECEIVE_BOARD_ERRORS,
-  boardErrors
+  createBoardErrors
 });
 
 export const saveBoard = (board) => (dispatch) => (
