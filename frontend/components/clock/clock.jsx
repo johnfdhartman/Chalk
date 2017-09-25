@@ -66,11 +66,11 @@ class Clock extends React.Component {
 
   handleShowClick() {
     let newStage = 'post-finished';
-    if (this.state.stage === 'start') {
+    if (this.props.boardStage === 'start') {
       newStage = 'running';
       this.runClock.bind(this)();
     } else {
-      newStage = this.state.stage;
+      newStage = this.props.boardStage;
     }
     this.props.updateBoardStage(newStage);
   }
@@ -78,19 +78,19 @@ class Clock extends React.Component {
 
   handleCreateClick() {
     let newStage = 'post-finished';
-    if (this.state.stage === 'start') {
+    if (this.props.boardStage === 'start') {
       newStage = 'running';
       this.runClock.bind(this)();
-    } else if (this.state.stage === 'running') {
+    } else if (this.props.boardStage === 'running') {
       newStage = 'finished';
-    } else if (this.state.stage === 'finished') {
+    } else if (this.props.boardStage === 'finished') {
       newStage = 'post-finished';
     }
     this.props.updateBoardStage(newStage);
   }
 
   createDisplayText() {
-    switch(this.state.stage) {
+    switch(this.props.boardStage) {
       case 'start':
         return 'Start Recording';
 
@@ -122,7 +122,6 @@ class Clock extends React.Component {
   }
 
   displayText() {
-    console.log('clock displayText');
     switch(this.state.type){
       case 'create':
         return this.createDisplayText.bind(this)();
@@ -133,11 +132,10 @@ class Clock extends React.Component {
   }
 
   render() {
-    console.log('rerendering');
     return(
       <button
         id='clock'
-        className={`clock ${this.state.stage}`}
+        className={`clock ${this.props.boardStage}`}
         onClick={this.handleClick.bind(this)}>
         {this.displayText.bind(this)()}
       </button>
