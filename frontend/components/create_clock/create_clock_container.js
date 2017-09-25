@@ -4,7 +4,7 @@ import CreateClock from './create_clock';
 import {updateCreateBoardStage} from '../../actions/board_actions';
 
 const mapStateToProps = (state) => ({
-  createBoardStage: state.createBoard.createBoardStage
+  createBoardStage: state.board.createBoardStage
 });
 
 const mapDispatchToProps = (dispatch) => ({

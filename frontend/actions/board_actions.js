@@ -15,10 +15,17 @@ export const successfulSaveBoard = successData => ({
   successData
 });
 
-export const receiveBoard = (board) => ({
-  type: RECEIVE_BOARD,
-  board
-});
+export const receiveBoard = (board) => {
+  // console.log('board', board);
+  return {
+    type: RECEIVE_BOARD,
+    board: {
+      title: board.title,
+      author: board.author,
+      paths: JSON.parse(board.paths)
+    }
+  };
+};
 
 export const receiveBoardErrors = boardErrors => ({
   type: RECEIVE_BOARD_ERRORS,
@@ -35,6 +42,8 @@ export const saveBoard = (board) => (dispatch) => (
 export const requestBoard = id => dispatch => (
   Api.fetchBoard(id).then(
     board => dispatch(receiveBoard(board)),
+
+
     errors => dispatch(receiveBoardErrors(errors.responseJSON.errors))
   )
 );

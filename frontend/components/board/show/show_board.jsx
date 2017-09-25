@@ -6,9 +6,11 @@ class ShowBoard extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({
-      board: this.props.requestBoard(this.props.boardId)
-    });
+    this.props.requestBoard(this.props.boardId).then(board =>
+      this.setState({
+        board
+      })
+    );
   }
 
   render() {

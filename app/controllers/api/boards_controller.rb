@@ -1,7 +1,7 @@
 class Api::BoardsController < ApplicationController
   def create
     @board = Board.new(title: params[:title],
-                       paths: params[:paths],
+                       paths: params[:paths].to_json,
                        author_id: current_user.id)
 
     if @board.save
