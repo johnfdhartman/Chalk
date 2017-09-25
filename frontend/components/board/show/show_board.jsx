@@ -5,6 +5,12 @@ class ShowBoard extends React.Component {
     super(props);
   }
 
+  componentWillMount() {
+    this.setState({
+      board: this.props.requestBoard(this.props.boardId)
+    });
+  }
+
   render() {
     return (
       <div id='show-board-wrapper'
