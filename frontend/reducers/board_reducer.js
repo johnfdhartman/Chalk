@@ -2,7 +2,8 @@ import merge from 'lodash/merge';
 
 import {
   UPDATE_CREATE_BOARD_STAGE,
-  SUCCESSFUL_SAVE_BOARD
+  SUCCESSFUL_SAVE_BOARD,
+  RECEIVE_BOARD
   } from '../actions/board_actions.js';
 
 export const boardReducer = (boardSlice = {}, action) => {
@@ -18,6 +19,9 @@ export const boardReducer = (boardSlice = {}, action) => {
       newSlice = merge({}, boardSlice);
       newSlice.successData = action.successData;
       return newSlice;
+
+    case RECEIVE_BOARD:
+      return action.board;
 
     default:
       return boardSlice;
