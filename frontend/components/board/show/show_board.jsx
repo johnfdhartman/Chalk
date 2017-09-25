@@ -68,18 +68,26 @@ class ShowBoard extends React.Component {
   }
 
   handleClick() {
-    console.log('hiddenPaths', this.state.hiddenPaths);
-    let currentPath = this.state.hiddenPaths[0];
-    console.log('currentPath', currentPath);
-    this.setState({
-      hiddenPaths: this.state.hiddenPaths.slice(
-        1, this.state.hiddenPaths.length
-      )
-    });
-    console.log('currentPath', currentPath);
-    this.drawPath.bind(this)(currentPath);
+    // let currentPath = this.state.hiddenPaths[0];
+    // this.setState({
+    //   hiddenPaths: this.state.hiddenPaths.slice(
+    //     1, this.state.hiddenPaths.length
+    //   )
+    // });
+    // this.drawPath.bind(this)(currentPath);
+    this.setTimers.bind(this)();
+  }
 
-
+  setTimers() {
+    console.log('state.board.paths', this.state.board.paths);
+    this.state.board.paths.forEach(
+      (path) => {
+        setTimeout(
+          () => {this.drawPath.bind(this)(path);},
+          path.startTime
+        );
+      }
+    );
   }
 
   render() {
