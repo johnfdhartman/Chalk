@@ -11,4 +11,14 @@ class Api::BoardsController < ApplicationController
       render 'api/boards/show', status: 422
     end
   end
+
+  def show
+    @board = Board.find_by(id: params[:board_id])
+    if @board
+      render 'api/boards/show'
+    else
+      @errors = ["Cannot find board with id #{params[:board_id]}"]
+      render 'api/boards/show', status: 404
+    end
+  end
 end
