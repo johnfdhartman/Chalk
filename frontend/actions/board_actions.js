@@ -1,13 +1,13 @@
 import * as Api from '../util/board_util';
 
-export const UPDATE_CREATE_BOARD_STAGE = 'UPDATE_CREATE_BOARD_STAGE';
+export const UPDATE_BOARD_STAGE = 'UPDATE_BOARD_STAGE';
 export const SUCCESSFUL_SAVE_BOARD = 'SUCCESSFUL_SAVE_BOARD';
 export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 
-export const updateCreateBoardStage = (createBoardStage) => ({
-  type: UPDATE_CREATE_BOARD_STAGE,
-  createBoardStage
+export const updateBoardStage = (boardStage) => ({
+  type: UPDATE_BOARD_STAGE,
+  boardStage
 });
 
 export const successfulSaveBoard = successData => ({

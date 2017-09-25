@@ -1,16 +1,16 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CreateBoard from './create_board.jsx';
-import {updateCreateBoardStage, saveBoard} from '../../../actions/board_actions';
+import {updateBoardStage, saveBoard} from '../../../actions/board_actions';
 
 const mapStateToProps = (state) => ({
-  createBoardStage: state.board.createBoardStage,
+  boardStage: state.board.boardStage,
   boardErrors: state.errors.boardErrors
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  updateCreateBoardStage: (stage) =>
-    dispatch(updateCreateBoardStage(stage)),
+  updateBoardStage: (stage) =>
+    dispatch(updateBoardStage(stage)),
 
   saveBoard: (board) =>
     dispatch(saveBoard(board))
