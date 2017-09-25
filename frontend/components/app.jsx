@@ -18,6 +18,7 @@ const App = () => (
         <AuthRoute path='/frontpage' component={FrontPageContainer}/>
         <ProtectedRoute path='/create' component={CreateBoardContainer}/>
         <Route path='/show/:boardId' component={ShowBoardContainer}/>
+        
         <ProtectedRoute exact path='/' component={DashboardContainer}/>
       </Switch>
     </div>

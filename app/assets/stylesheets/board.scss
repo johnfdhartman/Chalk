@@ -6,26 +6,10 @@
   width: 100vw;
 }
 
-#board-canvas:fullscreen {
-  height: 90vh;
-  width: 50vw;
-}
-
-#create-board-wrapper {
+#create-board-wrapper, #show-board-wrapper {
   height: 100vh;
   width: 100vw;
 }
-
-#create-board-wrapper:fullscreen {
-  height: 100vh;
-  width: 50vw;
-}
-
-#create-board-control:fullscreen {
-  height:10vh;
-  width:100vw;
-}
-
 
 #create-board-wrapper button {
   height: 20px;
