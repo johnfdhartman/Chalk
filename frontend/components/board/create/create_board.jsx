@@ -12,7 +12,7 @@ class CreateBoard extends React.Component {
         lineWidth: '3',
         color: 'black'
       },
-      lessonStartTime: Date.now(),
+      startClock: false,
       paths: [],
       modalIsOpen: false,
       title: ''
@@ -72,6 +72,11 @@ class CreateBoard extends React.Component {
   handleMouseDown(event) {
     // let currentPos = this.state.pointer;
     // this.drawPath({x:0, y:0}, currentPos);
+    if (!this.state.startClock) {
+      this.setState({
+        lessonStartTime: Date.now()
+      });
+    }
     this.addPosToPath.bind(this)(this.pointer);
     this.setState({pathStartTime: Date.now()});
     this.startDrawing.bind(this)();
