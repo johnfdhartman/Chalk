@@ -46,13 +46,13 @@ class CreateBoard extends React.Component {
     this.drawInterval = setInterval( () => {
       let startPos = this.currentPath[this.currentPath.length -1];
       let endPos = this.pointer;
-      this.drawPath.bind(this)(startPos, endPos);
+      this.drawLine.bind(this)(startPos, endPos);
       this.addPosToPath(endPos);
     }, 16);
   }
 
 
-  drawPath (startPos, endPos) {
+  drawLine (startPos, endPos) {
     let context = this.state.context;
     context.strokeStyle = this.state.brush.color;
     context.lineWidth = this.state.brush.lineWidth;
@@ -84,7 +84,7 @@ class CreateBoard extends React.Component {
     newPaths.push({
       startTime: this.state.pathStartTime - this.state.lessonStartTime,
       endTime: Date.now() - this.state.lessonStartTime,
-      path: this.currentPath,
+      pathCoords: this.currentPath,
       brush: this.state.brush
     });
     this.setState({

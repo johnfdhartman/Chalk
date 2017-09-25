@@ -7,9 +7,9 @@ class ShowBoard extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestBoard(this.props.boardId).then(board =>
+    this.props.requestBoard(this.props.boardId).then(action =>
       this.setState({
-        board
+        board: action.board
       })
     );
   }
@@ -28,13 +28,52 @@ class ShowBoard extends React.Component {
       context: context,
     });
   }
-  
+
+  drawPath(path) {
+    let pathCoords = path.pathCoords;
+    console.log('pathCoords', pathCoords);
+    let hiddenPathCoords = pathCoords.slice(2, pathCoords.length-1);
+    let currentCoords = pathCoords.slice(0,2);
+    this.setState({
+      brush: path.brush
+    });
+
+    let drawPathInterval = setInterval(
+      () => {
+        console.log('currentCoords',currentCoords);
+        this.drawLine.bind(this)(currentCoords[0], currentCoords[1]);
+        currentCoords.shift();
+        currentCoords.push(hiddenPathCoords.shift());
+      }, 16
+    );
+  }
+
+  drawLine (startPos, endPos, brush) {
+    let context = this.state.context;
+    context.strokeStyle = this.state.brush.color;
+    context.lineWidth = this.state.brush.lineWidth;
+    context.lineJoin = 'round';
+    context.lineCap = 'round';
+    context.beginPath();
+    context.moveTo(startPos.x, startPos.y);
+    context.lineTo(endPos.x, endPos.y);
+    context.closePath();
+    context.stroke();
+  }
+
+  handleClick() {
+    console.log('state',this.state);
+    this.drawPath.bind(this)(this.state.board.paths[0]);
+
+  }
 
   render() {
     return (
       <div id='show-board-wrapper'
         ref={(wrapper) => { this.wrapperRef = wrapper;}}
-        allowFullScreen='true'>
+        allowFullScreen='true'
+        onClick={this.handleClick.bind(this)}
+        >
         <canvas
           ref={(canvas) => { this.canvasRef = canvas; }}
           id='board-canvas'>

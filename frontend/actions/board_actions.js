@@ -26,9 +26,14 @@ const pathToArr = (path) => {
 
 export const receiveBoard = (board) => {
   let paths = JSON.parse(board.paths);
-  let newPaths = Object.values(paths).map( (pathData) => {
-    pathData.path = pathToArr(pathData.path);
-    return pathData;
+  paths = pathToArr(paths);
+  let newPaths = paths.map( (path) => {
+    path.pathCoords = pathToArr(path.pathCoords);
+    path.pathCoords.forEach( (coord) => {
+      coord.x = parseInt(coord.x);
+      coord.y = parseInt(coord.y);
+    });
+    return path;
   });
 
   return {
