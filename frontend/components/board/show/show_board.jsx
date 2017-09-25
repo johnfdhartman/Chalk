@@ -1,4 +1,5 @@
 import React from 'react';
+import {findDOMNode} from 'react-dom';
 
 class ShowBoard extends React.Component {
   constructor(props) {
@@ -12,6 +13,22 @@ class ShowBoard extends React.Component {
       })
     );
   }
+
+  componentDidMount() {
+    let canvas = findDOMNode(this.canvasRef);
+    let width = Math.max(document.documentElement.clientWidth,
+      window.innerWidth || 0);
+    let height = Math.max(document.documentElement.clientHeight,
+      window.innerHeight || 0) * 0.9;
+    canvas.width = width;
+    canvas.height = height;
+    let context = canvas.getContext('2d');
+    this.setState({
+      canvas: canvas,
+      context: context,
+    });
+  }
+  
 
   render() {
     return (

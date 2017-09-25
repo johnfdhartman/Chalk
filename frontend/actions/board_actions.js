@@ -15,14 +15,28 @@ export const successfulSaveBoard = successData => ({
   successData
 });
 
+const pathToArr = (path) => {
+  let pathLength = Object.values(path).length;
+  let pathArr = [];
+  for (let i = 0; i < pathLength; i++) {
+    pathArr.push(path[i]);
+  }
+  return pathArr;
+};
+
 export const receiveBoard = (board) => {
-  // console.log('board', board);
+  let paths = JSON.parse(board.paths);
+  let newPaths = Object.values(paths).map( (pathData) => {
+    pathData.path = pathToArr(pathData.path);
+    return pathData;
+  });
+
   return {
     type: RECEIVE_BOARD,
     board: {
       title: board.title,
       author: board.author,
-      paths: JSON.parse(board.paths)
+      paths: newPaths
     }
   };
 };
