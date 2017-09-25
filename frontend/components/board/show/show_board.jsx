@@ -6,6 +6,9 @@ import ClockContainer from '../../clock/clock_container';
 class ShowBoard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      boardStage: this.props.boardStage
+    };
   }
 
   componentWillMount() {

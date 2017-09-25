@@ -4,7 +4,8 @@ import {withRouter} from 'react-router';
 import {requestBoard} from '../../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  boardId: ownProps.match.params.boardId
+  boardId: ownProps.match.params.boardId,
+  boardStage: state.board.boardStage
 });
 
 const mapDispatchToProps = (dispatch) => ({

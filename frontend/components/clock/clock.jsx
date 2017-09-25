@@ -40,6 +40,31 @@ class Clock extends React.Component {
   }
 
   handleClick(event) {
+    switch(this.state.type) {
+      case 'create':
+        this.handleCreateClick.bind(this)();
+        break;
+
+      case 'show':
+        this.handleShowClick.bind(this)();
+        break;
+    }
+  }
+
+  handleShowClick() {
+    let newStage = 'post-finished';
+    if (this.state.stage === 'start') {
+      newStage = 'running';
+      this.runClock.bind(this)();
+    } else {
+      newStage = this.state.stage;
+    }
+    this.props.updateBoardStage(newStage);
+    this.setState({stage: newStage});
+  }
+
+
+  handleCreateClick() {
     let newStage = 'post-finished';
     if (this.state.stage === 'start') {
       newStage = 'running';
@@ -50,7 +75,7 @@ class Clock extends React.Component {
     } else if (this.state.stage === 'finished') {
       newStage = 'post-finished';
     }
-    this.props.updateCreateBoardStage(newStage);
+    this.props.updateBoardStage(newStage);
     this.setState({stage: newStage});
   }
 
