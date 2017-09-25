@@ -2,7 +2,7 @@
 import React from 'react';
 import merge from 'lodash/merge';
 
-class CreateClock extends React.Component {
+class Clock extends React.Component {
   constructor(props) {
     super(props);
 
@@ -80,4 +80,4 @@ class CreateClock extends React.Component {
   }
 
 }
-export default CreateClock;
+export default Clock;

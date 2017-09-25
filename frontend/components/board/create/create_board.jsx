@@ -2,7 +2,7 @@ import React from 'react';
 import {findDOMNode} from 'react-dom';
 import merge from 'lodash/merge';
 import fscreen from 'fscreen';
-import CreateClockContainer from '../../create_clock/create_clock_container';
+import ClockContainer from '../../clock/clock_container';
 import Modal from 'react-modal';
 class CreateBoard extends React.Component {
   constructor(props){
@@ -277,7 +277,7 @@ class CreateBoard extends React.Component {
               {this.lineWidthButtonElement.bind(this)('5')}
             </div>
           </div>
-          <CreateClockContainer/>
+          <ClockContainer/>
           {this.eraserElement.bind(this)()}
         </div>
       </div>

@@ -1,6 +1,6 @@
 
 import {connect} from 'react-redux';
-import CreateClock from './create_clock';
+import Clock from './clock';
 import {updateCreateBoardStage} from '../../actions/board_actions';
 
 const mapStateToProps = (state) => ({
@@ -12,4 +12,4 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateCreateBoardStage(stage))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateClock);
+export default connect(mapStateToProps, mapDispatchToProps)(Clock);
