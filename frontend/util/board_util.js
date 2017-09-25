@@ -8,7 +8,7 @@ export const saveBoard = (board) => {
 
 export const fetchBoard = (id) => {
   return $.ajax({
-    url: `api/board/${id}`,
+    url: `api/boards/${id}`,
     method: 'GET'
   });
 };

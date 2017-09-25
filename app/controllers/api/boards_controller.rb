@@ -13,7 +13,7 @@ class Api::BoardsController < ApplicationController
   end
 
   def show
-    @board = Board.find_by(id: params[:board_id])
+    @board = Board.find_by(id: params[:id])
     if @board
       render 'api/boards/show'
     else
