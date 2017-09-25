@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import ShowBoard from './show_board.jsx';
 import {withRouter} from 'react-router';
-import {requestBoard} from '../../../actions/board_actions';
+import {requestBoard, updateBoardStage} from '../../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   boardId: ownProps.match.params.boardId,
@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requestBoard: (id) => (dispatch(requestBoard(id)))
+  requestBoard: (id) => (dispatch(requestBoard(id))),
+  updateBoardStage: (stage) => (dispatch(updateBoardStage(stage)))
 });
 
 export default withRouter(

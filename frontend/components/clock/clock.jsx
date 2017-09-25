@@ -23,6 +23,15 @@ class Clock extends React.Component {
     this.props.updateBoardStage('start');
   }
 
+  componentWillReceiveProps(nextProps){
+    console.log('clock componentWillReceiveProps');
+    if (this.props.boardStage === 'running'
+      && nextProps.boardStage === 'finished'
+    ) {
+      clearInterval(this.clockInterval);
+    }
+  }
+
 
   tick() {
     let currentTime = merge({}, this.state.time);
@@ -75,7 +84,6 @@ class Clock extends React.Component {
       this.runClock.bind(this)();
     } else if (this.state.stage === 'running') {
       newStage = 'finished';
-      clearInterval(this.clockInterval);
     } else if (this.state.stage === 'finished') {
       newStage = 'post-finished';
     }
@@ -100,6 +108,7 @@ class Clock extends React.Component {
   }
 
   showDisplayText() {
+    console.log('clock showDisplayText');
     switch(this.state.stage) {
       case 'start':
         return 'Start Playback';

@@ -14,8 +14,7 @@ class ShowBoard extends React.Component {
   componentWillMount() {
     this.props.requestBoard(this.props.boardId).then(action =>
       this.setState({
-        board: action.board,
-        hiddenPaths: action.board.paths
+        board: action.board
       })
     );
   }
@@ -69,6 +68,9 @@ class ShowBoard extends React.Component {
           currentCoords.push(hiddenPathCoords.shift());
         } else {
           clearInterval(drawPathInterval);
+          if (this.numActiveTimers === 0) {
+            this.props.updateBoardStage('finished');
+          }
         }
       }, 16
     );
@@ -87,23 +89,16 @@ class ShowBoard extends React.Component {
     context.stroke();
   }
 
-  // handleClick() {
-  //   // let currentPath = this.state.hiddenPaths[0];
-  //   // this.setState({
-  //   //   hiddenPaths: this.state.hiddenPaths.slice(
-  //   //     1, this.state.hiddenPaths.length
-  //   //   )
-  //   // });
-  //   // this.drawPath.bind(this)(currentPath);
-  //   // this.setTimers.bind(this)();
-  // }
 
   setTimers() {
-    console.log('timers set');
+    this.numActiveTimers = this.state.board.paths.length;
     this.state.board.paths.forEach(
       (path) => {
         setTimeout(
-          () => {this.drawPath.bind(this)(path);},
+          () => {
+            this.drawPath.bind(this)(path);
+            this.numActiveTimers -=1;
+          },
           path.startTime
         );
       }
