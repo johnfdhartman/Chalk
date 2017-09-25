@@ -1,6 +1,7 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 import {merge} from 'lodash/merge';
+import ClockContainer from '../../clock/clock_container';
 
 class ShowBoard extends React.Component {
   constructor(props) {
@@ -99,6 +100,9 @@ class ShowBoard extends React.Component {
           ref={(canvas) => { this.canvasRef = canvas; }}
           id='board-canvas'>
         </canvas>
+        <div id='show-board-control'>
+          <ClockContainer/>
+        </div>
       </div>
     );
   }

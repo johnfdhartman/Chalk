@@ -1,10 +1,12 @@
-
+import {withRouter} from 'react-router';
 import {connect} from 'react-redux';
 import Clock from './clock';
 import {updateCreateBoardStage} from '../../actions/board_actions';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
+  path: ownProps.match.path,
   createBoardStage: state.board.createBoardStage
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -12,4 +14,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(updateCreateBoardStage(stage))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Clock);
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(Clock)
+);

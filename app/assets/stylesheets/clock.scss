@@ -1,4 +1,4 @@
-#create-board-wrapper .clock {
+#clock  {
   font-family: 'Yanone Kaffeesatz', sans-serif;
   font-size: 2.5vw;
   width: 15vw;
@@ -7,12 +7,12 @@
   background-color: white;
 }
 
-#create-board-wrapper .clock:hover {
+#clock:hover {
   background-color: #eaf2ff;
   transition: background-color 0.2s ease-in;
 }
 
-#create-board-wrapper .clock.running {
+#clock.running {
   background-color: #c12222;
   color: white;
   font-size: 3.5vw;
@@ -21,12 +21,12 @@
   border: none;
 }
 
-#create-board-wrapper .clock.running:hover {
+#clock.running:hover {
   background-color: #a31616;
   transition: background-color 0.1s ease-in;
 }
 
-#create-board-wrapper .clock.finished, #create-board-wrapper .clock.post-finished {
+#clock.finished, #create-board-wrapper.clock.post-finished {
   background-color: #c12222;
   color: white;
 }

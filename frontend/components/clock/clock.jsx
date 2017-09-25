@@ -5,15 +5,17 @@ import merge from 'lodash/merge';
 class Clock extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       //three stages: start, running, finished, post-finished
       stage: 'start',
       time: {
         minutes: 0,
         seconds: 0
-      }
+      },
+      type: (this.props.path === '/create' ? 'create' : 'show')
     };
+
+    console.log(this.state.type);
   }
 
 
@@ -52,7 +54,7 @@ class Clock extends React.Component {
     this.setState({stage: newStage});
   }
 
-  displayText() {
+  createDisplayText() {
     switch(this.state.stage) {
       case 'start':
         return 'Start Recording';
@@ -65,6 +67,32 @@ class Clock extends React.Component {
 
       case 'post-finished':
         return 'Finished Recording';
+    }
+  }
+
+  showDisplayText() {
+    switch(this.state.stage) {
+      case 'start':
+        return 'Start Playback';
+
+      case 'running':
+        return `${this.state.time.minutes}:${this.state.time.seconds}`;
+
+      case 'finished':
+        return 'Playback Finished';
+
+      default:
+        return 'Playback Finished';
+    }
+  }
+
+  displayText() {
+    switch(this.state.type){
+      case 'create':
+        return this.createDisplayText.bind(this)();
+
+      default:
+        return this.showDisplayText.bind(this)();
     }
   }
 
