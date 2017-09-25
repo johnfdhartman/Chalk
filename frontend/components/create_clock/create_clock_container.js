@@ -1,7 +1,7 @@
 
 import {connect} from 'react-redux';
 import CreateClock from './create_clock';
-import {updateCreateBoardStage} from '../../actions/create_board_actions';
+import {updateCreateBoardStage} from '../../actions/board_actions';
 
 const mapStateToProps = (state) => ({
   createBoardStage: state.createBoard.createBoardStage

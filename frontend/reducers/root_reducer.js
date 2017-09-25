@@ -1,6 +1,6 @@
 import {sessionReducer} from './session_reducer';
 import errorsReducer from './errors_reducer.js';
-import {boardReducer} from './create_board_reducer.js';
+import {boardReducer} from './board_reducer.js';
 import {combineReducers} from 'redux';
 
 
