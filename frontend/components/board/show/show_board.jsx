@@ -50,7 +50,7 @@ class ShowBoard extends React.Component {
         } else {
           clearInterval(drawPathInterval);
         }
-      }, 30
+      }, 16
     );
   }
 
