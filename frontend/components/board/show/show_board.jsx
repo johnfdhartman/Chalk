@@ -7,7 +7,7 @@ class ShowBoard extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      boardStage: this.props.boardStage
+
     };
   }
 
@@ -18,6 +18,24 @@ class ShowBoard extends React.Component {
         hiddenPaths: action.board.paths
       })
     );
+  }
+
+  componentDidMount() {
+    this.setState({
+      boardStage: this.props.boardStage
+    });
+  }
+
+  componentDidUpdate() {
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log('this.props', this.props, 'nextProps', nextProps);
+    if (this.props.boardStage === 'start'
+      && nextProps.boardStage === 'running'
+    ) {
+      this.setTimers.bind(this)();
+    }
   }
 
   componentDidMount() {
@@ -69,19 +87,19 @@ class ShowBoard extends React.Component {
     context.stroke();
   }
 
-  handleClick() {
-    // let currentPath = this.state.hiddenPaths[0];
-    // this.setState({
-    //   hiddenPaths: this.state.hiddenPaths.slice(
-    //     1, this.state.hiddenPaths.length
-    //   )
-    // });
-    // this.drawPath.bind(this)(currentPath);
-    this.setTimers.bind(this)();
-  }
+  // handleClick() {
+  //   // let currentPath = this.state.hiddenPaths[0];
+  //   // this.setState({
+  //   //   hiddenPaths: this.state.hiddenPaths.slice(
+  //   //     1, this.state.hiddenPaths.length
+  //   //   )
+  //   // });
+  //   // this.drawPath.bind(this)(currentPath);
+  //   // this.setTimers.bind(this)();
+  // }
 
   setTimers() {
-    console.log('state.board.paths', this.state.board.paths);
+    console.log('timers set');
     this.state.board.paths.forEach(
       (path) => {
         setTimeout(
@@ -97,7 +115,6 @@ class ShowBoard extends React.Component {
       <div id='show-board-wrapper'
         ref={(wrapper) => { this.wrapperRef = wrapper;}}
         allowFullScreen='true'
-        onClick={this.handleClick.bind(this)}
         >
         <canvas
           ref={(canvas) => { this.canvasRef = canvas; }}

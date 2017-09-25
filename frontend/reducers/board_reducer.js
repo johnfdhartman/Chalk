@@ -21,7 +21,9 @@ export const boardReducer = (boardSlice = {}, action) => {
       return newSlice;
 
     case RECEIVE_BOARD:
-      return action.board;
+      newSlice = merge(action.board, boardSlice);
+      console.log(newSlice);
+      return newSlice;
 
     default:
       return boardSlice;

@@ -19,6 +19,9 @@ class Clock extends React.Component {
   }
 
 
+  componentDidMount() {
+    this.props.updateBoardStage('start');
+  }
 
 
   tick() {
@@ -26,6 +29,7 @@ class Clock extends React.Component {
     if (currentTime.seconds < 60) {
       currentTime.seconds +=1;
     } else {
+      currentTime.seconds = 0;
       currentTime.minutes += 1;
     }
     this.setState({

@@ -24,10 +24,11 @@
   cursor:pointer;
 }
 
-#create-board-control {
+#create-board-control, #show-board-control {
   display: flex;
   height: 10vh;
   justify-content: space-between;
+  align-items: center;
 }
 
 #palette {
