@@ -197,7 +197,7 @@ class CreateBoard extends React.Component {
   }
 
   renderErrors() {
-    let errors = this.props.createBoardErrors.map(
+    let errors = this.props.boardErrors.map(
       (error) => (<li>{error}</li>)
     );
     return (<ul className='errors'>{errors}</ul>);
