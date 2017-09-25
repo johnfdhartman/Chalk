@@ -1,4 +1,4 @@
-import * as Api from '../util/create_board_util';
+import * as Api from '../util/board_util';
 
 export const UPDATE_CREATE_BOARD_STAGE = 'UPDATE_CREATE_BOARD_STAGE';
 export const SUCCESSFUL_SAVE_BOARD = 'SUCCESSFUL_SAVE_BOARD';

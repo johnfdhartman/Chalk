@@ -2,12 +2,12 @@ import {connect} from 'react-redux';
 import ShowBoard from './show_board.jsx';
 import {withRouter} from 'react-router';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
 
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
+  
 });
 
 export default withRouter(

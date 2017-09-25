@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import CreateBoard from './create_board.jsx';
-import {updateCreateBoardStage, saveBoard} from '../../../actions/create_board_actions';
+import {updateCreateBoardStage, saveBoard} from '../../../actions/board_actions';
 
 const mapStateToProps = (state) => ({
-  createBoardStage: state.createBoard.createBoardStage,
+  createBoardStage: state.board.createBoardStage,
   createBoardErrors: state.errors.createBoardErrors
 });
 
