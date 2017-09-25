@@ -73,7 +73,6 @@ class Clock extends React.Component {
       newStage = this.state.stage;
     }
     this.props.updateBoardStage(newStage);
-    this.setState({stage: newStage});
   }
 
 
@@ -88,7 +87,6 @@ class Clock extends React.Component {
       newStage = 'post-finished';
     }
     this.props.updateBoardStage(newStage);
-    this.setState({stage: newStage});
   }
 
   createDisplayText() {
@@ -108,8 +106,7 @@ class Clock extends React.Component {
   }
 
   showDisplayText() {
-    console.log('clock showDisplayText');
-    switch(this.state.stage) {
+    switch(this.props.boardStage) {
       case 'start':
         return 'Start Playback';
 
@@ -125,6 +122,7 @@ class Clock extends React.Component {
   }
 
   displayText() {
+    console.log('clock displayText');
     switch(this.state.type){
       case 'create':
         return this.createDisplayText.bind(this)();
@@ -135,6 +133,7 @@ class Clock extends React.Component {
   }
 
   render() {
+    console.log('rerendering');
     return(
       <button
         id='clock'
