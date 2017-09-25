@@ -1,5 +1,6 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
+import {merge} from 'lodash/merge';
 
 class ShowBoard extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class ShowBoard extends React.Component {
   componentWillMount() {
     this.props.requestBoard(this.props.boardId).then(action =>
       this.setState({
-        board: action.board
+        board: action.board,
+        hiddenPaths: action.board.paths
       })
     );
   }
@@ -40,11 +42,15 @@ class ShowBoard extends React.Component {
 
     let drawPathInterval = setInterval(
       () => {
-        console.log('currentCoords',currentCoords);
-        this.drawLine.bind(this)(currentCoords[0], currentCoords[1]);
-        currentCoords.shift();
-        currentCoords.push(hiddenPathCoords.shift());
-      }, 16
+        if (hiddenPathCoords.length > 0) {
+          console.log('currentCoords',currentCoords);
+          this.drawLine.bind(this)(currentCoords[0], currentCoords[1]);
+          currentCoords.shift();
+          currentCoords.push(hiddenPathCoords.shift());
+        } else {
+          clearInterval(drawPathInterval);
+        }
+      }, 30
     );
   }
 
@@ -62,8 +68,17 @@ class ShowBoard extends React.Component {
   }
 
   handleClick() {
-    console.log('state',this.state);
-    this.drawPath.bind(this)(this.state.board.paths[0]);
+    console.log('hiddenPaths', this.state.hiddenPaths);
+    let currentPath = this.state.hiddenPaths[0];
+    console.log('currentPath', currentPath);
+    this.setState({
+      hiddenPaths: this.state.hiddenPaths.slice(
+        1, this.state.hiddenPaths.length
+      )
+    });
+    console.log('currentPath', currentPath);
+    this.drawPath.bind(this)(currentPath);
+
 
   }
 
