@@ -33,7 +33,6 @@ class ShowBoard extends React.Component {
 
   drawPath(path) {
     let pathCoords = path.pathCoords;
-    console.log('pathCoords', pathCoords);
     let hiddenPathCoords = pathCoords.slice(2, pathCoords.length-1);
     let currentCoords = pathCoords.slice(0,2);
     this.setState({
@@ -43,7 +42,6 @@ class ShowBoard extends React.Component {
     let drawPathInterval = setInterval(
       () => {
         if (hiddenPathCoords.length > 0) {
-          console.log('currentCoords',currentCoords);
           this.drawLine.bind(this)(currentCoords[0], currentCoords[1]);
           currentCoords.shift();
           currentCoords.push(hiddenPathCoords.shift());

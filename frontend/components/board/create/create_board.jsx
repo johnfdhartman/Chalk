@@ -12,7 +12,7 @@ class CreateBoard extends React.Component {
         lineWidth: '3',
         color: 'black'
       },
-      startClock: false,
+      lessonStartTime: false,
       paths: [],
       modalIsOpen: false,
       title: ''
@@ -72,7 +72,7 @@ class CreateBoard extends React.Component {
   handleMouseDown(event) {
     // let currentPos = this.state.pointer;
     // this.drawPath({x:0, y:0}, currentPos);
-    if (!this.state.startClock) {
+    if (!this.state.lessonStartTime) {
       this.setState({
         lessonStartTime: Date.now()
       });
@@ -97,7 +97,7 @@ class CreateBoard extends React.Component {
       pathStartTime: null
     });
     this.currentPath = [];
-    console.log(this.state.paths);
+    // console.log(this.state.paths);
   }
 
   handleMouseMove(event) {
