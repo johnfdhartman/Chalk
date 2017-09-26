@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {configureStore} from './store/store';
 import Root from './components/root';
 import {login, logout, signup} from './actions/session_actions';
-
+import {fetchUserBoardThumbs} from './util/board_util';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   let preloadedState = {};
@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.signup = signup;
   window.guest = {username: 'guest', password: 'password'};
   window.store = store;
+  window.fetchUserBoardThumbs = fetchUserBoardThumbs;
 
 
   ReactDOM.render(
