@@ -76,6 +76,7 @@ class CreateBoard extends React.Component {
       this.setState({
         lessonStartTime: Date.now()
       });
+      this.props.updateBoardStage('running');
     }
     this.addPosToPath.bind(this)(this.pointer);
     this.setState({pathStartTime: Date.now()});
@@ -115,6 +116,12 @@ class CreateBoard extends React.Component {
       y: this.pointer.y
     };
   }
+
+  // handleCanvasClick(event) {
+  //   if (this.props.boardStage === 'start') {
+  //     this.props.updateBoardStage('running');
+  //   }
+  // }
 
   handleChangeColor(color) {
     let brushState = merge({},this.state.brush);
