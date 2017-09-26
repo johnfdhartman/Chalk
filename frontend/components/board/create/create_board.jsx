@@ -117,12 +117,6 @@ class CreateBoard extends React.Component {
     };
   }
 
-  // handleCanvasClick(event) {
-  //   if (this.props.boardStage === 'start') {
-  //     this.props.updateBoardStage('running');
-  //   }
-  // }
-
   handleChangeColor(color) {
     let brushState = merge({},this.state.brush);
     brushState.color = color;
