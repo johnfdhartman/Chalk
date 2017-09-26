@@ -16,6 +16,6 @@ export const receiveBoardThumbsErrors = boardThumbsErrors => ({
 export const requestUserBoardThumbs = (userId, page) => (dispatch) => (
   Api.fetchUserBoardThumbs(userId, page).then(
     boardThumbs => dispatch(receiveBoardThumbs(boardThumbs)),
-    errors => dispatch(receiveBoardThumbsErrors(errors))
+    errors => dispatch(receiveBoardThumbsErrors(errors.responseJSON.errors))
   )
 );

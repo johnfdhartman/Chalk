@@ -4,7 +4,7 @@ import {
   RECEIVE_BOARD_THUMBS
 } from '../actions/board_thumbs_actions';
 
-export const boardThumbsReducer = (action, boardThumbsSlice) => {
+export const boardThumbsReducer = (boardThumbsSlice = {}, action) => {
   Object.freeze(boardThumbsSlice);
   let newSlice;
   switch(action.type) {

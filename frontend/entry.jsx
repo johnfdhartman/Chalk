@@ -2,26 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {configureStore} from './store/store';
 import Root from './components/root';
-import {login, logout, signup} from './actions/session_actions';
-import {requestUserBoardThumbs} from './actions/board_actions';
+import {requestUserBoardThumbs} from './actions/board_thumbs_actions';
+import {requestBoard} from './actions/board_actions';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
   let preloadedState = {};
-  preloadedState.errors = {sessionErrors: [], boardErrors: []};
+  preloadedState.errors = {
+    sessionErrors: [],
+    boardErrors: [],
+    boardThumbsErrors: []
+  };
   if (window.currentUser) {
     preloadedState.session = {currentUser: window.currentUser};
     delete window.currentUser;
   }
+  console.log('preloadedState', preloadedState);
   store = configureStore(preloadedState);
 
   //For testing purposes only
-  window.login = login;
-  window.logout = logout;
-  window.signup = signup;
-  window.guest = {username: 'guest', password: 'password'};
   window.store = store;
   window.requestUserBoardThumbs = requestUserBoardThumbs;
-
+  window.requestBoard = requestBoard;
 
   ReactDOM.render(
     <Root store={store}/>,

@@ -2,9 +2,9 @@ import merge from 'lodash/merge';
 
 import {
   RECEIVE_BOARD_THUMBS_ERRORS
-} from '../actions/board_thumbs_actions';
+} from '../../actions/board_thumbs_actions';
 
-export const boardThumbsErrorsReducer = (action, errorsSlice) => {
+export const boardThumbsErrorsReducer = (errorsSlice = {}, action) => {
   Object.freeze(errorsSlice);
   let newSlice;
   switch(action.type){

@@ -1,6 +1,6 @@
 import merge from 'lodash/merge';
 
-import {RECEIVE_BOARD_ERRORS} from '../actions/board_actions';
+import {RECEIVE_BOARD_ERRORS} from '../../actions/board_actions';
 
 export const boardErrorsReducer = (boardErrorsSlice ={}, action) => {
   Object.freeze(boardErrorsSlice);
