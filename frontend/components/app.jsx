@@ -11,19 +11,26 @@ import {Footer} from './footer/footer';
 const App = () => (
   <div>
     <header>
-      <ProtectedRoute path='/' component={NavContainer}/>
+      <Switch>
+        <ProtectedRoute path='/dashboard' component={NavContainer}/>
+        <ProtectedRoute path='/profile' component={NavContainer}/>
+        <ProtectedRoute exact path='/' component={NavContainer}/>
+      </Switch>
     </header>
     <div>
       <Switch>
         <AuthRoute path='/frontpage' component={FrontPageContainer}/>
         <ProtectedRoute path='/create' component={CreateBoardContainer}/>
         <Route path='/show/:boardId' component={ShowBoardContainer}/>
-        
         <ProtectedRoute exact path='/' component={DashboardContainer}/>
       </Switch>
     </div>
     <footer>
-      <Footer props={null}/>
+      <Switch>
+        <Route path='/dashboard' component={Footer}/>
+        <Route path='/profile' component={Footer}/>
+        <Route exact path='/' component={Footer}/>
+      </Switch>
     </footer>
   </div>
 );
