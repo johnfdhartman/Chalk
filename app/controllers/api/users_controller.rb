@@ -11,6 +11,12 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def boards
+    user = User.find_by(id: params[:user_id])
+    @boards = user.created_boards(9, params[:page])
+    render 'api/boards/index'
+  end
+
   private
 
   def user_params

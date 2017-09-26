@@ -37,5 +37,9 @@ class User < ApplicationRecord
     user && user.is_password?(password) ? user : nil
   end
 
+  def created_boards(num, page)
+    Board.where(author_id: self.id).offset(num * (page - 1)).limit(num)
+  end
+
 
 end
