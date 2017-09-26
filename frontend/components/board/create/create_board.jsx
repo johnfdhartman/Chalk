@@ -42,6 +42,18 @@ class CreateBoard extends React.Component {
     // this.startDrawing.bind(this)();
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.boardStage === 'running'
+      && nextProps.boardStage === 'finished') {
+      this.takeSnapshot.bind(this)();
+    }
+  }
+
+  takeSnapshot() {
+    const snapshot = this.state.canvas.toDataURL('png');
+    console.log('snapshot', snapshot);
+  }
+
   startDrawing() {
     this.drawInterval = setInterval( () => {
       let startPos = this.currentPath[this.currentPath.length -1];
