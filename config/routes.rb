@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     resource :session, only: [:create, :destroy]
     resources :boards, only: [:create, :show]
 
-    get 'users/:user_id/boards/:page', to: 'users#board_thumbs'
+    get 'users/:user_id/boards/:page', to: 'boards#user_boards'
   end
 end
