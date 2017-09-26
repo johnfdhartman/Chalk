@@ -12,3 +12,10 @@ export const fetchBoard = (id) => {
     method: 'GET'
   });
 };
+
+export const fetchUserBoards = (user,page) => {
+  return $.ajax({
+    url: `api/users/${user.id}/boards/${page}`,
+    method: 'GET'
+  });
+};
