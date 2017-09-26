@@ -105,7 +105,32 @@ class ShowBoard extends React.Component {
     );
   }
 
+  renderCredits() {
+    if (this.state.board) {
+      return (
+        <div className='credits'>
+          <div className='title'>
+            <label>Title:  </label>
+            <div>{this.state.board.title}</div>
+          </div>
+          <div className='author'>
+            <label>Author:  </label>
+            <div>{this.state.board.author.username}</div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <div className='credits'>
+          Credits loading...
+        </div>
+      );
+    }
+  }
+
+
   render() {
+    let credits = this.renderCredits.bind(this)();
     return (
       <div id='show-board-wrapper'
         ref={(wrapper) => { this.wrapperRef = wrapper;}}
@@ -116,6 +141,7 @@ class ShowBoard extends React.Component {
           id='board-canvas'>
         </canvas>
         <div id='show-board-control'>
+          {credits}
           <ClockContainer/>
         </div>
       </div>

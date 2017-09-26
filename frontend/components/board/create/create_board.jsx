@@ -229,7 +229,7 @@ class CreateBoard extends React.Component {
     return (
       <Modal
         id='create-modal'
-        isOpen={(this.props.createBoardStage === 'finished')}
+        isOpen={(this.props.boardStage === 'finished')}
         contentLabel='Modal'
         style={modalStyle}
         >
