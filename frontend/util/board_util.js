@@ -13,7 +13,7 @@ export const fetchBoard = (id) => {
   });
 };
 
-export const fetchUserBoards = (userId,page) => {
+export const fetchUserBoardThumbs = (userId,page) => {
   return $.ajax({
     url: `api/users/${userId.id}/boards/${page}`,
     method: 'GET'

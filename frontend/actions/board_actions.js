@@ -4,7 +4,7 @@ export const UPDATE_BOARD_STAGE = 'UPDATE_BOARD_STAGE';
 export const SUCCESSFUL_SAVE_BOARD = 'SUCCESSFUL_SAVE_BOARD';
 export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
-export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
+export const RECEIVE_BOARD_THUMBS = 'RECEIVE_BOARD_THUMBS';
 
 export const updateBoardStage = (boardStage) => ({
   type: UPDATE_BOARD_STAGE,
@@ -52,9 +52,9 @@ export const receiveBoardErrors = boardErrors => ({
   boardErrors
 });
 
-export const receiveBoards = boards => ({
-  type: RECEIVE_BOARDS,
-  boards
+export const receiveBoardThumbs = boardThumbs => ({
+  type: RECEIVE_BOARD_THUMBS,
+  boardThumbs
 });
 
 export const saveBoard = (board) => (dispatch) => (
@@ -73,8 +73,8 @@ export const requestBoard = id => dispatch => (
   )
 );
 
-export const requestUserBoards = (userId, page) => (dispatch) => (
-  Api.fetchUserBoards(userId, page).then(
-    boards => dispatch(receiveBoards(boards))
+export const requestUserBoardThumbs = (userId, page) => (dispatch) => (
+  Api.fetchUserBoardThumbs(userId, page).then(
+    boardThumbs => dispatch(receiveBoardThumbs(boardThumbs))
   )
 );
