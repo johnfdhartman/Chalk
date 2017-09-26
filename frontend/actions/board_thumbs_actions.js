@@ -1,3 +1,5 @@
+import * as Api from '../util/board_thumbs_util';
+
 export const RECEIVE_BOARD_THUMBS = 'RECEIVE_BOARD_THUMBS';
 
 export const receiveBoardThumbs = boardThumbs => ({
