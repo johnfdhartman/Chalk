@@ -38,6 +38,7 @@ class User < ApplicationRecord
   end
 
   def created_boards(num, page)
+    page = page.to_i if page.is_a?(String)
     Board.where(author_id: self.id).offset(num * (page - 1)).limit(num)
   end
 

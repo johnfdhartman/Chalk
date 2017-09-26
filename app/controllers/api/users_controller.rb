@@ -11,7 +11,7 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def boards
+  def board_thumbs
     user = User.find_by(id: params[:user_id])
     if user
       @boards = user.created_boards(9, params[:page])

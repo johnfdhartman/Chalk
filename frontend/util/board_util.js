@@ -14,8 +14,9 @@ export const fetchBoard = (id) => {
 };
 
 export const fetchUserBoardThumbs = (userId,page) => {
+  console.log('typeof(userId)', typeof(userId));
   return $.ajax({
-    url: `api/users/${userId.id}/boards/${page}`,
+    url: `api/users/${userId}/boards/${page}`,
     method: 'GET'
   });
 };
