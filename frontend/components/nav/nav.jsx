@@ -5,7 +5,6 @@ class Nav extends React.Component {
     this.state = {
       inputVal: ''
     };
-    console.log('nav ownProps',this.props.ownProps);
   }
 
   handleLogout(event) {
@@ -24,7 +23,6 @@ class Nav extends React.Component {
     //   console.log('yeeee');
     //   return (<div></div>);
     // }
-    console.log('aaaa');
     return(
       <nav>
         <div id='logo'>LOGO</div>
