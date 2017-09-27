@@ -1,7 +1,10 @@
 class Api::BoardsController < ApplicationController
   def create
+    paths = params[:paths].values
+    normalized_paths = normalize_paths(paths, params[:dims])
+
     @board = Board.new(title: params[:title],
-                       paths: params[:paths].to_json,
+                       paths: normalized_paths.to_json,
                        author_id: current_user.id)
 
     if @board.save
@@ -33,4 +36,25 @@ class Api::BoardsController < ApplicationController
       render 'api/boards/index', status: 404
     end
   end
+
+  private
+
+  def normalize_paths(paths, dims)
+    paths.map do |path|
+      new_coords = path['pathCoords'].values.map do |coord|
+        normalize_coord(coord, dims['width'], dims['height'])
+      end
+      path['pathCoords'] = new_coords
+      path
+    end
+  end
+
+  def normalize_coord(coord, width, height)
+    new_coord = {}
+    width, height = width.to_i.to_f, height.to_i.to_f
+    new_coord['x'] = (Integer(coord['x']) / width).round(4)
+    new_coord['y'] = (Integer(coord['y']) / height).round(4)
+    new_coord
+  end
+
 end

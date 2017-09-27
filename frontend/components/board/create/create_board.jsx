@@ -43,16 +43,8 @@ class CreateBoard extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.boardStage === 'running'
-      && nextProps.boardStage === 'finished') {
-      this.takeSnapshot.bind(this)();
-    }
   }
 
-  takeSnapshot() {
-    const snapshot = this.state.canvas.toDataURL('png');
-    console.log('snapshot', snapshot);
-  }
 
   startDrawing() {
     this.drawInterval = setInterval( () => {
@@ -202,9 +194,14 @@ class CreateBoard extends React.Component {
 
   saveBoard() {
     // this.props.updateCreateBoardStage('post-finished');
+    console.log('paths', this.state.paths);
     this.props.saveBoard({
       title: this.state.title,
       paths: this.state.paths,
+      dims: {
+        height: this.state.canvas.height,
+        width: this.state.canvas.width
+      }
     });
   }
 
