@@ -33,8 +33,8 @@ class Playback extends React.Component {
   }
 
   scalePathCoord(pathCoord) {
-    let width = this.state.canvas.width;
-    let height = this.state.canvas.height;
+    let width = this.props.dims.width;
+    let height = this.props.dims.height;
     let newPathCoord = pathCoord;
     newPathCoord.x = (pathCoord.x)*width;
     newPathCoord.y = (pathCoord.y)*height;
@@ -123,7 +123,6 @@ class Playback extends React.Component {
 
 
   render() {
-    let credits = this.renderCredits.bind(this)();
     return (
       <canvas
         ref={(canvas) => { this.canvasRef = canvas; }}

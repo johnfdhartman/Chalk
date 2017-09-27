@@ -46,7 +46,7 @@ class ShowBoard extends React.Component {
       width: Math.max(document.documentElement.clientWidth,
         window.innerWidth || 0),
       height: Math.max(document.documentElement.clientHeight,
-        window.innerHeight || 0)
+        window.innerHeight || 0) * 0.9
       };
     return (
       <div id='show-board-wrapper'
@@ -55,7 +55,8 @@ class ShowBoard extends React.Component {
         >
         <PlaybackContainer
           dims={dims}
-          boardId={this.props.boardId}/>
+          boardId={this.props.boardId}
+          canvasId={this.props.canvasId}/>
         <div id='show-board-control'>
           {credits}
           <ClockContainer/>
