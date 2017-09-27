@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let preloadedState = {};
   preloadedState.errors = {
     sessionErrors: [],
-    boardErrors: [],
+    boardsErrors: [],
     boardThumbsErrors: []
   };
   if (window.currentUser) {
