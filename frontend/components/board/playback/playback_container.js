@@ -4,7 +4,7 @@ import {withRouter} from 'react-router';
 import {requestBoard, updateBoardStage} from '../../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  boardId: ownProps.match.params.boardId,
+  boardId: ownProps.boardId,
   boardStage: state.board.boardStage,
   dims: ownProps.dims,
   canvasId: ownProps.canvasId
