@@ -12,7 +12,7 @@ export const boardsReducer = (boardsSlice = {}, action) => {
   switch(action.type) {
     case UPDATE_BOARD_STAGE:
       newSlice = merge({}, boardsSlice);
-      newSlice[action.board.id].stage = action.stage;
+      newSlice[action.boardId].stage = action.stage;
       return newSlice;
 
     case SUCCESSFUL_SAVE_BOARD:
