@@ -1,4 +1,6 @@
-const BoardThumnail = ({props}) => {
+const BoardThumbnail = ({props}) => {
+
+
 
   return(
     <div>

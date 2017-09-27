@@ -16,10 +16,8 @@ class ShowBoard extends React.Component {
       const newPaths = action.board.paths.map( (path) => (
         this.scalePath.bind(this)(path)
       ));
-      console.log('action.board', action.board);
       let newBoard = action.board;
       newBoard.paths = newPaths;
-      console.log('newBoard', newBoard);
       this.setState({
         board: newBoard
       });
@@ -38,7 +36,6 @@ class ShowBoard extends React.Component {
   scalePathCoord(pathCoord) {
     let width = this.state.canvas.width;
     let height = this.state.canvas.height;
-    console.log('width, pathCoord.x', width, pathCoord.x);
     let newPathCoord = pathCoord;
     newPathCoord.x = (pathCoord.x)*width;
     newPathCoord.y = (pathCoord.y)*height;
@@ -55,7 +52,7 @@ class ShowBoard extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('this.props', this.props, 'nextProps', nextProps);
+
     if (this.props.boardStage === 'start'
       && nextProps.boardStage === 'running'
     ) {
