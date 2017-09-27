@@ -6,7 +6,8 @@ import {requestBoard, updateBoardStage} from '../../../actions/board_actions';
 const mapStateToProps = (state, ownProps) => ({
   boardId: ownProps.match.params.boardId,
   boardStage: state.board.boardStage,
-  dims: ownProps.dims
+  dims: ownProps.dims,
+  canvasId: ownProps.canvasId
 });
 
 const mapDispatchToProps = (dispatch) => ({
