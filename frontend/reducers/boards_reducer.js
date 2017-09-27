@@ -12,7 +12,12 @@ export const boardsReducer = (boardsSlice = {}, action) => {
   switch(action.type) {
     case UPDATE_BOARD_STAGE:
       newSlice = merge({}, boardsSlice);
-      newSlice[action.boardId].stage = action.stage;
+      if (newSlice[action.boardId]) {
+        newSlice[action.boardId].stage = action.stage;
+      } else {
+        newSlice[action.boardId] = {stage: action.stage};
+      }
+      
       return newSlice;
 
     case SUCCESSFUL_SAVE_BOARD:
@@ -22,7 +27,9 @@ export const boardsReducer = (boardsSlice = {}, action) => {
 
     case RECEIVE_BOARD:
       newSlice = merge({}, boardsSlice);
-      newSlice[action.board.id] = action.board;
+      let newBoard = merge({}, action.board);
+      newBoard.stage = 'start';
+      newSlice[action.board.id] = newBoard;
       return newSlice;
 
     default:
