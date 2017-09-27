@@ -5,7 +5,8 @@ import {requestUserBoardThumbs} from '../../actions/board_thumb_actions';
 
 const mapStateToProps = (state) => ({
   session: state.session,
-  errors: state.errors
+  errors: state.errors,
+  boardThumbs: state.boardThumbs
 });
 
 const mapDispatchToProps = (dispatch) => ({
