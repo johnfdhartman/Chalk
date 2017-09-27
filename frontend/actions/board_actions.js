@@ -49,15 +49,18 @@ export const receiveBoard = (board) => {
   };
 };
 
-export const receiveBoardErrors = boardErrors => ({
+export const receiveBoardErrors = (boardId, boardErrors) => ({
   type: RECEIVE_BOARD_ERRORS,
-  boardErrors
+  boardErrors,
+  boardId
 });
 
 export const saveBoard = (board) => (dispatch) => (
   Api.saveBoard(board).then(
     (successData) => dispatch(successfulSaveBoard(successData)),
-    (errors) => dispatch(receiveBoardErrors(errors.responseJSON.errors))
+    (errors) => dispatch(receiveBoardErrors(
+      board.id, errors.responseJSON.errors)
+    )
   )
 );
 
@@ -66,6 +69,8 @@ export const requestBoard = id => dispatch => (
     board => dispatch(receiveBoard(board)),
 
 
-    errors => dispatch(receiveBoardErrors(errors.responseJSON.errors))
+    errors => dispatch(receiveBoardErrors(
+      id, errors.responseJSON.errors)
+    )
   )
 );
