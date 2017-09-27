@@ -40,6 +40,7 @@ export const receiveBoard = (board) => {
   return {
     type: RECEIVE_BOARD,
     board: {
+      id: board.id,
       title: board.title,
       author: board.author,
       paths: newPaths

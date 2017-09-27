@@ -6,26 +6,26 @@ import {
   RECEIVE_BOARD
   } from '../actions/board_actions.js';
 
-export const boardReducer = (boardSlice = {}, action) => {
-  Object.freeze(boardSlice);
+export const boardsReducer = (boardsSlice = {}, action) => {
+  Object.freeze(boardsSlice);
   let newSlice;
   switch(action.type) {
     case UPDATE_BOARD_STAGE:
-      newSlice = merge({}, boardSlice);
-      newSlice.boardStage = action.boardStage;
+      newSlice = merge({}, boardsSlice);
+      newSlice[action.board.id].stage = action.stage;
       return newSlice;
 
     case SUCCESSFUL_SAVE_BOARD:
-      newSlice = merge({}, boardSlice);
+      newSlice = merge({}, boardsSlice);
       newSlice.successData = action.successData;
       return newSlice;
 
     case RECEIVE_BOARD:
-      newSlice = merge(action.board, boardSlice);
-      console.log(newSlice);
+      newSlice = merge({}, boardsSlice);
+      newSlice[action.board.id] = action.board;
       return newSlice;
 
     default:
-      return boardSlice;
+      return boardsSlice;
   }
 };
