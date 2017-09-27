@@ -12,11 +12,37 @@ class ShowBoard extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestBoard(this.props.boardId).then(action =>
+    this.props.requestBoard(this.props.boardId).then(action => {
+      const newPaths = action.board.paths.map( (path) => (
+        this.scalePath.bind(this)(path)
+      ));
+      console.log('action.board', action.board);
+      let newBoard = action.board;
+      newBoard.paths = newPaths;
+      console.log('newBoard', newBoard);
       this.setState({
-        board: action.board
-      })
+        board: newBoard
+      });
+    });
+  }
+
+  scalePath(path) {
+    const newPathCoords = path.pathCoords.map( (coord) => (
+      this.scalePathCoord.bind(this)(coord)
+      )
     );
+    path.pathCoords = newPathCoords;
+    return path;
+  }
+
+  scalePathCoord(pathCoord) {
+    let width = this.state.canvas.width;
+    let height = this.state.canvas.height;
+    console.log('width, pathCoord.x', width, pathCoord.x);
+    let newPathCoord = pathCoord;
+    newPathCoord.x = (pathCoord.x)*width;
+    newPathCoord.y = (pathCoord.y)*height;
+    return newPathCoord;
   }
 
   componentDidMount() {

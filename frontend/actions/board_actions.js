@@ -31,8 +31,8 @@ export const receiveBoard = (board) => {
   let newPaths = paths.map( (path) => {
     path.pathCoords = pathToArr(path.pathCoords);
     path.pathCoords.forEach( (coord) => {
-      coord.x = parseInt(coord.x);
-      coord.y = parseInt(coord.y);
+      coord.x = parseFloat(coord.x);
+      coord.y = parseFloat(coord.y);
     });
     return path;
   });
