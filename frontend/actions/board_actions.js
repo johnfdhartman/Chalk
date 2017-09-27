@@ -6,10 +6,10 @@ export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 
 
-export const updateBoardStage = (boardStage, boardId) => {
+export const updateBoardStage = (stage, boardId) => {
   return {
     type: UPDATE_BOARD_STAGE,
-    boardStage,
+    stage,
     boardId
   };
 };

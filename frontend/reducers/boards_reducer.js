@@ -17,7 +17,7 @@ export const boardsReducer = (boardsSlice = {}, action) => {
       } else {
         newSlice[action.boardId] = {stage: action.stage};
       }
-      
+
       return newSlice;
 
     case SUCCESSFUL_SAVE_BOARD:
