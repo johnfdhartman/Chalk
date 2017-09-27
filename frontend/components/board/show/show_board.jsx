@@ -41,6 +41,7 @@ class ShowBoard extends React.Component {
 
 
   render() {
+    this.props.updateBoardStage('start', this.props.boardId);
     let credits = this.renderCredits.bind(this)();
     let dims = {
       width: Math.max(document.documentElement.clientWidth,

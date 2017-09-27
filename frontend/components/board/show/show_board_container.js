@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  updateBoardStage: stage => dispatch(updateBoardStage(stage))
+  updateBoardStage: (stage, id) => dispatch(updateBoardStage(stage, id))
 });
 
 export default withRouter(
