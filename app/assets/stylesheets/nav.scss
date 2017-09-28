@@ -19,10 +19,20 @@ nav h3 {
   letter-spacing: 2px;
 }
 
-nav button {
+nav .nav-button {
+  letter-spacing: 3px;
+  display:flex;
+  justify-content: center;
+  width: 100%;
   font-size: 2vw;
+  padding: 5px;
+  text-decoration: none;
 }
 
+nav .nav-button:hover {
+  letter-spacing: 3px;
+  width:100%;
+}
 nav #search {
   height: 8vh;
   margin-left: 3%;
@@ -41,7 +51,7 @@ nav #session-bar {
 }
 
 
-nav button:hover {
+.nav-button:hover {
 }
 
 #logout {

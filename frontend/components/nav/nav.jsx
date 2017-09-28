@@ -42,11 +42,13 @@ class Nav extends React.Component {
       return (
         <div id='session-bar'>
           <div>
-            Login or sign up!
+
             <Link
               to={`/`}
               id={'login-signup'}
-              className='nav-button white-button'/>
+              className='nav-button white-button'>
+              LOGIN/SIGNUP
+            </Link>
           </div>
         </div>
       );
