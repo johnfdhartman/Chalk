@@ -32,6 +32,10 @@ class Clock extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    clearInterval(this.clockInterval);
+  }
+
 
   tick() {
     let currentTime = merge({}, this.state.time);

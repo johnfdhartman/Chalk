@@ -8,6 +8,8 @@ class Playback extends React.Component {
     this.state = {
 
     };
+    this.intervals = [];
+    this.timeouts = [];
   }
 
   componentWillMount() {
@@ -26,7 +28,14 @@ class Playback extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearBoard();
+    console.log('playback unmounting');
+    this.intervals.forEach( (interval) => {
+      clearInterval(interval);
+    });
+    this.timeouts.forEach( (timeout) => {
+      clearTimeout(timeout);
+    });
+    // this.props.clearBoard();
   }
 
   loadBoardData() {
@@ -108,6 +117,7 @@ class Playback extends React.Component {
         }
       }, 16
     );
+    this.intervals.push(drawPathInterval);
   }
 
   drawLine (startPos, endPos, brush) {
@@ -129,13 +139,14 @@ class Playback extends React.Component {
     this.numActiveTimers = this.state.board.paths.length;
     this.state.board.paths.forEach(
       (path) => {
-        setTimeout(
+        let newTimeout = setTimeout(
           () => {
             this.drawPath.bind(this)(path);
             this.numActiveTimers -=1;
           },
           path.startTime
         );
+        this.timeouts.push(newTimeout);
       }
     );
   }
