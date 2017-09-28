@@ -49,9 +49,11 @@ class Clock extends React.Component {
   }
 
   runClock() {
-    this.clockInterval = setInterval(
-      () => {this.tick.bind(this)();},
-      1000);
+    if (!this.clockInterval) {
+      this.clockInterval = setInterval(
+        () => {this.tick.bind(this)();},
+        1000);
+    }
   }
 
   handleClick(event) {
