@@ -7,6 +7,7 @@ import Modal from 'react-modal';
 class CreateBoard extends React.Component {
   constructor(props){
     super(props);
+    this.props.updateBoardStage('start', 'current');
     this.state = {
       brush: {
         lineWidth: '3',
@@ -236,10 +237,13 @@ class CreateBoard extends React.Component {
         transform             : 'translate(-50%, -50%)',
       }
     };
+    console.log('this.props.board', this.props.board);
+    let isOpen = (this.props.board && this.props.board.stage === 'finished');
+    console.log('isOpen', isOpen);
     return (
       <Modal
         id='create-modal'
-        isOpen={(this.props.boardStage === 'finished')}
+        isOpen={isOpen}
         contentLabel='Modal'
         style={modalStyle}
         >
@@ -287,7 +291,7 @@ class CreateBoard extends React.Component {
               {this.lineWidthButtonElement.bind(this)('5')}
             </div>
           </div>
-          <ClockContainer/>
+          <ClockContainer boardId={'current'}/>
           {this.eraserElement.bind(this)()}
         </div>
       </div>

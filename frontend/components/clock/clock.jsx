@@ -23,11 +23,11 @@ class Clock extends React.Component {
 
   componentWillReceiveProps(nextProps){
     console.log('clock componentWillReceiveProps');
-    if (this.props.boardStage === 'start'
+    if (this.props.board.stage === 'start'
       && nextProps.boardStage === 'running') {
         this.runClock.bind(this)();
       }
-    if (this.props.boardStage === 'running'
+    if (this.props.board.stage === 'running'
       && nextProps.boardStage === 'finished'
     ) {
       clearInterval(this.clockInterval);
@@ -68,11 +68,11 @@ class Clock extends React.Component {
 
   handleShowClick() {
     let newStage = 'post-finished';
-    if (this.props.boardStage === 'start') {
+    if (this.props.board.stage === 'start') {
       newStage = 'running';
       this.runClock.bind(this)();
     } else {
-      newStage = this.props.boardStage;
+      newStage = this.props.board.stage;
     }
     this.props.updateBoardStage(newStage);
   }
@@ -80,19 +80,19 @@ class Clock extends React.Component {
 
   handleCreateClick() {
     let newStage = 'finished';
-    if (this.props.boardStage === 'start') {
+    if (this.props.board.stage === 'start') {
       newStage = 'running';
       this.runClock.bind(this)();
-    } else if (this.props.boardStage === 'running') {
+    } else if (this.props.board.stage === 'running') {
       newStage = 'finished';
-    } else if (this.props.boardStage === 'finished') {
+    } else if (this.props.board.stage === 'finished') {
       newStage = 'finished';
     }
     this.props.updateBoardStage(newStage);
   }
 
   createDisplayText() {
-    switch(this.props.boardStage) {
+    switch(this.props.board.stage) {
       case 'start':
         return 'Start Recording';
 
@@ -108,7 +108,7 @@ class Clock extends React.Component {
   }
 
   showDisplayText() {
-    switch(this.props.boardStage) {
+    switch(this.props.board.stage) {
       case 'start':
         return 'Start Playback';
 
@@ -137,7 +137,7 @@ class Clock extends React.Component {
     return(
       <button
         id='clock'
-        className={`clock ${this.props.boardStage}`}
+        className={`clock ${this.props.board.stage}`}
         onClick={this.handleClick.bind(this)}>
         {this.displayText.bind(this)()}
       </button>

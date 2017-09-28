@@ -6,7 +6,7 @@ import {updateBoardStage} from '../../actions/board_actions';
 const mapStateToProps = (state, ownProps) => ({
   path: ownProps.match.path,
   boardId: ownProps.boardId,
-  boardStage: state.boards[ownProps.boardId].stage
+  board: state.boards[ownProps.boardId]
 
 });
 

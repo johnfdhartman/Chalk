@@ -9,7 +9,7 @@ export const boardsErrorsReducer = (boardsErrorsSlice ={}, action) => {
   switch(action.type) {
     case RECEIVE_BOARD_ERRORS:
       newSlice = merge({}, boardsErrorsSlice);
-      newSlice[action.boardId] = action.boardId;
+      newSlice.push(action.boardErrors);
       return newSlice;
 
     default:

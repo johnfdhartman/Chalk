@@ -4,16 +4,20 @@ import CreateBoard from './create_board.jsx';
 import {updateBoardStage, saveBoard} from '../../../actions/board_actions';
 
 const mapStateToProps = (state) => ({
-  boardStage: state.board.boardStage,
-  boardErrors: state.errors.boardErrors
+  board: state.boards['current'],
+  boardErrors: state.errors.boardsErrors
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateBoardStage: (stage) =>
-    dispatch(updateBoardStage(stage)),
+    dispatch(updateBoardStage(stage, 'current')),
 
   saveBoard: (board) =>
     dispatch(saveBoard(board))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateBoard);
+const CreateBoardContainer = (component) => {
+  return connect(mapStateToProps, mapDispatchToProps)(component);
+};
+
+export default CreateBoardContainer(CreateBoard);
