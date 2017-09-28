@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 class Nav extends React.Component {
   constructor(props) {
     super(props);
@@ -16,6 +17,7 @@ class Nav extends React.Component {
       inputVal: event.target.value
     });
   }
+
 
   render() {
     // if (this.props.location.pathname === '/create' ||
@@ -40,10 +42,11 @@ class Nav extends React.Component {
             LOGOUT
           </button>
         </div>
-        <button
+        <Link
+          to={`/users/${this.props.currentUser.id}`}
           id='profile'
           className='nav-button white-button'
-          > </button>
+          />
 
       </nav>
     );

@@ -46,7 +46,6 @@ class Frontpage extends React.Component {
     const errorEls = this.props.sessionErrors.map (error =>
       (<div key={error}>{error}</div>)
     );
-    console.log(errorEls);
 
       return (
         <div id='errors-list'>

@@ -13,9 +13,9 @@ const App = () => (
   <div>
     <header>
       <Switch>
-        <Route path='/dashboard' component={NavContainer}/>
-        <Route path='/users' component={NavContainer}/>
-        <Route exact path='/' component={NavContainer}/>
+        <ProtectedRoute path='/dashboard' component={NavContainer}/>
+        <ProtectedRoute path='/users' component={NavContainer}/>
+        <ProtectedRoute exact path='/' component={NavContainer}/>
       </Switch>
     </header>
     <div>
