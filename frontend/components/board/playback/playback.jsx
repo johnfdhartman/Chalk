@@ -43,15 +43,16 @@ class Playback extends React.Component {
 
   componentDidMount() {
     this.setState({
-      boardStage: this.props.boardStage
+      stage: this.props.board.stage
     });
   }
 
   componentWillReceiveProps(nextProps) {
-
-    if (this.props.boardStage === 'start'
-      && nextProps.boardStage === 'running'
+    console.log('this.props', this.props);
+    if (this.props.board.stage === 'start'
+      && nextProps.board.stage === 'running'
     ) {
+      console.log('running playback');
       this.setTimers.bind(this)();
     }
   }
@@ -84,7 +85,7 @@ class Playback extends React.Component {
         } else {
           clearInterval(drawPathInterval);
           if (this.numActiveTimers === 0) {
-            this.props.updateBoardStage('finished');
+            this.props.updateBoardStage('finished', this.props.boardId);
           }
         }
       }, 16

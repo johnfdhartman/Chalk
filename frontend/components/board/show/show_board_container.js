@@ -6,12 +6,14 @@ import {requestBoard, updateBoardStage} from '../../../actions/board_actions';
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.boardId;
   return {
-    boardId: id
+    boardId: id,
+    board: state.boards[id]
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  updateBoardStage: (stage, id) => dispatch(updateBoardStage(stage, id))
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  updateBoardStage: (stage) =>
+    dispatch(updateBoardStage(stage, ownProps.match.params.boardId))
 });
 
 export default withRouter(

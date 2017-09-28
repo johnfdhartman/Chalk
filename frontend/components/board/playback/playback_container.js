@@ -4,10 +4,9 @@ import {withRouter} from 'react-router';
 import {requestBoard, updateBoardStage} from '../../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(state);
   return {
     boardId: ownProps.boardId,
-    boardStage: state.boards[ownProps.boardId].stage,
+    board: state.boards[ownProps.boardId],
     dims: ownProps.dims,
     canvasId: ownProps.canvasId
   };
@@ -15,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => ({
   requestBoard: (id) => (dispatch(requestBoard(id))),
-  updateBoardStage: (stage) => (dispatch(updateBoardStage(stage)))
+  updateBoardStage: (stage, id) => (dispatch(updateBoardStage(stage, id)))
 });
 
 export default withRouter(

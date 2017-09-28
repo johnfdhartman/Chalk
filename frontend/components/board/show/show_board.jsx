@@ -14,19 +14,20 @@ class ShowBoard extends React.Component {
     super(props);
     this.state = {
     };
+    this.props.updateBoardStage('start', this.props.boardId);
   }
 
   renderCredits() {
-    if (this.state.board) {
+    if (this.props.board && this.props.board.author) {
       return (
         <div className='credits'>
           <div className='title'>
             <label>Title:  </label>
-            <div>{this.state.board.title}</div>
+            <div>{this.props.board.title}</div>
           </div>
           <div className='author'>
             <label>Author:  </label>
-            <div>{this.state.board.author.username}</div>
+            <div>{this.props.board.author.username}</div>
           </div>
         </div>
       );
@@ -41,7 +42,6 @@ class ShowBoard extends React.Component {
 
 
   render() {
-    this.props.updateBoardStage('start', this.props.boardId);
     let credits = this.renderCredits.bind(this)();
     let dims = {
       width: Math.max(document.documentElement.clientWidth,

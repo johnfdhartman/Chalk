@@ -13,7 +13,6 @@ class Clock extends React.Component {
       type: (this.props.path === '/create' ? 'create' : 'show')
     };
 
-    console.log(this.state.type);
   }
 
 
@@ -22,7 +21,6 @@ class Clock extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('clock componentWillReceiveProps');
     if (this.props.board.stage === 'start'
       && nextProps.board.stage === 'running') {
         this.runClock.bind(this)();

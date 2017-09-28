@@ -237,9 +237,7 @@ class CreateBoard extends React.Component {
         transform             : 'translate(-50%, -50%)',
       }
     };
-    console.log('this.props.board', this.props.board);
     let isOpen = (this.props.board && this.props.board.stage === 'finished');
-    console.log('isOpen', isOpen);
     return (
       <Modal
         id='create-modal'
