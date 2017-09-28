@@ -1,0 +1,578 @@
+/*
+html5doctor.com Reset Stylesheet
+v1.6.1
+Last Updated: 2010-09-17
+Author: Richard Clark - http://richclarkdesign.com
+Twitter: @rich_clark
+*/
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+ margin:0;
+ padding:0;
+ border:0;
+ outline:0;
+ font-size:100%;
+ vertical-align:baseline;
+ background:transparent;
+}
+body {
+ line-height:1;
+}
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+ display:block;
+}
+nav ul {
+ list-style:none;
+}
+blockquote, q {
+ quotes:none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+ content:'';
+ content:none;
+}
+a {
+ margin:0;
+ padding:0;
+ font-size:100%;
+ vertical-align:baseline;
+ background:transparent;
+}
+/* change colours to suit your needs */
+ins {
+ background-color:#ff9;
+ color:#000;
+ text-decoration:none;
+}
+/* change colours to suit your needs */
+mark {
+ background-color:#ff9;
+ color:#000;
+ font-style:italic;
+ font-weight:bold;
+}
+del {
+ text-decoration: line-through;
+}
+abbr[title], dfn[title] {
+ border-bottom:1px dotted;
+ cursor:help;
+}
+table {
+ border-collapse:collapse;
+ border-spacing:0;
+}
+/* change border colour to suit your needs */
+hr {
+ display:block;
+ height:1px;
+ border:0;
+ border-top:1px solid #cccccc;
+ margin:1em 0;
+ padding:0;
+}
+input, select {
+ vertical-align:middle;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+
+
+
+ */
+/* line 1, /Users/john/Desktop/Chalk/app/assets/stylesheets/profile.scss */
+.profile {
+  display: flex;
+  height: 80vh;
+  width: 100vw;
+  color: black;
+}
+
+/* line 8, /Users/john/Desktop/Chalk/app/assets/stylesheets/profile.scss */
+.thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  width: 70vw;
+}
+
+/* line 14, /Users/john/Desktop/Chalk/app/assets/stylesheets/profile.scss */
+.user-info {
+  display: flex;
+  width: 30vw;
+}
+
+/* line 3, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#frontpage {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  height: 92vh;
+  background-image: url("http://res.cloudinary.com/dce7smh6y/image/upload/v1506018604/chalkboard_small_zdzing.png");
+}
+
+/* line 12, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#frontpage h3 {
+  font-weight: bold;
+  font-size: 4vw;
+  letter-spacing: 20px;
+  margin-top: 3%;
+}
+
+/* line 19, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#frontpage > #description {
+  padding: 3%;
+  width: 60%;
+  text-align: center;
+}
+
+/* line 28, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-fields div {
+  margin-bottom: 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 115%;
+}
+
+/* line 36, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#frontpage > #auth-fields {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* line 43, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-fields label {
+  display: inline-block;
+  width: 30%;
+  text-align: center;
+  font-size: 2.5vw;
+}
+
+/* line 50, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+input {
+  font-size: 2.5vw;
+  border: none;
+  border-radius: 5px;
+}
+
+/* line 57, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* line 63, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-buttons button {
+  font-size: 3.5vw;
+}
+
+/* line 67, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#auth-buttons button:hover {
+  background-color: #75ceff;
+}
+
+/* line 71, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+.errors-enter {
+  opacity: 0.01;
+}
+
+/* line 75, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+.errors-enter.errors-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+/* line 81, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+.errors-leave {
+  opacity: 0.99;
+}
+
+/* line 85, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+.errors-leave.errors-leave-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
+}
+
+/* line 90, /Users/john/Desktop/Chalk/app/assets/stylesheets/frontpage.scss */
+#errors-list {
+  opacity: 1;
+  list-style-type: none;
+  padding: 10px;
+  color: white;
+}
+
+/* line 4, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  color: black;
+  border-bottom: 2px dashed black;
+  height: 12vh;
+  padding-right: 5%;
+  padding-left: 5%;
+}
+
+/* line 16, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav h3 {
+  font-size: 3vw;
+  letter-spacing: 2px;
+}
+
+/* line 22, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav .nav-button {
+  letter-spacing: 3px;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 2vw;
+  padding: 5px;
+  text-decoration: none;
+}
+
+/* line 32, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav .nav-button:hover {
+  letter-spacing: 3px;
+  width: 100%;
+}
+
+/* line 36, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav #search {
+  height: 8vh;
+  margin-left: 3%;
+}
+
+/* line 45, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav #session-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 12vw;
+}
+
+/* line 57, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+#logout {
+  width: 100%;
+}
+
+/* line 61, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+#profile {
+  background-image: url("http://res.cloudinary.com/dce7smh6y/image/upload/v1506018610/profile_icon_yfyi76.png");
+  background-position: 50% 50%;
+  background-size: cover;
+  width: 5.5%;
+  padding: 3%;
+  border: none;
+}
+
+/* line 70, /Users/john/Desktop/Chalk/app/assets/stylesheets/nav.scss */
+nav #welcome {
+  font-size: 2.5vw;
+  margin-bottom: 10px;
+}
+
+/* line 2, /Users/john/Desktop/Chalk/app/assets/stylesheets/dashboard.scss */
+#dashboard {
+  color: black;
+  height: 80vh;
+}
+
+/* line 7, /Users/john/Desktop/Chalk/app/assets/stylesheets/dashboard.scss */
+#dashboard h1 {
+  font-size: 3vw;
+}
+
+/* line 1, /Users/john/Desktop/Chalk/app/assets/stylesheets/footer.scss */
+footer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: black;
+  height: 8vh;
+}
+
+/* line 10, /Users/john/Desktop/Chalk/app/assets/stylesheets/footer.scss */
+footer > div {
+  padding-left: 20px;
+}
+
+/* line 1, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#board-canvas {
+  background-color: white;
+  border-bottom: 3px dashed black;
+  border-radius: 20px;
+  height: 90vh;
+  width: 100vw;
+}
+
+/* line 9, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#create-board-wrapper, #show-board-wrapper {
+  height: 100vh;
+  width: 100vw;
+}
+
+/* line 14, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#palette button {
+  height: 20px;
+  width: 20px;
+  border: none;
+  margin: 5px;
+  border-radius: 3px;
+  outline: none;
+}
+
+/* line 23, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#palette button:hover {
+  cursor: pointer;
+}
+
+/* line 27, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#create-board-control, #show-board-control {
+  display: flex;
+  height: 10vh;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* line 34, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#palette {
+  display: flex;
+  flex-direction: column;
+}
+
+/* line 39, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#create-board-control .color-button.active {
+  border: 3px solid black;
+  outline: none;
+}
+
+/* line 44, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#create-board-control .line-width-button.active {
+  background-color: black;
+  color: white;
+  transition: color 0.1s ease-in, background-color 0.1s ease-in;
+}
+
+/* line 50, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#create-board-control .eraser {
+  height: 40px;
+  width: 40px;
+  background-image: url("http://res.cloudinary.com/dce7smh6y/image/upload/v1506119230/eraser-icon_nbvxhq.png");
+  background-position: 50% 50%;
+  background-color: white;
+  background-size: cover;
+  border: none;
+}
+
+/* line 60, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#create-board-control .eraser.active {
+  background-color: #75ceff;
+}
+
+/* line 64, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+.create-modal {
+  height: 30vh;
+  width: 20vw;
+}
+
+/* line 69, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+.modal-content {
+  font-size: 3vh;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+}
+
+/* line 74, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+.title-input {
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+/* line 79, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+.modal-button {
+  display: inline-block;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3vw;
+  border: 1px solid black;
+  background-color: transparent;
+  border-radius: 30px;
+  width: 50%;
+  height: 30%;
+  margin-top: 2%;
+  transition: background-color 0.1s ease-in, border-color 0.1s ease-in, color 0.1s, letter-spacing 0.1s ease-in, border-radius 0.1s ease-in;
+  outline: none;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 0;
+}
+
+/* line 97, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+.modal-button:hover {
+  background-color: #75ceff;
+  border: solid #75ceff 1px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.1s, border-color 0.1s, color 0.1s, letter-spacing 0.1s, border-radius 0.1s;
+  letter-spacing: 4px;
+  border-radius: 20px;
+}
+
+/* line 108, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+.modal-label {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 3vw;
+  margin-right: 5%;
+}
+
+/* line 114, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#show-board-control {
+  width: 57.5vw;
+  display: flex;
+  justify-content: space-between;
+  color: black;
+  font-size: 2.5vh;
+}
+
+/* line 122, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#show-board-control .credits {
+  display: flex;
+  flex-direction: column;
+  padding-left: 10vw;
+}
+
+/* line 128, /Users/john/Desktop/Chalk/app/assets/stylesheets/board.scss */
+#show-board-control .title, #show-board-control .author {
+  display: flex;
+  flex-direction: row;
+}
+
+/* line 1, /Users/john/Desktop/Chalk/app/assets/stylesheets/clock.scss */
+#clock {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  font-size: 2.5vw;
+  width: 15vw;
+  height: 8vh;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 10px;
+  outline: none;
+  margin: none;
+}
+
+/* line 13, /Users/john/Desktop/Chalk/app/assets/stylesheets/clock.scss */
+#clock:hover {
+  background-color: #eaf2ff;
+  transition: background-color 0.2s ease-in;
+}
+
+/* line 18, /Users/john/Desktop/Chalk/app/assets/stylesheets/clock.scss */
+#clock.running {
+  background-color: #c12222;
+  color: white;
+  font-size: 3.5vw;
+  transition: background-color 0.2s ease-in, font-size 0.2s ease-in, color 0.2s ease-in;
+  border: none;
+}
+
+/* line 27, /Users/john/Desktop/Chalk/app/assets/stylesheets/clock.scss */
+#clock.running:hover {
+  background-color: #a31616;
+  transition: background-color 0.1s ease-in;
+}
+
+/* line 32, /Users/john/Desktop/Chalk/app/assets/stylesheets/clock.scss */
+#clock.finished, #create-board-wrapper.clock.post-finished {
+  background-color: #c12222;
+  color: white;
+}
+
+/* line 1, /Users/john/Desktop/Chalk/app/assets/stylesheets/thumbnail.scss */
+.thumbnail-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+/* line 9, /Users/john/Desktop/Chalk/app/assets/stylesheets/thumbnail.scss */
+#thumbnail-canvas {
+  border: 1px dashed black;
+  border-radius: 10px;
+}
+
+/* line 27, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+main {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 2vw;
+  color: white;
+}
+
+/* line 33, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+.nav-button {
+  display: inline-block;
+  font-family: 'Yanone Kaffeesatz', sans-serif;
+  background-color: transparent;
+  border-radius: 30px;
+  width: 20%;
+  margin: 3%;
+  transition: background-color 0.1s ease-in, border-color 0.1s ease-in, color 0.1s, letter-spacing 0.1s ease-in, border-radius 0.1s ease-in;
+  outline: none;
+  letter-spacing: 2px;
+}
+
+/* line 48, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+.nav-button:hover {
+  background-color: #75ceff;
+  border: solid #75ceff 3px;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.1s, letter-spacing 0.2s, border-radius 0.1s;
+  letter-spacing: 5px;
+  border-radius: 5px;
+}
+
+/* line 59, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+.black-button {
+  color: white;
+  border: solid white 3px;
+}
+
+/* line 65, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+.white-button {
+  color: black;
+  border: solid black 1px;
+}
+
+/* line 70, /Users/john/Desktop/Chalk/app/assets/stylesheets/application.scss */
+.white-button:hover {
+  color: white;
+  border: solid #75ceff 1px;
+}
