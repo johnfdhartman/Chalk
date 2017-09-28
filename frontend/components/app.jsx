@@ -6,6 +6,7 @@ import NavContainer from './nav/nav_container';
 import DashboardContainer from './dashboard/dashboard-container';
 import CreateBoardContainer from './board/create/create_board_container';
 import ShowBoardContainer from './board/show/show_board_container';
+import ProfileContainer from './profile/profile_container';
 import {Footer} from './footer/footer';
 
 const App = () => (
@@ -22,6 +23,7 @@ const App = () => (
         <AuthRoute path='/frontpage' component={FrontPageContainer}/>
         <ProtectedRoute path='/create' component={CreateBoardContainer}/>
         <Route path='/show/:boardId' component={ShowBoardContainer}/>
+        <Route path='/user/:userId' component={ProfileContainer}/>
         <ProtectedRoute exact path='/' component={DashboardContainer}/>
       </Switch>
     </div>
