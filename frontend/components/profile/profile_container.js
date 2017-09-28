@@ -1,17 +1,21 @@
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router';
 import Profile from './profile';
-import {requestUserBoardThumbs} from '../../actions/board_thumb_actions';
+import {requestUserBoards} from '../../actions/board_actions';
 
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state, ownProps) => ({
   session: state.session,
   errors: state.errors,
-  boardThumbs: state.boardThumbs
+  boards: state.boards,
+  userId: ownProps.match.params.userId
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  requestUserBoardThumbs: (userId, page) => (
-    dispatch(requestUserBoardThumbs(userId, page)))
+  requestUserBoards: (userId, page) => (
+    dispatch(requestUserBoards(userId, page)))
 });
 
-export default connect(mapStateToProps,mapDispatchToProps)(Profile);
+export default withRouter(
+  connect(mapStateToProps,mapDispatchToProps)(Profile)
+);

@@ -23,7 +23,7 @@ const App = () => (
         <AuthRoute path='/frontpage' component={FrontPageContainer}/>
         <ProtectedRoute path='/create' component={CreateBoardContainer}/>
         <Route path='/show/:boardId' component={ShowBoardContainer}/>
-        <Route path='/user/:userId' component={ProfileContainer}/>
+        <Route path='/users/:userId' component={ProfileContainer}/>
         <ProtectedRoute exact path='/' component={DashboardContainer}/>
       </Switch>
     </div>

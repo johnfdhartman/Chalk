@@ -16,3 +16,5 @@ const BoardThumbnail = ({props}) => {
   );
 
 };
+
+export default BoardThumbnail;
