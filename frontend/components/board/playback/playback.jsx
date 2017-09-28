@@ -25,6 +25,9 @@ class Playback extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    
+  }
 
   loadBoardData() {
     this.props.requestBoard(this.props.boardId).then(action => {

@@ -7,6 +7,7 @@ export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
 export const RECEIVE_BOARDS_ERRORS = 'RECEIVE_BOARDS_ERRORS';
+export const CLEAR_BOARD = 'CLEAR_BOARD';
 
 export const updateBoardStage = (stage, boardId) => {
   return {
@@ -40,6 +41,13 @@ export const receiveBoard = (board) => {
       author: board.author,
       paths: newPaths
     }
+  };
+};
+
+export const clearBoard = (id) => {
+  return {
+    type: CLEAR_BOARD,
+    boardId: id
   };
 };
 
