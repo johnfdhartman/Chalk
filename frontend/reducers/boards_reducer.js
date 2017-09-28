@@ -4,7 +4,8 @@ import {
   UPDATE_BOARD_STAGE,
   SUCCESSFUL_SAVE_BOARD,
   RECEIVE_BOARD,
-  RECEIVE_BOARDS
+  RECEIVE_BOARDS,
+  CLEAR_BOARD
   } from '../actions/board_actions.js';
 
 export const boardsReducer = (boardsSlice = {}, action) => {
@@ -41,6 +42,11 @@ export const boardsReducer = (boardsSlice = {}, action) => {
         newBoard.stage = 'start';
         newSlice[board.id] = newBoard;
       });
+      return newSlice;
+
+    case CLEAR_BOARD:
+      newSlice = merge({}, boardsSlice);
+      delete newSlice[action.boardId];
       return newSlice;
 
     default:
