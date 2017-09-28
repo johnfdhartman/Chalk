@@ -13,8 +13,18 @@ class Playback extends React.Component {
   componentWillMount() {
     if (!this.props.board || !this.props.board.paths) {
       this.loadBoardData.bind(this)();
+    } else {
+      let newBoard = this.props.board;
+      const newPaths = this.props.board.paths.map( (path) => (
+        this.scalePath.bind(this)(path)
+      ));
+      newBoard.paths = newPaths;
+      this.setState({
+        board: newBoard
+      });
     }
   }
+
 
   loadBoardData() {
     this.props.requestBoard(this.props.boardId).then(action => {

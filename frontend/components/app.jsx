@@ -13,18 +13,18 @@ const App = () => (
   <div>
     <header>
       <Switch>
-        <ProtectedRoute path='/dashboard' component={NavContainer}/>
-        <ProtectedRoute path='/users' component={NavContainer}/>
-        <ProtectedRoute exact path='/' component={NavContainer}/>
+        <Route path='/dashboard' component={NavContainer}/>
+        <Route path='/users' component={NavContainer}/>
+        <Route exact path='/' component={NavContainer}/>
       </Switch>
     </header>
     <div>
       <Switch>
-        <AuthRoute path='/frontpage' component={FrontPageContainer}/>
-        <ProtectedRoute path='/create' component={CreateBoardContainer}/>
         <Route path='/show/:boardId' component={ShowBoardContainer}/>
         <Route path='/users/:userId' component={ProfileContainer}/>
+        <AuthRoute path='/frontpage' component={FrontPageContainer}/>
         <ProtectedRoute exact path='/' component={DashboardContainer}/>
+        <ProtectedRoute path='/create' component={CreateBoardContainer}/>
       </Switch>
     </div>
     <footer>

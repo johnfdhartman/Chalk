@@ -18,7 +18,9 @@ class BoardThumbnail extends React.Component {
           canvasId={'thumbnail-canvas'}
           dims={{height: '100', width: '150'}}
           />
-        Thumbnail!
+        <div className='description'>
+          {this.props.board.title} by {this.props.board.author.username}
+        </div>
       </div>
     );
   }

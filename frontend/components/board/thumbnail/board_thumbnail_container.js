@@ -3,7 +3,8 @@ import BoardThumbnail from './board_thumbnail';
 import {updateBoardStage} from '../../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  boardId: ownProps.boardId
+  boardId: ownProps.boardId,
+  board: state.boards[ownProps.boardId]
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

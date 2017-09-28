@@ -14,9 +14,9 @@ class Profile extends React.Component {
   renderThumbnails() {
     let thumbnails = Object.values(this.props.boards);
     return thumbnails.map( (thumbnail) => (
-      <li key={thumbnail.id}>
+      <div key={thumbnail.id}>
         <ThumbnailContainer boardId={thumbnail.id}/>
-       </li>
+       </div>
     ));
   }
 
