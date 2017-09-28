@@ -10,6 +10,7 @@ import {
 export const boardsReducer = (boardsSlice = {}, action) => {
   Object.freeze(boardsSlice);
   let newSlice;
+  let newBoard;
   switch(action.type) {
     case UPDATE_BOARD_STAGE:
       newSlice = merge({}, boardsSlice);
@@ -28,7 +29,7 @@ export const boardsReducer = (boardsSlice = {}, action) => {
 
     case RECEIVE_BOARD:
       newSlice = merge({}, boardsSlice);
-      let newBoard = merge({}, action.board);
+      newBoard = merge({}, action.board);
       newBoard.stage = 'start';
       newSlice[action.board.id] = newBoard;
       return newSlice;
@@ -36,7 +37,9 @@ export const boardsReducer = (boardsSlice = {}, action) => {
     case RECEIVE_BOARDS:
       newSlice = {};
       action.boards.forEach( (board) => {
-        newSlice[board.id] = board;
+        newBoard = merge({}, board);
+        newBoard.stage = 'start';
+        newSlice[board.id] = newBoard;
       });
       return newSlice;
 
