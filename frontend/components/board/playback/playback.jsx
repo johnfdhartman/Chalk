@@ -40,10 +40,10 @@ class Playback extends React.Component {
 
   loadBoardData() {
     this.props.requestBoard(this.props.boardId).then(action => {
-      const newPaths = action.board.paths.map( (path) => (
+      let newBoard = merge({}, action.board);
+      const newPaths = newBoard.paths.map( (path) => (
         this.scalePath.bind(this)(path)
       ));
-      let newBoard = action.board;
       newBoard.paths = newPaths;
       this.setState({
         board: newBoard
