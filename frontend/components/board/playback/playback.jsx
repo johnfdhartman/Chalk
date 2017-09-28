@@ -26,7 +26,7 @@ class Playback extends React.Component {
   }
 
   componentWillUnmount() {
-    
+    this.props.clearBoard();
   }
 
   loadBoardData() {

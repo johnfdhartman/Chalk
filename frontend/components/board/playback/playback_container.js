@@ -1,7 +1,11 @@
 import {connect} from 'react-redux';
 import Playback from './playback.jsx';
 import {withRouter} from 'react-router';
-import {requestBoard, updateBoardStage} from '../../../actions/board_actions';
+import {
+  requestBoard,
+  updateBoardStage,
+  clearBoard
+} from '../../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -12,9 +16,10 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   requestBoard: (id) => (dispatch(requestBoard(id))),
-  updateBoardStage: (stage, id) => (dispatch(updateBoardStage(stage, id)))
+  updateBoardStage: (stage, id) => (dispatch(updateBoardStage(stage, id))),
+  clearBoard: () => (dispatch(clearBoard(ownProps.boardId)))
 });
 
 export default withRouter(
