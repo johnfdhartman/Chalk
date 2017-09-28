@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {configureStore} from './store/store';
-import {fetchUserBoards} from './util/board_util';
+import {requestUserBoards} from './actions/board_actions';
 import Root from './components/root';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   store = configureStore(preloadedState);
 
   //For testing purposes only
-  window.fetchUserBoards = fetchUserBoards;
+  window.requestUserBoards = requestUserBoards;
   window.store = store;
 
   ReactDOM.render(

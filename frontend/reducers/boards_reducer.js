@@ -34,7 +34,11 @@ export const boardsReducer = (boardsSlice = {}, action) => {
       return newSlice;
 
     case RECEIVE_BOARDS:
-      return action.boards;
+      newSlice = {};
+      action.boards.forEach( (board) => {
+        newSlice[board.id] = board;
+      });
+      return newSlice;
 
     default:
       return boardsSlice;

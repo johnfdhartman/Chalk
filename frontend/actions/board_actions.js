@@ -6,6 +6,7 @@ export const SUCCESSFUL_SAVE_BOARD = 'SUCCESSFUL_SAVE_BOARD';
 export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
 export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
+export const RECEIVE_BOARDS_ERRORS = 'RECEIVE_BOARDS_ERRORS';
 
 export const updateBoardStage = (stage, boardId) => {
   return {
@@ -55,20 +56,27 @@ const pathsToArr = (paths) => {
   });
 };
 
-export const receiveBoards = (boards) => ({
-  type: RECEIVE_BOARDS,
-  boards: boards.map( (board) => {
-    let newPaths = pathsToArr(board.paths);
-    let newBoard = merge({}, board);
-    newBoard.paths = newPaths;
-    return newBoard;
-  })
-});
+export const receiveBoards = (boardsObj) => {
+  return {
+    type: RECEIVE_BOARDS,
+    boards: boardsObj.boards.map( (board) => {
+      let newPaths = pathsToArr(board.paths);
+      let newBoard = merge({}, board);
+      newBoard.paths = newPaths;
+      return newBoard;
+    })
+  };
+};
 
 export const receiveBoardErrors = (boardId, boardErrors) => ({
   type: RECEIVE_BOARD_ERRORS,
   boardErrors,
   boardId
+});
+
+export const receiveBoardsErrors = (boardsErrors) => ({
+  type: RECEIVE_BOARDS_ERRORS,
+  boardsErrors
 });
 
 export const saveBoard = (board) => (dispatch) => (
@@ -88,5 +96,13 @@ export const requestBoard = id => dispatch => (
     errors => dispatch(receiveBoardErrors(
       id, errors.responseJSON.errors)
     )
+  )
+);
+
+export const requestUserBoards = (id, page) => dispatch => (
+  Api.fetchUserBoards(id, page).then(
+    boards => dispatch(receiveBoards(boards)),
+
+    errors => dispatch(receiveBoardsErrors(errors))
   )
 );
