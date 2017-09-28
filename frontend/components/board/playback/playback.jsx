@@ -11,6 +11,12 @@ class Playback extends React.Component {
   }
 
   componentWillMount() {
+    if (!this.props.board || !this.props.board.paths) {
+      this.loadBoardData.bind(this)();
+    }
+  }
+
+  loadBoardData() {
     this.props.requestBoard(this.props.boardId).then(action => {
       const newPaths = action.board.paths.map( (path) => (
         this.scalePath.bind(this)(path)
@@ -41,14 +47,13 @@ class Playback extends React.Component {
     return newPathCoord;
   }
 
-  componentDidMount() {
-    this.setState({
-      stage: this.props.board.stage
-    });
-  }
+  // componentDidMount() {
+  //   this.setState({
+  //     stage: this.props.board.stage
+  //   });
+  // }
 
   componentWillReceiveProps(nextProps) {
-    console.log('this.props', this.props);
     if (this.props.board.stage === 'start'
       && nextProps.board.stage === 'running'
     ) {
@@ -107,6 +112,7 @@ class Playback extends React.Component {
 
 
   setTimers() {
+    console.log('timers set');
     this.numActiveTimers = this.state.board.paths.length;
     this.state.board.paths.forEach(
       (path) => {
