@@ -24,11 +24,11 @@ class Clock extends React.Component {
   componentWillReceiveProps(nextProps){
     console.log('clock componentWillReceiveProps');
     if (this.props.board.stage === 'start'
-      && nextProps.boardStage === 'running') {
+      && nextProps.board.stage === 'running') {
         this.runClock.bind(this)();
       }
     if (this.props.board.stage === 'running'
-      && nextProps.boardStage === 'finished'
+      && nextProps.board.stage === 'finished'
     ) {
       clearInterval(this.clockInterval);
     }
