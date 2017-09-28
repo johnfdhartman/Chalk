@@ -14,7 +14,7 @@ const App = () => (
     <header>
       <Switch>
         <ProtectedRoute path='/dashboard' component={NavContainer}/>
-        <ProtectedRoute path='/profile' component={NavContainer}/>
+        <ProtectedRoute path='/users' component={NavContainer}/>
         <ProtectedRoute exact path='/' component={NavContainer}/>
       </Switch>
     </header>

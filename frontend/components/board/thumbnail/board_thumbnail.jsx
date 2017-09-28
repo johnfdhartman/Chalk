@@ -1,13 +1,14 @@
 import PlaybackContainer from '../playback/playback_container';
+import React from 'react';
 
-const BoardThumbnail = ({props}) => {
+const BoardThumbnail = ({boardId}) => {
 
 
 
   return(
     <div class='thumbnail-wrapper'>
       <PlaybackContainer
-        boardId={props.boardId}
+        boardId={boardId}
         canvasId={'thumbnail-canvas'}
         dims={{height: '100', width: '150'}}
         />
