@@ -1,6 +1,6 @@
 import React from 'react';
 import ThumbnailContainer from '../board/thumbnail/board_thumbnail_container';
-
+import UserInfoContainer from './user_info/user_info_container';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -56,19 +56,11 @@ class Profile extends React.Component {
     }
   }
 
-  renderUserInfo() {
-    return(
-      <div className='user-info'>
-        <h2>User Info</h2>
-      </div>
-    );
-  }
 
   render() {
-    let userInfo = this.renderUserInfo.bind(this)();
     return(
       <div className='profile'>
-        {userInfo}
+        <UserInfoContainer userId={this.props.userId}/>
         <div className='thumbnails'>
           {this.state.thumbnails}
         </div>
