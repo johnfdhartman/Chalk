@@ -5,13 +5,13 @@ class UserInfo extends React.Component {
     super(props);
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.props.requestUser(this.props.userId);
   }
 
   componentWillReceiveProps(nextProps){
     if (this.props.userId !== nextProps.userId) {
-      this.props.requestUser(this.props.userId);
+      this.props.requestUser(nextProps.userId);
     }
   }
 
