@@ -12,6 +12,7 @@ class Profile extends React.Component {
 
   componentWillMount() {
     this.props.requestUserBoards(this.props.userId, 1);
+    this.props.requestUser(this.props.userId);
   }
 
   storeThumbnails(boards) {
@@ -53,13 +54,18 @@ class Profile extends React.Component {
         thumbnails: []
       });
       this.props.requestUserBoards(this.props.userId, 1);
+      this.props.requestUser(this.props.userId);
     }
   }
 
   renderUserInfo() {
+    let bio = (this.props.user ? this.props.user.bio : 'Loading...');
     return(
       <div className='user-info'>
         <h2>User Info</h2>
+        <div className='bio'>
+          {bio}
+        </div>
       </div>
     );
   }
