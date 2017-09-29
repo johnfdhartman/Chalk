@@ -4,7 +4,8 @@ import UserInfo from './user_info';
 
 const mapStateToProps = (state, ownProps) => ({
   userId: ownProps.userId,
-  user: state.users[ownProps.userId]
+  user: state.users[ownProps.userId],
+  session: state.session
 });
 
 const mapDispatchToProps = (dispatch) => ({
