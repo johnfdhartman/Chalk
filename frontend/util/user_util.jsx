@@ -7,12 +7,11 @@ export const fetchUser = (id) => {
 };
 
 export const updateUser = (id, field, value) => {
+  let data = {};
+  data[field] = value;
   return $.ajax({
     url: `/api/users/${id}`,
     method: 'PATCH',
-    data: {
-      field,
-      value
-    }
+    data
   });
 };

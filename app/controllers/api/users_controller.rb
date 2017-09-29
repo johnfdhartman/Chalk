@@ -36,10 +36,10 @@ class Api::UsersController < ApplicationController
       render 'api/users/show', status: 404
     end
   end
-  
+
   private
 
   def user_update_attributes
-    params.require(:data).require(:field).permit(:bio)
+    params.permit(:bio)
   end
 end
