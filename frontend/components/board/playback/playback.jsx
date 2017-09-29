@@ -1,6 +1,6 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
-import {merge} from 'lodash/merge';
+import merge from 'lodash/merge';
 
 class Playback extends React.Component {
   constructor(props) {
@@ -16,8 +16,8 @@ class Playback extends React.Component {
     if (!this.props.board || !this.props.board.paths) {
       this.loadBoardData.bind(this)();
     } else {
-      let newBoard = this.props.board;
-      const newPaths = this.props.board.paths.map( (path) => (
+      let newBoard = merge({}, this.props.board);
+      const newPaths = this.newBoard.paths.map( (path) => (
         this.scalePath.bind(this)(path)
       ));
       newBoard.paths = newPaths;
@@ -27,19 +27,26 @@ class Playback extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    console.log('playback unmounting');
+  clearBoard() {
+    console.log('clearing board');
     this.intervals.forEach( (interval) => {
       clearInterval(interval);
     });
     this.timeouts.forEach( (timeout) => {
       clearTimeout(timeout);
     });
-    // this.props.clearBoard();
+    this.state.context.clearRect(0,0,
+      this.state.canvas.width,
+      this.state.canvas.height);
+  }
+
+  componentWillUnmount() {
+    this.clearBoard.bind(this)();
   }
 
   loadBoardData() {
     this.props.requestBoard(this.props.boardId).then(action => {
+      console.log('action.board', action.board);
       let newBoard = merge({}, action.board);
       const newPaths = newBoard.paths.map( (path) => (
         this.scalePath.bind(this)(path)
@@ -69,20 +76,21 @@ class Playback extends React.Component {
     return newPathCoord;
   }
 
-  // componentDidMount() {
-  //   this.setState({
-  //     stage: this.props.board.stage
-  //   });
-  // }
-
   componentWillReceiveProps(nextProps) {
-    if (this.props.board.stage === 'start'
+    console.log(`playback receiving props`, nextProps);
+    console.log(`current props`, this.props);
+    if (this.props.board
+      && this.props.board.stage === 'start'
       && nextProps.board.stage === 'running'
     ) {
-      console.log('running playback');
       this.setTimers.bind(this)();
     }
+    if (!(this.props.boardId === nextProps.boardId)) {
+      this.clearBoard.bind(this)();
+      this.props.requestBoard(nextProps.boardId);
+    }
   }
+
 
   componentDidMount() {
     let canvas = findDOMNode(this.canvasRef);
@@ -135,7 +143,6 @@ class Playback extends React.Component {
 
 
   setTimers() {
-    console.log('timers set');
     this.numActiveTimers = this.state.board.paths.length;
     this.state.board.paths.forEach(
       (path) => {

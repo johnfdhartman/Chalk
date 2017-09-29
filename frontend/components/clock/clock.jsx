@@ -21,15 +21,33 @@ class Clock extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if (this.props.board.stage === 'start'
+    console.log('clock component receiving props', nextProps);
+    if (this.props.boardId !== nextProps.boardId) {
+      this.resetClock.bind(this)();
+      return null;
+    }
+    if (this.props.board
+      && this.props.board.stage === 'start'
       && nextProps.board.stage === 'running') {
         this.runClock.bind(this)();
       }
-    if (this.props.board.stage === 'running'
+    if (this.props.board
+      && this.props.board.stage === 'running'
       && nextProps.board.stage === 'finished'
     ) {
       clearInterval(this.clockInterval);
     }
+  }
+
+  resetClock() {
+    clearInterval(this.clockInterval);
+    this.props.updateBoardStage('start');
+    this.setState({
+      time: {
+        minutes: 0,
+        seconds: 0,
+      }
+    });
   }
 
   componentWillUnmount() {
@@ -138,14 +156,24 @@ class Clock extends React.Component {
   }
 
   render() {
-    return(
-      <button
-        id='clock'
-        className={`clock ${this.props.board.stage}`}
-        onClick={this.handleClick.bind(this)}>
-        {this.displayText.bind(this)()}
-      </button>
-    );
+    if (this.props.board) {
+      return(
+        <button
+          id='clock'
+          className={`clock ${this.props.board.stage}`}
+          onClick={this.handleClick.bind(this)}>
+          {this.displayText.bind(this)()}
+        </button>
+      );
+    } else {
+      return(
+        <button
+          id='clock'
+          className={`clock loading`}>
+          Loading...
+        </button>
+      );
+    }
   }
 
 }
