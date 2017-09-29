@@ -20,7 +20,7 @@ class Api::UsersController < ApplicationController
       render 'api/users/show', status: 404
     end
   end
-
+    
   private
 
   def user_params
