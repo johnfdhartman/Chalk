@@ -1,10 +1,26 @@
 .thumbnail-wrapper{
   display:flex;
   flex-direction:column;
+  flex-wrap: wrap;
+  font-size: 2vh;
   width: 20vw;
+  margin-left:2vw;
+  margin-bottom:2vh;
 }
 
 #thumbnail-canvas{
   border: 1px dashed black;
   border-radius: 10px;
+}
+
+.thumb-info{
+  display:flex;
+  flex-direction: column;
+  align-content: center;
+  flex-wrap: wrap;
+}
+
+.thumb-title{
+  display:flex;
+  justify-content: center;
 }

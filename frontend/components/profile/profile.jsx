@@ -20,10 +20,10 @@ class Profile extends React.Component {
       <div key={thumbnail.id}
         className='thumbnail-wrapper'>
         <ThumbnailContainer boardId={thumbnail.id}/>
-        <div className = 'thumb-info'>
-          {thumbnail.title}
-          <br/>
-          Created at {thumbnail.created_at}
+        <div className='thumb-info'>
+          <div className='thumb-title'>
+            {'"'+thumbnail.title+'"'}
+          </div>
         </div>
        </div>
     ));

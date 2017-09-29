@@ -57,7 +57,8 @@ class ShowBoard extends React.Component {
         <PlaybackContainer
           dims={dims}
           boardId={this.props.boardId}
-          canvasId={'board-canvas'}/>
+          canvasId={'board-canvas'}
+          />
         <div id='show-board-control'>
           {credits}
           <ClockContainer

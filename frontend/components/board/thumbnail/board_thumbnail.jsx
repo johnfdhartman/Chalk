@@ -12,12 +12,18 @@ class BoardThumbnail extends React.Component {
   }
 
   render(){
+    let dims ={
+      width: Math.max(document.documentElement.clientWidth,
+        window.innerWidth || 0) * 0.2,
+      height: Math.max(document.documentElement.clientHeight,
+        window.innerHeight || 0) * 0.15
+      };
     return(
       <Link to={`/show/${this.props.boardId}`}>
         <PlaybackContainer
+          dims={dims}
           boardId={this.props.boardId}
           canvasId={'thumbnail-canvas'}
-          dims={{height: '150', width: '225'}}
           />
       </Link>
     );
