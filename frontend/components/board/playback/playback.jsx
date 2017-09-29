@@ -6,25 +6,38 @@ class Playback extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-
     };
     this.intervals = [];
     this.timeouts = [];
   }
 
   componentWillMount() {
-    if (!this.props.board || !this.props.board.paths) {
-      this.loadBoardData.bind(this)();
-    } else {
-      let newBoard = merge({}, this.props.board);
-      const newPaths = this.newBoard.paths.map( (path) => (
-        this.scalePath.bind(this)(path)
-      ));
-      newBoard.paths = newPaths;
-      this.setState({
-        board: newBoard
-      });
-    }
+    this.props.requestBoard(this.props.boardId);
+  }
+
+
+  componentDidMount() {
+    console.log('this.props.board', this.props.board);
+    // this.setupBoard.bind(this)(this.props.board);
+    let canvas = findDOMNode(this.canvasRef);
+    canvas.width = this.props.dims.width;
+    canvas.height = this.props.dims.height;
+    let context = canvas.getContext('2d');
+    this.setState({
+      canvas: canvas,
+      context: context,
+    });
+  }
+
+
+  setupBoard(board) {
+    let newBoard = merge({}, board);
+    newBoard.paths = newBoard.paths.map( (path) => (
+      this.scalePath.bind(this)(path)
+    ));
+    this.setState({
+      board: newBoard
+    });
   }
 
   clearBoard() {
@@ -38,25 +51,12 @@ class Playback extends React.Component {
     this.state.context.clearRect(0,0,
       this.state.canvas.width,
       this.state.canvas.height);
-  }
-
-  componentWillUnmount() {
-    this.clearBoard.bind(this)();
-  }
-
-  loadBoardData() {
-    this.props.requestBoard(this.props.boardId).then(action => {
-      console.log('action.board', action.board);
-      let newBoard = merge({}, action.board);
-      const newPaths = newBoard.paths.map( (path) => (
-        this.scalePath.bind(this)(path)
-      ));
-      newBoard.paths = newPaths;
-      this.setState({
-        board: newBoard
-      });
+    this.setState({
+      board: {id: null, paths: null}
     });
   }
+
+
 
   scalePath(path) {
     const newPathCoords = path.pathCoords.map( (coord) => (
@@ -77,30 +77,22 @@ class Playback extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(`playback receiving props`, nextProps);
-    console.log(`current props`, this.props);
+    console.log('nextProps', nextProps);
     if (this.props.board
       && this.props.board.stage === 'start'
       && nextProps.board.stage === 'running'
     ) {
+      console.log('state before setTimers', this.state);
       this.setTimers.bind(this)();
     }
-    if (!(this.props.boardId === nextProps.boardId)) {
+    if (this.props.boardId !== nextProps.boardId) {
       this.clearBoard.bind(this)();
       this.props.requestBoard(nextProps.boardId);
     }
-  }
-
-
-  componentDidMount() {
-    let canvas = findDOMNode(this.canvasRef);
-    canvas.width = this.props.dims.width;
-    canvas.height = this.props.dims.height;
-    let context = canvas.getContext('2d');
-    this.setState({
-      canvas: canvas,
-      context: context,
-    });
+    if (this.props.board && !this.props.board.paths) {
+      console.log('setting up new board', nextProps.board);
+      this.setupBoard.bind(this)(nextProps.board);
+    }
   }
 
   drawPath(path) {
@@ -169,5 +161,11 @@ class Playback extends React.Component {
     );
   }
 }
+
+Playback.defaultProps = {
+  board: {
+    stage: 'start'
+  }
+};
 
 export default Playback;
