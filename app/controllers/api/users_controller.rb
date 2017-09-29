@@ -23,7 +23,7 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = User.find_by(id: params[:id])
-    if @user
+    if @user.id == current_user.id
       @user.update(user_update_attributes)
       if @user.save
         render 'api/users/show'
@@ -32,8 +32,8 @@ class Api::UsersController < ApplicationController
         render 'api/users/show', status: 422
       end
     else
-      @errors = ["Cannot find user with id #{params[:id]}"]
-      render 'api/users/show', status: 404
+      @errors = ["Update request not authorized for user #{current_user.id}"]
+      render 'api/users/show', status: 403
     end
   end
 
