@@ -17,8 +17,14 @@ class Profile extends React.Component {
   storeThumbnails(boards) {
     let thumbnails = Object.values(boards);
     let thumbnailComponents = thumbnails.map( (thumbnail) => (
-      <div key={thumbnail.id}>
+      <div key={thumbnail.id}
+        className='thumbnail-wrapper'>
         <ThumbnailContainer boardId={thumbnail.id}/>
+        <div className = 'thumb-info'>
+          {thumbnail.title}
+          <br/>
+          Created at {thumbnail.created_at}
+        </div>
        </div>
     ));
     this.setState({
@@ -50,16 +56,19 @@ class Profile extends React.Component {
     }
   }
 
-  // componentWillUnmount() {
-
-  // }
+  renderUserInfo() {
+    return(
+      <div className='user-info'>
+        <h2>User Info</h2>
+      </div>
+    );
+  }
 
   render() {
+    let userInfo = this.renderUserInfo.bind(this)();
     return(
       <div className='profile'>
-        <div className='user-info'>
-          User Info!
-        </div>
+        {userInfo}
         <div className='thumbnails'>
           {this.state.thumbnails}
         </div>

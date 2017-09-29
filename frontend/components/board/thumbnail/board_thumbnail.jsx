@@ -13,19 +13,11 @@ class BoardThumbnail extends React.Component {
 
   render(){
     return(
-      <div className='thumbnail-wrapper'>
         <PlaybackContainer
           boardId={this.props.boardId}
           canvasId={'thumbnail-canvas'}
           dims={{height: '150', width: '225'}}
           />
-        <div className='description'>
-          {this.props.board.title} by
-          <Link to={`/users/${this.props.board.author.id}`}>
-            {this.props.board.author.username}
-          </Link>
-        </div>
-      </div>
     );
   }
 }
