@@ -38,7 +38,8 @@ class Api::BoardsController < ApplicationController
   end
 
   def recent_boards
-    @boards = Board.all.offset(9* (page - 1)).limit(9).order(:created_at)
+    @boards = Board.all.offset(9* (params[:page].to_i - 1))
+      .limit(9).order(:created_at)
     render 'api/boards/index'
   end
 

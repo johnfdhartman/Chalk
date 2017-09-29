@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {configureStore} from './store/store';
-import {requestUser} from './actions/user_actions';
+import {requestRecentBoards} from './actions/board_actions';
 import Root from './components/root';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   //For testing purposes only
 
-  window.requestUser = requestUser;
+  window.requestRecentBoards = requestRecentBoards;
   window.store = store;
 
   ReactDOM.render(
