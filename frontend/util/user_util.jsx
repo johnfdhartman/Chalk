@@ -6,13 +6,13 @@ export const fetchUser = (id) => {
   });
 };
 
-export const updateUser = (id, field, newVal) => {
+export const updateUser = (id, field, value) => {
   return $.ajax({
     url: `/api/users/${id}`,
     method: 'PATCH',
     data: {
       field,
-      newVal
+      value
     }
   });
 };
