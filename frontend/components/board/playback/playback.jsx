@@ -13,7 +13,12 @@ class Playback extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestBoard(this.props.boardId);
+    console.log('this.props', this.props);
+    if (this.props.paths.length === 0) {
+      this.props.requestBoard(this.props.boardId);
+    } else {
+      this.setupPaths.bind(this)(this.props.paths);
+    }
   }
 
 
@@ -111,8 +116,6 @@ class Playback extends React.Component {
   // }
 
   componentWillReceiveProps(nextProps) {
-    console.log('componentWillReceiveProps, nextProps:', nextProps);
-    console.log('state', this.state);
     if ((this.state.paths.length === 0) && nextProps.paths) {
       this.setupPaths.bind(this)(nextProps.paths);
     }
@@ -128,6 +131,10 @@ class Playback extends React.Component {
         this.setTimers.bind(this)();
     }
 
+  }
+
+  componentWillUnmount() {
+    this.clearBoard.bind(this)();
   }
 
   drawPath(path) {
@@ -170,7 +177,6 @@ class Playback extends React.Component {
 
 
   setTimers() {
-    console.log('state before setting timers', this.state);
     this.numActiveTimers = this.state.paths.length;
     this.state.paths.forEach(
       (path) => {

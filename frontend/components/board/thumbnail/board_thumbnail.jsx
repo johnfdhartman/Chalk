@@ -13,7 +13,7 @@ class BoardThumbnail extends React.Component {
 
   render(){
     return(
-      <div class='thumbnail-wrapper'>
+      <div className='thumbnail-wrapper'>
         <PlaybackContainer
           boardId={this.props.boardId}
           canvasId={'thumbnail-canvas'}
