@@ -13,7 +13,6 @@ class Playback extends React.Component {
   }
 
   componentWillMount() {
-    console.log('this.props', this.props);
     if (this.props.paths.length === 0) {
       this.props.requestBoard(this.props.boardId);
     } else {

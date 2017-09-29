@@ -24,7 +24,6 @@ class Profile extends React.Component {
     this.setState({
       thumbnails: thumbnailComponents
     });
-    console.log('yeee');
   }
 
   componentWillReceiveProps(nextProps){
@@ -32,14 +31,30 @@ class Profile extends React.Component {
       && Object.values(nextProps.boards).length > 0) {
       this.storeThumbnails.bind(this)(Object.values(nextProps.boards));
     }
-  }
-
-  componentWillUnmount() {
 
   }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    let nowBoards = Object.values(this.props.boards);
+    let nextBoards = Object.values(nextProps.boards);
+    return (!(nowBoards.length === nextBoards.length
+      && this.props.userId === nextProps.userId));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.userId !== this.props.userId) {
+      this.setState({
+        thumbnails: []
+      });
+      this.props.requestUserBoards(this.props.userId, 1);
+    }
+  }
+
+  // componentWillUnmount() {
+
+  // }
 
   render() {
-    console.log('this.state.thumbnails', this.state.thumbnails);
     return(
       <div className='profile'>
         <div className='user-info'>
