@@ -80,40 +80,6 @@ class Playback extends React.Component {
     return newPathCoord;
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (!this.state.board && !this.state.board.paths
-  //     && nextProps.board && nextProps.state.board.paths) {
-  //       console.log('board set up');
-  //       this.setupBoard(nextProps.board);
-  //     }
-  //
-  //   if (this.props.board
-  //     && this.props.board.stage === 'start'
-  //     && nextProps.board.stage === 'running'
-  //   ) {
-  //     if (this.props.board.paths) {
-  //
-  //       this.setTimers.bind(this)();
-  //     }
-  //   }
-  //   if (this.props.boardId !== nextProps.boardId) {
-  //     this.clearBoard.bind(this)();
-  //     this.props.requestBoard(nextProps.boardId);
-  //   }
-  //   if (this.props.board
-  //     && !this.props.board.paths
-  //     && nextProps.board.paths) {
-  //     this.setupBoard.bind(this)(nextProps.board);
-  //   }
-  //   if (nextProps.board && nextProps.board.paths
-  //     && this.state.board
-  //     && (nextProps.boardId !== this.state.board.id)) {
-  //
-  //     this.setupBoard.bind(this)(nextProps.board);
-  //   }
-  //
-  // }
-
   componentWillReceiveProps(nextProps) {
     if ((this.state.paths.length === 0) && nextProps.paths) {
       this.setupPaths.bind(this)(nextProps.paths);
