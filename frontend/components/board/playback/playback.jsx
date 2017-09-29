@@ -17,8 +17,7 @@ class Playback extends React.Component {
 
 
   componentDidMount() {
-    console.log('this.props.board', this.props.board);
-    // this.setupBoard.bind(this)(this.props.board);
+    // this.setupBoard.bind(this)(this.props.board)
     let canvas = findDOMNode(this.canvasRef);
     canvas.width = this.props.dims.width;
     canvas.height = this.props.dims.height;
@@ -41,7 +40,6 @@ class Playback extends React.Component {
   }
 
   clearBoard() {
-    console.log('clearing board');
     this.intervals.forEach( (interval) => {
       clearInterval(interval);
     });
@@ -74,13 +72,12 @@ class Playback extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('nextProps', nextProps);
     if (this.props.board
       && this.props.board.stage === 'start'
       && nextProps.board.stage === 'running'
     ) {
-      console.log('state before setTimers', this.state);
       if (this.props.board.paths) {
+
         this.setTimers.bind(this)();
       }
     }
@@ -91,7 +88,6 @@ class Playback extends React.Component {
     if (this.props.board
       && !this.props.board.paths
       && nextProps.board.paths) {
-      console.log('setting up new board', nextProps.board);
       this.setupBoard.bind(this)(nextProps.board);
     }
     if (nextProps.board && nextProps.board.paths
@@ -143,7 +139,6 @@ class Playback extends React.Component {
 
 
   setTimers() {
-    console.log('state before set timers', this.state);
     this.numActiveTimers = this.state.board.paths.length;
     this.state.board.paths.forEach(
       (path) => {

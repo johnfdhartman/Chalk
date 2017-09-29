@@ -21,7 +21,6 @@ class Clock extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('clock component receiving props', nextProps);
     if (this.props.boardId !== nextProps.boardId) {
       this.resetClock.bind(this)();
       return null;
