@@ -88,7 +88,9 @@ class Playback extends React.Component {
       this.clearBoard.bind(this)();
       this.props.requestBoard(nextProps.boardId);
     }
-    if (this.props.board && !this.props.board.paths) {
+    if (this.props.board
+      && !this.props.board.paths
+      && nextProps.board.paths) {
       console.log('setting up new board', nextProps.board);
       this.setupBoard.bind(this)(nextProps.board);
     }
