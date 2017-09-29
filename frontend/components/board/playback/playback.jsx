@@ -51,9 +51,6 @@ class Playback extends React.Component {
     this.state.context.clearRect(0,0,
       this.state.canvas.width,
       this.state.canvas.height);
-    this.setState({
-      board: {id: null, paths: null}
-    });
   }
 
 
@@ -83,7 +80,9 @@ class Playback extends React.Component {
       && nextProps.board.stage === 'running'
     ) {
       console.log('state before setTimers', this.state);
-      this.setTimers.bind(this)();
+      if (this.props.board.paths) {
+        this.setTimers.bind(this)();
+      }
     }
     if (this.props.boardId !== nextProps.boardId) {
       this.clearBoard.bind(this)();
@@ -93,6 +92,13 @@ class Playback extends React.Component {
       console.log('setting up new board', nextProps.board);
       this.setupBoard.bind(this)(nextProps.board);
     }
+    if (nextProps.board && nextProps.board.paths
+      && this.state.board
+      && (nextProps.boardId !== this.state.board.id)) {
+
+      this.setupBoard.bind(this)(nextProps.board);
+    }
+
   }
 
   drawPath(path) {
@@ -135,6 +141,7 @@ class Playback extends React.Component {
 
 
   setTimers() {
+    console.log('state before set timers', this.state);
     this.numActiveTimers = this.state.board.paths.length;
     this.state.board.paths.forEach(
       (path) => {
