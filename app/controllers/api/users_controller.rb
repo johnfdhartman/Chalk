@@ -11,6 +11,16 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find_by(params[:id])
+    if @user
+      render 'api/users/show'
+    else
+      @errors = ["Cannot find user with id #{params[:id]}"]
+      render 'api/users/show', status: 404
+    end
+  end
+
   private
 
   def user_params
