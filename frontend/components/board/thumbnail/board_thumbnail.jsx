@@ -13,11 +13,13 @@ class BoardThumbnail extends React.Component {
 
   render(){
     return(
+      <Link to={`/show/${this.props.boardId}`}>
         <PlaybackContainer
           boardId={this.props.boardId}
           canvasId={'thumbnail-canvas'}
           dims={{height: '150', width: '225'}}
           />
+      </Link>
     );
   }
 }
