@@ -6,6 +6,7 @@ class Playback extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      paths: []
     };
     this.intervals = [];
     this.timeouts = [];
@@ -28,18 +29,19 @@ class Playback extends React.Component {
     });
   }
 
-
-  setupBoard(board) {
-    let newBoard = merge({}, board);
-    newBoard.paths = newBoard.paths.map( (path) => (
+  // only the path data of the board gets set to state
+  setupPaths(paths) {
+    paths = JSON.parse(JSON.stringify(paths));
+    let newPaths = paths.map( (path) => (
       this.scalePath.bind(this)(path)
     ));
     this.setState({
-      board: newBoard
+      paths: newPaths
     });
   }
 
   clearBoard() {
+    this.props.updateBoardStage('start');
     this.intervals.forEach( (interval) => {
       clearInterval(interval);
     });
@@ -49,6 +51,9 @@ class Playback extends React.Component {
     this.state.context.clearRect(0,0,
       this.state.canvas.width,
       this.state.canvas.height);
+    this.setState({
+      paths: []
+    });
   }
 
 
@@ -71,30 +76,56 @@ class Playback extends React.Component {
     return newPathCoord;
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.board
-      && this.props.board.stage === 'start'
-      && nextProps.board.stage === 'running'
-    ) {
-      if (this.props.board.paths) {
+  // componentWillReceiveProps(nextProps) {
+  //   if (!this.state.board && !this.state.board.paths
+  //     && nextProps.board && nextProps.state.board.paths) {
+  //       console.log('board set up');
+  //       this.setupBoard(nextProps.board);
+  //     }
+  //
+  //   if (this.props.board
+  //     && this.props.board.stage === 'start'
+  //     && nextProps.board.stage === 'running'
+  //   ) {
+  //     if (this.props.board.paths) {
+  //
+  //       this.setTimers.bind(this)();
+  //     }
+  //   }
+  //   if (this.props.boardId !== nextProps.boardId) {
+  //     this.clearBoard.bind(this)();
+  //     this.props.requestBoard(nextProps.boardId);
+  //   }
+  //   if (this.props.board
+  //     && !this.props.board.paths
+  //     && nextProps.board.paths) {
+  //     this.setupBoard.bind(this)(nextProps.board);
+  //   }
+  //   if (nextProps.board && nextProps.board.paths
+  //     && this.state.board
+  //     && (nextProps.boardId !== this.state.board.id)) {
+  //
+  //     this.setupBoard.bind(this)(nextProps.board);
+  //   }
+  //
+  // }
 
-        this.setTimers.bind(this)();
-      }
+  componentWillReceiveProps(nextProps) {
+    console.log('componentWillReceiveProps, nextProps:', nextProps);
+    console.log('state', this.state);
+    if ((this.state.paths.length === 0) && nextProps.paths) {
+      this.setupPaths.bind(this)(nextProps.paths);
     }
+
     if (this.props.boardId !== nextProps.boardId) {
       this.clearBoard.bind(this)();
       this.props.requestBoard(nextProps.boardId);
     }
-    if (this.props.board
-      && !this.props.board.paths
-      && nextProps.board.paths) {
-      this.setupBoard.bind(this)(nextProps.board);
-    }
-    if (nextProps.board && nextProps.board.paths
-      && this.state.board
-      && (nextProps.boardId !== this.state.board.id)) {
 
-      this.setupBoard.bind(this)(nextProps.board);
+    if (this.state.paths
+      && this.props.stage === 'start'
+      && nextProps.stage === 'running') {
+        this.setTimers.bind(this)();
     }
 
   }
@@ -139,8 +170,9 @@ class Playback extends React.Component {
 
 
   setTimers() {
-    this.numActiveTimers = this.state.board.paths.length;
-    this.state.board.paths.forEach(
+    console.log('state before setting timers', this.state);
+    this.numActiveTimers = this.state.paths.length;
+    this.state.paths.forEach(
       (path) => {
         let newTimeout = setTimeout(
           () => {
@@ -165,11 +197,5 @@ class Playback extends React.Component {
     );
   }
 }
-
-Playback.defaultProps = {
-  board: {
-    stage: 'start'
-  }
-};
 
 export default Playback;

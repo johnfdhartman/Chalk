@@ -8,9 +8,23 @@ import {
 } from '../../../actions/board_actions';
 
 const mapStateToProps = (state, ownProps) => {
+  let thisBoard = state.boards[ownProps.boardId];
+  let pathsProp;
+  if (thisBoard && thisBoard.paths) {
+    pathsProp = thisBoard.paths;
+  } else {
+    pathsProp = [];
+  }
+  let stageProp;
+  if (thisBoard && thisBoard.stage) {
+    stageProp = thisBoard.stage;
+  } else {
+    stageProp = 'start';
+  }
   return {
     boardId: ownProps.boardId,
-    board: state.boards[ownProps.boardId],
+    stage: stageProp,
+    paths: pathsProp,
     dims: ownProps.dims,
     canvasId: ownProps.canvasId
   };
