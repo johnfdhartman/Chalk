@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
   preloadedState.errors = {
     sessionErrors: [],
     boardsErrors: [],
+    usersErrors: []
   };
   if (window.currentUser) {
     preloadedState.session = {currentUser: window.currentUser};
