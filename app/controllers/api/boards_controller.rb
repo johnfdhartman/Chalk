@@ -37,6 +37,11 @@ class Api::BoardsController < ApplicationController
     end
   end
 
+  def recent_boards
+    @boards = Board.all.offset(9* (page - 1)).limit(9).order(:created_at)
+    render 'api/boards/index'
+  end
+
   private
 
   def normalize_paths(paths, dims)

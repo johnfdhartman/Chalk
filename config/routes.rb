@@ -7,5 +7,6 @@ Rails.application.routes.draw do
     resources :boards, only: [:create, :show]
 
     get 'users/:user_id/boards/:page', to: 'boards#user_boards'
+    get 'boads/recent/:page', to: 'boards#recent_boards'
   end
 end
