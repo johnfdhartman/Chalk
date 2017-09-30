@@ -1,24 +1,53 @@
 import React from 'react';
-import NavContainer from '../nav/nav_container';
+import ThumbnailContainer from '../board/thumbnail/board_thumbnail_container';
 
 class Dashboard extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      thumbnails: []
+    };
   }
+
+  componentWillMount() {
+    this.props.requestRecentBoards(1);
+  }
+
+  storeThumbnails(boards) {
+    let thumbnails = Object.values(boards);
+    let thumbnailComponents = thumbnails.map( (thumbnail) => (
+      <div key={thumbnail.id}
+        className='thumbnail-wrapper'>
+        <ThumbnailContainer boardId={thumbnail.id}/>
+        <div className='thumb-info'>
+          <div className='thumb-title'>
+            {'"'+thumbnail.title+'"'}
+          </div>
+          <div className='thumb-author'>
+            by {thumbnail.author.username}
+          </div>
+        </div>
+       </div>
+    ));
+    this.setState({
+      thumbnails: thumbnailComponents
+    });
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (this.state.thumbnails.length === 0
+      && Object.values(nextProps.boards).length > 0) {
+      this.storeThumbnails.bind(this)(Object.values(nextProps.boards));
+    }
+  }
+
 
   render(){
     return(
-      <div>
-        <div id='dashboard'>
-          <h1>Dashboard Presentational!</h1>
-          HECK HECK
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-      In imperdiet ornare erat ac consequat. Nunc sed odio vitae metus
-      efficitur aliquet ut et orci. Pellentesque mollis enim non blandit congue.
-      Etiam nec lobortis tellus, non mattis ligula. Sed vehicula lacus vel justo pretium
-     consectetur. Morbi lacinia tellus sit amet metus facilisis porta. Maecenas tortor orci,
-     condimentum eu augue eget, luctus varius erat. Mauris in libero eu ipsum volutpat mollis.
-     Sed luctus dolor ullamcorper, efficitur urna non, dignissim sapien.
+      <div id='dashboard'>
+        <h2> Dashboard </h2>
+        <div id='dashboard-thumbnails'>
+          {this.state.thumbnails}
         </div>
       </div>
     );
