@@ -35,7 +35,6 @@ class BoardThumbnail extends React.Component {
 
   render(){
     let dims = this.state.dims;
-    console.log('rerendering with dims', dims);
     return(
 
       <Link to={`/show/${this.props.boardId}`}>
