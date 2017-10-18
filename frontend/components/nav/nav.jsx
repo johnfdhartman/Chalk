@@ -21,7 +21,7 @@ class Nav extends React.Component {
   renderWelcome() {
     if (this.props.currentUser) {
       return (
-        <li>
+        <li className='welcome'>
           Welcome, {this.props.currentUser.username}
         </li>
       );
@@ -82,10 +82,10 @@ class Nav extends React.Component {
     let profile = this.renderProfile.bind(this)();
     let sessionButton = this.renderSessionButton.bind(this)();
     return(
-      <ul>
-        <li id='logo'>LOGO</li>
+      <ul className='nav'>
+        <li className='logo'>LOGO</li>
         <li>
-          <input id='search'
+          <input className='search'
             value={this.state.inputVal}
             onChange={this.handleInput.bind(this)}/>
         </li>

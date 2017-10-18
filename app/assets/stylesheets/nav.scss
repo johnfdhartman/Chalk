@@ -1,7 +1,7 @@
 //require_self
 
 
-nav {
+.nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -11,74 +11,4 @@ nav {
   height: 12vh;
   padding-right: 5%;
   padding-left: 5%;
-}
-
-nav h3 {
-
-  font-size: 3vw;
-  letter-spacing: 2px;
-}
-
-nav .nav-button {
-  letter-spacing: 3px;
-  display:flex;
-  justify-content: center;
-  width: 100%;
-  font-size: 2vw;
-  padding: 5px;
-  text-decoration: none;
-}
-
-nav .nav-button:hover {
-  letter-spacing: 3px;
-  width:100%;
-}
-nav .search {
-  height: 8vh;
-  margin-left: 3%;
-}
-
-nav .logo {
-
-}
-
-nav .welcome-logout {
-  display:flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 12vw;
-  text-align: center;
-  padding-right: 10px;
-}
-
-nav .session-bar {
-  position: relative;
-  display:flex;
-  justify-content: space-between;
-  align-content: space-between;
-}
-
-
-.nav-button:hover {
-}
-
-.logout {
-  width: 100%;
-}
-
-.profile {
-  position: absolute;
-  background-image: url('http://res.cloudinary.com/dce7smh6y/image/upload/v1506018610/profile_icon_yfyi76.png');
-  background-position: 50%;
-  background-size: cover;
-  padding: 3%;
-  border: none;
-  width: 20%;
-  height: 20%;
-}
-
-nav .welcome {
-  font-size: 2.5vw;
-  margin-bottom: 10px;
 }
