@@ -27,6 +27,7 @@ class BoardThumbnail extends React.Component {
         height: width * 0.75
       }
     });
+    console.log(`resizing with dims ${this.state.dims.width}, ${this.state.dims.height}`);
   }
 
   handleResize(event) {

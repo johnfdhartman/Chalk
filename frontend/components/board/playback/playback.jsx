@@ -96,6 +96,16 @@ class Playback extends React.Component {
         this.setTimers.bind(this)();
     }
 
+    if (this.props.dims !== nextProps.dims) {
+      console.log(`playback resizing with dims ${nextProps.dims.width}, ${nextProps.dims.height}`);
+      this.resizeCanvas.bind(this)(nextProps.dims);
+    }
+
+  }
+
+  resizeCanvas(dims) {
+    this.canvasRef.width = dims.width;
+    this.canvasRef.height = dims.height;
   }
 
   componentWillUnmount() {
