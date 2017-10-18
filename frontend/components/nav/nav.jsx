@@ -21,26 +21,26 @@ class Nav extends React.Component {
   renderSessionBar() {
     if (this.props.currentUser) {
       return (
-        <div id='session-bar'>
-          <div id='welcome'>
-            Welcome, {this.props.currentUser.username}
+        <div className='session-bar'>
+          <div className='welcome-logout'>
+            <div className='welcome'>
+              Welcome, {this.props.currentUser.username}
+            </div>
+            <button
+              className='nav-button white-button logout'
+              onClick={this.handleLogout.bind(this)}>
+              LOGOUT
+            </button>
           </div>
-          <button
-            id='logout'
-            className='nav-button white-button'
-            onClick={this.handleLogout.bind(this)}>
-            LOGOUT
-          </button>
           <Link
             to={`/users/${this.props.currentUser.id}`}
-            id='profile'
-            className='nav-button white-button'
+            className='nav-button white-button profile'
             />
         </div>
       );
     } else {
       return (
-        <div id='session-bar'>
+        <div className='session-bar'>
           <div>
 
             <Link
