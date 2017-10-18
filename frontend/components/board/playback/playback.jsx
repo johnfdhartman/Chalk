@@ -1,6 +1,7 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 import merge from 'lodash/merge';
+import {drawToCanvas} from 'draw-to-canvas';
 
 class Playback extends React.Component {
   constructor(props) {
@@ -97,13 +98,16 @@ class Playback extends React.Component {
     }
 
     if (this.props.dims !== nextProps.dims) {
-      console.log(`playback resizing with dims ${nextProps.dims.width}, ${nextProps.dims.height}`);
       this.resizeCanvas.bind(this)(nextProps.dims);
     }
 
   }
 
   resizeCanvas(dims) {
+    let canvasCopy = this.state.canvas;
+    let contextCopy = this.state.context;
+
+
     this.canvasRef.width = dims.width;
     this.canvasRef.height = dims.height;
   }
