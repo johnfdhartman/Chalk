@@ -20,19 +20,8 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def update_display_picture
-    @user = User.find_by(id: params[:id])
-    if @user
-      @user.display_picture = params[:display_picture]
-      if @user.save
-        render 'api/users/show'
-      else
-        @errors = @user.errors.full_messages
-        render 'api/users/show/', status: 422
-      end
-    else
-      no_user_error(params[:id])
-    end
+  def update
+    
   end
 
   private
@@ -44,5 +33,9 @@ class Api::UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :password)
+  end
+
+  def update_params
+    params.require(:user).permit(:bio, :display_picture)
   end
 end

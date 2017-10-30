@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
 
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :require_authorized_user
 
   def login(user)
     user.reset_session_token!
@@ -23,4 +23,13 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def require_authorized_user(authorized_user)
+    # redirects to a 403 error unless the current user's id is equal
+    #to the authorized user's id
+    unless current_user && current_user.id == id
+      @errors = ["You are not authorized to do this. Sign in as  \n
+        #{authorized_user.username} \n and try again" ]
+      redirect_to 'api/users/show', status: 403
+    end
+  end
 end
