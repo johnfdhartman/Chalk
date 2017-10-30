@@ -16,12 +16,31 @@ class Api::UsersController < ApplicationController
     if @user
       render 'api/users/show'
     else
-      @errors = ["Cannot find user with id #{params[:id]}"]
-      render 'api/users/show', status: 404
+      no_user_error(params[:id])
+    end
+  end
+
+  def update_display_picture
+    @user = User.find_by(id: params[:id])
+    if @user
+      @user.display_picture = params[:display_picture]
+      if @user.save
+        render 'api/users/show'
+      else
+        @errors = @user.errors.full_messages
+        render 'api/users/show/', status: 422
+      end
+    else
+      no_user_error(params[:id])
     end
   end
 
   private
+
+  def no_user_error(id)
+    @errors = ["Cannot find user with id #{id}"]
+    render 'api/users/show/', status: 404
+  end
 
   def user_params
     params.require(:user).permit(:username, :password)
