@@ -24,3 +24,10 @@ export const requestUser = id => dispatch => (
     errors => dispatch(receiveUserErrors(errors))
   )
 );
+
+export const requestUpdateUser = (id, userData) => dispatch => (
+  Api.updateUser(id, userData).then(
+    user => dispatch(receiveUser(user)),
+    errors => dispatch(receiveUserErrors(errors))
+  )
+);
