@@ -113,6 +113,25 @@ class UserInfo extends React.Component {
   //   }
   // }
 
+  renderDisplayBio() {
+    let bio = (this.props.user ? this.props.user.bio : 'Loading...');
+    let editButton = (
+      <button
+        className='edit-bio'
+        onClick={this.handleEditBioClick}>
+        Edit!
+      </button>
+    );
+    return(
+      <div className='bio-box display'>
+        <div className='bio display'>
+          {bio}
+        </div>
+        {editButton}
+      </div>
+    );
+  }
+
   render(){
     let bio = (this.props.user ? this.props.user.bio : 'Loading...');
     return(

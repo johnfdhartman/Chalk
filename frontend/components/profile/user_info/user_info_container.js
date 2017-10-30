@@ -8,7 +8,8 @@ import UserInfo from './user_info';
 const mapStateToProps = (state, ownProps) => ({
   userId: ownProps.userId,
   user: state.users[ownProps.userId],
-  session: state.session
+  session: state.session,
+  isCurrentUser: (state.session.currentUser.id === ownProps.userId)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
