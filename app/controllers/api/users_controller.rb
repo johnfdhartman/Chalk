@@ -21,7 +21,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    require_authorized_user(params[:id])
+    verify_user(params[:id]) or return
+    @user = User.find_by(id: params[:id])
     if @user.update(update_params)
       render 'api/users/show/'
     else
