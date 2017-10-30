@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
       authorized_user = User.find_by(id: authorized_user_id)
       @errors = ["You are not authorized to do this. Sign in as  \n
         #{authorized_user.username} \n and try again" ]
-      redirect_to('/api/users/show', status: 403) and return
+      render('/api/users/show', status: 403) and return
     end
 
     return true

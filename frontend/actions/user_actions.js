@@ -21,13 +21,13 @@ export const receiveUserErrors = (userErrors) => {
 export const requestUser = id => dispatch => (
   Api.fetchUser(id).then(
     user => dispatch(receiveUser(user)),
-    errors => dispatch(receiveUserErrors(errors))
+    errors => dispatch(receiveUserErrors(errors.responseJSON.errors))
   )
 );
 
 export const requestUpdateUser = (id, userData) => dispatch => (
   Api.updateUser(id, userData).then(
     user => dispatch(receiveUser(user)),
-    errors => dispatch(receiveUserErrors(errors))
+    errors => dispatch(receiveUserErrors(errors.responseJSON.errors))
   )
 );

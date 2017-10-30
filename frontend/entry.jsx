@@ -4,7 +4,7 @@ import {configureStore} from './store/store';
 import Root from './components/root';
 
 import {requestRecentBoards} from './actions/board_actions';
-import {requestUser} from './actions/user_actions';
+import {requestUser, requestUpdateUser} from './actions/user_actions';
 import {updateUser} from './util/user_util';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   window.requestUser = requestUser;
   window.updateUser = updateUser;
+  window.requestUpdateUser = requestUpdateUser;
   window.requestRecentBoards = requestRecentBoards;
   window.store = store;
 
