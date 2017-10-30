@@ -21,7 +21,14 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    
+    require_authorized_user(params[:id])
+    @user = current_user
+    if @user.update(update_params)
+      render 'api/users/show/'
+    else
+      @errors = @user.errors.full_messages
+      render 'api/users/show', status: 422
+    end
   end
 
   private
