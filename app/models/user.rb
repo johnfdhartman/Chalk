@@ -8,11 +8,13 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: 'Board'
 
-  has_attached_file :display_picture, styles: {
-    thumb: '100x100>',
-    square: '200x200#',
-    medium: '300x300>'
-  }
+  has_attached_file :display_picture,
+    styles: {
+      thumb: '100x100>',
+      square: '200x200#',
+      medium: '300x300>'
+    }, default_url: 'http://res.cloudinary.com/dce7smh6y/image/upload/v1509329700/default_display_picture_rwlu1f.png'
+    
 
   validates_attachment_content_type :display_picture, :content_type => /\Aimage\/.*\Z/
 
