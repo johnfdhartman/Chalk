@@ -22,7 +22,6 @@ class Api::UsersController < ApplicationController
 
   def update
     require_authorized_user(params[:id])
-    @user = current_user
     if @user.update(update_params)
       render 'api/users/show/'
     else

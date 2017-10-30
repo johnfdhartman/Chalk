@@ -4,7 +4,8 @@ import {configureStore} from './store/store';
 import Root from './components/root';
 
 import {requestRecentBoards} from './actions/board_actions';
-import {requestUser, updateUser} from './actions/user_actions';
+import {requestUser} from './actions/user_actions';
+import {updateUser} from './util/user_util';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
