@@ -2,12 +2,16 @@ import React from 'react';
 import ThumbnailContainer from '../board/thumbnail/board_thumbnail_container';
 import UserInfoContainer from './user_info/user_info_container';
 import Modal from 'react-modal';
+import update from 'immutability-helper';
+
+//Extra thanks to Brian Emil Hartz (http://www.hartzis.me/react-image-upload/)
+//for writin a tutorial to help with this
 
 class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      thumbnails: []
+      thumbnails: [],
     };
   }
 
@@ -55,50 +59,6 @@ class Profile extends React.Component {
       });
       this.props.requestUserBoards(this.props.userId, 1);
     }
-  }
-
-  _handlePictureSubmit(event) {
-    //do this later
-  }
-
-  displayPictureModal() {
-    let modalStyle = {
-      content : {
-        height: '20vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        paddingBottom: '0',
-        top                   : '50%',
-        left                  : '50%',
-        right                 : 'auto',
-        bottom                : 'auto',
-        marginRight           : '-50%',
-        transform             : 'translate(-50%, -50%)',
-      }
-    };
-
-    let isOpen = true; //for testing purposes. this will change
-
-    return (
-      <Modal
-        id='display-picture-modal'
-        isOpen={isOpen}
-        contentLabel='Modal'
-        style={modalStyle}>
-
-        <div className='modal-content'>
-          Want to change your display picture?
-        </div>
-        <form onSubmit={this._handlePictureSubmit}>
-          <input type='file'/>
-          <button type='submit' onClick={this._handleSubmit}>
-            Upload Image
-          </button>
-        </form>
-      </Modal>
-    );
   }
 
 

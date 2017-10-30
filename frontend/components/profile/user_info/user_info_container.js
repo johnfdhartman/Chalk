@@ -1,5 +1,8 @@
 import {connect} from 'react-redux';
-import {requestUser} from '../../../actions/user_actions';
+import {
+  requestUser,
+  requestUpdateUser
+} from '../../../actions/user_actions';
 import UserInfo from './user_info';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,8 +11,11 @@ const mapStateToProps = (state, ownProps) => ({
   session: state.session
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  requestUser: id => dispatch(requestUser(id))
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  requestUser: id => dispatch(requestUser(id)),
+  requestUpdateUser: (userData) => (
+    dispatch(requestUpdateUser(ownProps.match.params.userId, userData))
+  )
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);

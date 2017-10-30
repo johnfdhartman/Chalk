@@ -6,6 +6,7 @@ import Root from './components/root';
 import {requestRecentBoards} from './actions/board_actions';
 import {requestUser, requestUpdateUser} from './actions/user_actions';
 import {updateUser} from './util/user_util';
+import update from 'immutability-helper';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -27,6 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.updateUser = updateUser;
   window.requestUpdateUser = requestUpdateUser;
   window.requestRecentBoards = requestRecentBoards;
+  window.update = update;
   window.store = store;
 
   ReactDOM.render(
