@@ -8,6 +8,14 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: 'Board'
 
+  has_attached_file :display_picture, styles: {
+    thumb: '100x100>',
+    square: '200x200#',
+    medium: '300x300>'
+  }
+
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   attr_reader :password
 
   after_initialize :ensure_session_token
