@@ -1,6 +1,7 @@
 import React from 'react';
 import ThumbnailContainer from '../board/thumbnail/board_thumbnail_container';
 import UserInfoContainer from './user_info/user_info_container';
+import Modal from 'react-modal';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -56,10 +57,55 @@ class Profile extends React.Component {
     }
   }
 
+  _handlePictureSubmit(event) {
+    //do this later
+  }
+
+  displayPictureModal() {
+    let modalStyle = {
+      content : {
+        height: '20vh',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        paddingBottom: '0',
+        top                   : '50%',
+        left                  : '50%',
+        right                 : 'auto',
+        bottom                : 'auto',
+        marginRight           : '-50%',
+        transform             : 'translate(-50%, -50%)',
+      }
+    };
+
+    let isOpen = true; //for testing purposes. this will change
+
+    return (
+      <Modal
+        id='display-picture-modal'
+        isOpen={isOpen}
+        contentLabel='Modal'
+        style={modalStyle}>
+
+        <div className='modal-content'>
+          Want to change your display picture?
+        </div>
+        <form onSubmit={this._handlePictureSubmit}>
+          <input type='file'/>
+          <button type='submit' onClick={this._handleSubmit}>
+            Upload Image
+          </button>
+        </form>
+      </Modal>
+    );
+  }
+
 
   render() {
     return(
       <div className='profile'>
+        {this.displayPictureModal()}
         <UserInfoContainer userId={this.props.userId}/>
         <div className='thumbnails'>
           {this.state.thumbnails}
