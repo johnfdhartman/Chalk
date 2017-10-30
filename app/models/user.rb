@@ -14,7 +14,7 @@ class User < ApplicationRecord
     medium: '300x300>'
   }
 
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :display_picture, :content_type => /\Aimage\/.*\Z/
 
   attr_reader :password
 
