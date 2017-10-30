@@ -65,7 +65,6 @@ class Profile extends React.Component {
   render() {
     return(
       <div className='profile'>
-        {this.displayPictureModal()}
         <UserInfoContainer userId={this.props.userId}/>
         <div className='thumbnails'>
           {this.state.thumbnails}
