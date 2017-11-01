@@ -9,7 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
   userId: ownProps.userId,
   user: state.users[ownProps.userId],
   session: state.session,
-  isCurrentUser: (state.session.currentUser.id === ownProps.userId)
+  isCurrentUser: (state.session.currentUser.id === ownProps.userId),
+  ui: state.ui
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
