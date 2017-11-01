@@ -13,6 +13,9 @@ class UserInfo extends React.Component {
     this._handleSubmit = this._handleSubmit.bind(this);
     this._handleNewImage = this._handleNewImage.bind(this);
     this.handleEditBioClick = this.handleEditBioClick.bind(this);
+    this.handleEditBioChange = this.handleEditBioChange.bind(this);
+    this.renderDisplayBio = this.renderDisplayBio.bind(this);
+    this.renderEditBio = this.renderEditBio.bind(this);
   }
 
   componentWillMount(){
@@ -29,8 +32,19 @@ class UserInfo extends React.Component {
     let newState = update(
       this.state,
       {
-        updateParams: {bio: this.props.user.bio},
-        editing: true
+        updateParams: {bio: {$set: this.props.user.bio}},
+        editing: {$set: true}
+      }
+    );
+    this.setState(newState);
+    console.log('this.state', this.state);
+  }
+
+  handleEditBioChange(event) {
+    let newState = update(
+      this.state,
+      {
+        updateParams: {bio: {$set: event.target.value}}
       }
     );
     this.setState(newState);
@@ -113,6 +127,22 @@ class UserInfo extends React.Component {
   //   }
   // }
 
+
+
+  renderEditBio() {
+    let bio = (this.props.user.bio);
+    return(
+      <textarea
+        type='text'
+        className='bio-input'
+        value={this.state.updateParams.bio}
+        onChange={this.handleEditBioChange}
+        rows='50'
+        cols='50'
+        />
+    );
+  }
+
   renderDisplayBio() {
     let bio = (this.props.user ? this.props.user.bio : 'Loading...');
     let editButton = (
@@ -133,14 +163,12 @@ class UserInfo extends React.Component {
   }
 
   render(){
-    let bio = (this.props.user ? this.props.user.bio : 'Loading...');
     return(
       <div className='user-info'>
         {this.displayPictureModal.bind(this)()}
         <h2>User info!</h2>
-        <div className='bio'>
-          {bio}
-        </div>
+        {this.state.editing ?
+          this.renderEditBio() : this.renderDisplayBio() }
       </div>
     );
   }
