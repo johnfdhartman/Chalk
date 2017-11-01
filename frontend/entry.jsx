@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {configureStore} from './store/store';
 import Root from './components/root';
-import preloadedState from './store/preloadedState.js';
+import preloadedState from './store/preloaded_state.js';
 
 import {requestRecentBoards} from './actions/board_actions';
 import {requestUser, requestUpdateUser} from './actions/user_actions';
