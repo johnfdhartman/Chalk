@@ -1,8 +1,15 @@
 import {connect} from 'react-redux';
+
 import {
   requestUser,
   requestUpdateUser
 } from '../../../actions/user_actions';
+
+import {
+  openBioEditor,
+  closeBioEditor
+} from '../../../actions/ui_actions';
+
 import UserInfo from './user_info';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -17,7 +24,9 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   requestUser: id => dispatch(requestUser(id)),
   requestUpdateUser: (userData) => (
     dispatch(requestUpdateUser(ownProps.match.params.userId, userData))
-  )
+  ),
+  openBioEditor: () => dispatch(openBioEditor()),
+  closeBioEditor: () => dispatch(closeBioEditor())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);
