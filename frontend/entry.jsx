@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {configureStore} from './store/store';
 import Root from './components/root';
+import preloadedState from './store/preloadedState.js';
 
 import {requestRecentBoards} from './actions/board_actions';
 import {requestUser, requestUpdateUser} from './actions/user_actions';
@@ -10,20 +11,8 @@ import update from 'immutability-helper';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
-  let preloadedState = {};
-  preloadedState.errors = {
-    sessionErrors: [],
-    boardsErrors: [],
-    usersErrors: []
-  };
-  if (window.currentUser) {
-    preloadedState.session = {currentUser: window.currentUser};
-    delete window.currentUser;
-  }
+
   store = configureStore(preloadedState);
-
-  //For testing purposes only
-
   window.requestUser = requestUser;
   window.updateUser = updateUser;
   window.requestUpdateUser = requestUpdateUser;
