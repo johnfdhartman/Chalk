@@ -12,7 +12,13 @@ import update from 'immutability-helper';
 document.addEventListener('DOMContentLoaded', () => {
   let store;
 
+  if (window.currentUser) {
+      preloadedState.session.currentUser = window.currentUser;
+      delete window.currentUser;
+  }
+
   store = configureStore(preloadedState);
+
   window.requestUser = requestUser;
   window.updateUser = updateUser;
   window.requestUpdateUser = requestUpdateUser;

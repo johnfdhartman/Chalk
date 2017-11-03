@@ -8,12 +8,10 @@ let preloadedState =  {
     bio: {
       editing: false
     }
+  },
+  session: {
+    
   }
 };
-
-if (window.currentUser) {
-    preloadedState.session.currentUser = window.currentUser;
-    delete window.currentUser;
-}
 
 export default preloadedState;

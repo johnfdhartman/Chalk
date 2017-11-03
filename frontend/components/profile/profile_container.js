@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  requestUserBoards: (page) => (
-    dispatch(requestUserBoards(ownProps.match.params.userId, page)))
+  requestUserBoards: (userId, page) => (
+    dispatch(requestUserBoards(userId, page)))
 });
 
 export default withRouter(
