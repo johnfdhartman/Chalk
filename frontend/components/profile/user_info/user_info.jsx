@@ -6,6 +6,7 @@ class UserInfo extends React.Component {
     this.renderDisplayBio = this.renderDisplayBio.bind(this);
     this.renderEditBio = this.renderEditBio.bind(this);
     this.handleEditBioChange = this.handleEditBioChange.bind(this);
+    this.handleSaveBioClick = this.handleSaveBioClick.bind(this);
     this.state = {};
   }
 
@@ -47,18 +48,26 @@ class UserInfo extends React.Component {
     });
   }
 
+  handleSaveBioClick(event) {
+    this.props.requestUpdateUser({
+      bio: this.state.bio
+    });
+    this.props.closeBioEditor();
+  }
+
   renderEditBio() {
     return (
       <div className='bio-container edit'>
-        <div className='bio'>
-          <textarea
-            rows='5'
-            cols='50'
-            defaultValue={this.state.bio}
-            onChange={this.handleEditBioChange}
-            >
-          </textarea>
-        </div>
+        <textarea
+          className='bio bio-edit'
+          rows='5'
+          cols='50'
+          defaultValue={this.state.bio}
+          onChange={this.handleEditBioChange}/>
+        <button className='save-bio-button'
+          onClick={this.handleSaveBioClick}>
+          Save Changes
+        </button>
       </div>
     );
   }

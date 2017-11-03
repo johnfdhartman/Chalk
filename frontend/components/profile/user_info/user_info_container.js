@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
   requestUser: id => dispatch(requestUser(id)),
   requestUpdateUser: (userData) => (
-    dispatch(requestUpdateUser(ownProps.match.params.userId, userData))
+    dispatch(requestUpdateUser(ownProps.userId, userData))
   ),
   openBioEditor: () => dispatch(openBioEditor()),
   closeBioEditor: () => dispatch(closeBioEditor())
