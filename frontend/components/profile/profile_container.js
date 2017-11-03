@@ -9,6 +9,9 @@ const mapStateToProps = (state, ownProps) => ({
   errors: state.errors,
   boards: state.boards,
   userId: ownProps.match.params.userId,
+  isCurrentUser: (state.session.currentUser &&
+    (state.session.currentUser.id === ownProps.match.params.userId)),
+  ui: state.ui
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
