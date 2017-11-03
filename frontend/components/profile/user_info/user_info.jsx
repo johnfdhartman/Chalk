@@ -5,10 +5,22 @@ class UserInfo extends React.Component {
     super(props);
     this.renderDisplayBio = this.renderDisplayBio.bind(this);
     this.renderEditBio = this.renderEditBio.bind(this);
+    this.handleEditBioChange = this.handleEditBioChange.bind(this);
+    this.state = {};
   }
 
   componentWillMount(){
     this.props.requestUser(this.props.userId);
+  }
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.user && nextProps.user.bio &&
+      (!this.props.user || this.props.user.bio !== nextProps.user.bio)
+      ) {
+      this.setState({
+        bio: nextProps.user.bio
+      });
+    }
   }
 
   renderBio() {
@@ -29,14 +41,22 @@ class UserInfo extends React.Component {
     this.props.openBioEditor();
   }
 
+  handleEditBioChange(event) {
+    this.setState({
+      bio: event.target.value
+    });
+  }
+
   renderEditBio() {
     return (
       <div className='bio-container edit'>
         <div className='bio'>
           <textarea
             rows='5'
-            cols='50'>
-            your text here
+            cols='50'
+            defaultValue={this.state.bio}
+            onChange={this.handleEditBioChange}
+            >
           </textarea>
         </div>
       </div>
