@@ -12,7 +12,7 @@ let preloadedState =  {
 };
 
 if (window.currentUser) {
-    preloadedState.session = {currentUser: window.currentUser};
+    preloadedState.session.currentUser = window.currentUser;
     delete window.currentUser;
 }
 
