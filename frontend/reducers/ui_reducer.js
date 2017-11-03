@@ -10,14 +10,14 @@ export const uiReducer = (uiSlice = {}, action) => {
   switch(action.type) {
     case OPEN_BIO_EDITOR:
       newSlice = merge({}, uiSlice);
-      newSlice.ui.bio = newSlice.ui.bio || {};
-      newSlice.ui.bio.editing = true;
+      newSlice.bio = newSlice.bio || {};
+      newSlice.bio.editing = true;
       return newSlice;
 
     case CLOSE_BIO_EDITOR:
       newSlice = merge({}, uiSlice);
-      newSlice.ui.bio = newSlice.ui.bio || {};
-      newSlice.ui.bio.editing = false;
+      newSlice.bio = newSlice.bio || {};
+      newSlice.bio.editing = false;
       return newSlice;
 
     default:
