@@ -5,6 +5,7 @@ class UserInfo extends React.Component {
     super(props);
     this.renderDisplayBio = this.renderDisplayBio.bind(this);
     this.renderEditBio = this.renderEditBio.bind(this);
+    this.renderEditButton = this.renderEditButton.bind(this);
     this.handleEditBioChange = this.handleEditBioChange.bind(this);
     this.handleSaveBioClick = this.handleSaveBioClick.bind(this);
     this.state = {};
@@ -15,6 +16,12 @@ class UserInfo extends React.Component {
   }
 
   componentWillReceiveProps(nextProps){
+
+    if (this.props.userId !== nextProps.userId) {
+      this.props.requestUser(nextProps.userId);
+    }
+
+    //display bio when it's received or changed
     if (nextProps.user && nextProps.user.bio &&
       (!this.props.user || this.props.user.bio !== nextProps.user.bio)
       ) {
@@ -55,6 +62,19 @@ class UserInfo extends React.Component {
     this.props.closeBioEditor();
   }
 
+  renderEditButton() {
+    if (this.props.isCurrentUser) {
+      return (
+        <button className='edit-bio-button'
+          onClick={this.handleEditButtonClick.bind(this)}>
+          Edit!
+        </button>
+      );
+    } else {
+      return (<div></div>);
+    }
+  }
+
   renderEditBio() {
     return (
       <div className='bio-container edit'>
@@ -75,16 +95,13 @@ class UserInfo extends React.Component {
   renderDisplayBio() {
     let bioText = (this.props.user && this.props.user.bio ?
       this.props.user.bio : 'Loading...');
-
+    let editButton = this.renderEditButton();
     return (
       <div className='bio-container display'>
         <div className='bio'>
           {bioText}
         </div>
-        <button className='edit-bio-button'
-          onClick={this.handleEditButtonClick.bind(this)}>
-          Edit!
-        </button>
+        {editButton}
       </div>
     );
   }
