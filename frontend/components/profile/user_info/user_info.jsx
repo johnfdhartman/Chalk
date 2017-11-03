@@ -13,6 +13,9 @@ class UserInfo extends React.Component {
 
   componentWillMount(){
     this.props.requestUser(this.props.userId);
+    console.log('this.props.userId', this.props.userId);
+    console.log('this.props.currentUserId', this.props.currentUserId);
+    console.log('this.props.isCurrentUser', this.props.isCurrentUser);
   }
 
   componentWillReceiveProps(nextProps){
@@ -34,7 +37,7 @@ class UserInfo extends React.Component {
   renderBio() {
     if (!this.props.user ||
       !this.props.user.bio ||
-      !this.props.ui.bio.editing) {
+      !this.props.ui.profile.bio.editing) {
         return (
           this.renderDisplayBio()
         );
@@ -60,6 +63,22 @@ class UserInfo extends React.Component {
       bio: this.state.bio
     });
     this.props.closeBioEditor();
+  }
+
+  renderBioText() {
+    // If the field is null, the user doesn't have a bio
+    // If it is undefined, it hasn't loaded yet.
+    let emptyBioMessage = (this.props.isCurrentUser
+      ?  "Looks like you haven't written a profile yet. Would you like to?"
+      :  "Looks like this user hasn't written one of these yet!" );
+    if (this.props.user && this.props.user.bio){
+      return this.props.user.bio;
+    } else if (this.props.user && this.props.user.bio !== undefined) {
+      return emptyBioMessage;
+    } else {
+      console.log('this.props.user', this.props.user);
+      return 'Loading...';
+    }
   }
 
   renderEditButton() {
@@ -93,8 +112,7 @@ class UserInfo extends React.Component {
   }
 
   renderDisplayBio() {
-    let bioText = (this.props.user && this.props.user.bio ?
-      this.props.user.bio : 'Loading...');
+    let bioText = this.renderBioText.bind(this)();
     let editButton = this.renderEditButton();
     return (
       <div className='bio-container display'>

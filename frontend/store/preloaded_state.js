@@ -5,12 +5,10 @@ let preloadedState =  {
     usersErrors: []
   },
   ui: {
-    bio: {
-      editing: false
-    }
+    
   },
   session: {
-    
+
   }
 };
 

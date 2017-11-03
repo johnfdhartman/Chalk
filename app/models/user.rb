@@ -14,7 +14,7 @@ class User < ApplicationRecord
       square: '200x200#',
       medium: '300x300>'
     }, default_url: 'http://res.cloudinary.com/dce7smh6y/image/upload/v1509329700/default_display_picture_rwlu1f.png'
-    
+
 
   validates_attachment_content_type :display_picture, :content_type => /\Aimage\/.*\Z/
 

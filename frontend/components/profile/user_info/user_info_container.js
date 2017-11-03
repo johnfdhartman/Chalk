@@ -16,14 +16,15 @@ const mapStateToProps = (state, ownProps) => ({
   userId: ownProps.userId,
   user: state.users[ownProps.userId],
   session: state.session,
-  isCurrentUser: (state.session.currentUser.id === ownProps.userId),
+  isCurrentUser: (parseInt(state.session.currentUser.id) === parseInt(ownProps.userId)),
+  currentUserId: state.session.currentUser.id,
   ui: state.ui
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   requestUser: id => dispatch(requestUser(id)),
   requestUpdateUser: (userData) => (
-    dispatch(requestUpdateUser(ownProps.match.params.userId, userData))
+    dispatch(requestUpdateUser(ownProps.userId, userData))
   ),
   openBioEditor: () => dispatch(openBioEditor()),
   closeBioEditor: () => dispatch(closeBioEditor())
