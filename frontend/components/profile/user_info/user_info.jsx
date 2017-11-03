@@ -30,7 +30,17 @@ class UserInfo extends React.Component {
   }
 
   renderEditBio() {
-    return (<div>a</div>);
+    return (
+      <div className='bio-container edit'>
+        <div className='bio'>
+          <textarea
+            rows='5'
+            cols='50'>
+            your text here
+          </textarea>
+        </div>
+      </div>
+    );
   }
 
   renderDisplayBio() {
