@@ -37,7 +37,11 @@ class UserInfo extends React.Component {
   renderBio() {
     if (!this.props.user ||
       !this.props.user.bio ||
-      !this.props.ui.profile.bio.editing) {
+        (!this.props.ui
+        || !this.props.ui.profile
+        || !this.props.ui.profile.bio
+        || !this.props.ui.profile.bio.editing
+      )) {
         return (
           this.renderDisplayBio()
         );
