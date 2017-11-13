@@ -10,7 +10,7 @@ import {
   closeBioEditor
 } from '../../../actions/ui_actions';
 
-import Bio from './user_info';
+import Bio from './bio';
 
 const mapStateToProps = (state, ownProps) => ({
   userId: ownProps.userId,

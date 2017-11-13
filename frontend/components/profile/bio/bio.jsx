@@ -90,9 +90,9 @@ class Bio extends React.Component {
   renderEditButton() {
     if (this.props.isCurrentUser) {
       return (
-        <button className='edit-bio-button'
+        <button className='edit-bio-button nav-button white-button'
           onClick={this.handleEditButtonClick.bind(this)}>
-          Edit!
+          EDIT
         </button>
       );
     } else {
@@ -109,9 +109,9 @@ class Bio extends React.Component {
           cols='50'
           defaultValue={this.state.bio}
           onChange={this.handleEditBioChange}/>
-        <button className='save-bio-button'
+        <button className='save-bio-button nav-button white-button'
           onClick={this.handleSaveBioClick}>
-          Save Changes
+          SAVE
         </button>
       </div>
     );

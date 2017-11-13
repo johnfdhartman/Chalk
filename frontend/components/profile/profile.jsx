@@ -1,6 +1,6 @@
 import React from 'react';
 import ThumbnailContainer from '../board/thumbnail/board_thumbnail_container';
-import UserInfoContainer from './user_info/user_info_container';
+import BioContainer from './bio/bio_container';
 import Modal from 'react-modal';
 import update from 'immutability-helper';
 
@@ -79,7 +79,7 @@ class Profile extends React.Component {
       <div className='profile'>
         <div className='user-info'>
           {this.renderDisplayPicture.bind(this)()}
-          <UserInfoContainer
+          <BioContainer
             userId={this.props.userId}
             isCurrentUser={this.props.isCurrentUser}/>
         </div>

@@ -4,6 +4,7 @@
 .nav {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 10px;
   background-color: white;
   color: black;
@@ -18,8 +19,8 @@
   cursor: pointer;
 }
 
-.nav li:not()
-.nav .profile {
+
+.nav .nav-button.profile {
   height: 50px;
   width: 50px;
   border: 1px solid black;
@@ -27,6 +28,7 @@
   background-image: url('http://res.cloudinary.com/dce7smh6y/image/upload/v1506018610/profile_icon_yfyi76.png');
   background-position: 50%;
   background-size: cover;
+  padding: 0px;
 }
 
 .nav .profile:hover {
@@ -36,4 +38,10 @@
 .nav .search {
   border: 1px solid black;
   margin-right: auto;
+}
+
+.nav .nav-button {
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  font-size: 15px;
 }

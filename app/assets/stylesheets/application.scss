@@ -22,6 +22,7 @@
 @import './board.scss';
 @import './clock.scss';
 @import './thumbnail.scss';
+@import './colors.scss';
 
 main {
   font-family: 'Open Sans', sans-serif;
@@ -30,13 +31,11 @@ main {
 }
 
 .nav-button {
-  display: inline-block;
   font-family: 'Yanone Kaffeesatz', sans-serif;
-
   background-color: transparent;
   border-radius: 30px;
   width: 20%;
-
+  text-decoration: none;
   margin: 3%;
   transition: background-color 0.1s ease-in, border-color 0.1s ease-in, color 0.1s,
     letter-spacing 0.1s ease-in, border-radius 0.1s ease-in;
@@ -45,14 +44,14 @@ main {
 }
 
 .nav-button:hover {
-  background-color: #75ceff;
-  border: solid #75ceff 3px;
+  background-color: $color-blue;
+  border: solid $color-blue 3px;
   color: black;
   cursor: pointer;
   transition: background-color 0.2s, border-color 0.2s,
     color 0.1s, letter-spacing 0.2s, border-radius 0.1s;
-  letter-spacing: 5px;
-  border-radius: 5px;
+  letter-spacing: 2px;
+  border-radius: 25px;
 }
 
 .black-button {
@@ -68,5 +67,5 @@ main {
 
 .white-button:hover {
   color: white;
-  border: solid #75ceff 1px;
+  border: solid $color-blue 1px;
 }
