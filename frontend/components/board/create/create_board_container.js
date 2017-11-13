@@ -5,7 +5,9 @@ import {updateBoardStage, saveBoard} from '../../../actions/board_actions';
 
 const mapStateToProps = (state) => ({
   board: state.boards['current'],
-  boardErrors: state.errors.boardsErrors
+  boardErrors: state.errors.boardsErrors,
+  successData: state.boards.successData,
+  userId: state.session.currentUser.id
 });
 
 const mapDispatchToProps = (dispatch) => ({

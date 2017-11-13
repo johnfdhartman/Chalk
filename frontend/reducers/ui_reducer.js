@@ -3,6 +3,7 @@ import {
   CLOSE_BIO_EDITOR,
   OPEN_USER_PROFILE
 } from '../actions/ui_actions.js';
+
 import merge from 'lodash/merge';
 
 export const uiReducer = (uiSlice = {}, action) => {

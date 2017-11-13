@@ -4,6 +4,8 @@ import merge from 'lodash/merge';
 import fscreen from 'fscreen';
 import ClockContainer from '../../clock/clock_container';
 import Modal from 'react-modal';
+import {withRouter} from 'react-router-dom';
+
 class CreateBoard extends React.Component {
   constructor(props){
     super(props);
@@ -44,6 +46,9 @@ class CreateBoard extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (!this.props.successData && nextProps.successData) {
+      this.props.history.push(`users/${this.props.userId}`);
+    }
   }
 
 
@@ -297,4 +302,4 @@ class CreateBoard extends React.Component {
   }
 }
 
-export default CreateBoard;
+export default withRouter(CreateBoard);
