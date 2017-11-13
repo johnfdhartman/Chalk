@@ -16,8 +16,10 @@ const mapStateToProps = (state, ownProps) => ({
   userId: ownProps.userId,
   user: state.users[ownProps.userId],
   session: state.session,
-  isCurrentUser: (parseInt(state.session.currentUser.id) === parseInt(ownProps.userId)),
-  currentUserId: state.session.currentUser.id,
+  isCurrentUser: (state.session.currentUser &&
+    parseInt(state.session.currentUser.id) === parseInt(ownProps.userId)
+  ),
+  // currentUserId: state.session.currentUser.id,
   ui: state.ui
 });
 
