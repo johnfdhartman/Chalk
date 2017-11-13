@@ -2,6 +2,7 @@ import React from 'react';
 import {findDOMNode} from 'react-dom';
 import merge from 'lodash/merge';
 import {drawToCanvas} from 'draw-to-canvas';
+import {isEqual} from 'lodash';
 
 import {START, RUNNING, FINISHED} from '../board_stages.js';
 
@@ -99,7 +100,7 @@ class Playback extends React.Component {
         this.setTimers.bind(this)();
     }
 
-    if (this.props.dims !== nextProps.dims) {
+    if (!isEqual(this.props.dims, nextProps.dims)) {
       this.resizeCanvas.bind(this)(nextProps.dims);
     }
 

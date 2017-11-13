@@ -8,6 +8,13 @@ import {
   CLEAR_BOARD
   } from '../actions/board_actions.js';
 
+import {
+  START,
+  RUNNING,
+  FINISHED,
+  POST_FINISHED
+} from '../components/board/board_stages';
+
 export const boardsReducer = (boardsSlice = {}, action) => {
   Object.freeze(boardsSlice);
   let newSlice;
@@ -31,7 +38,7 @@ export const boardsReducer = (boardsSlice = {}, action) => {
     case RECEIVE_BOARD:
       newSlice = merge({}, boardsSlice);
       newBoard = merge({}, action.board);
-      newBoard.stage = 'start';
+      newBoard.stage = START;
       newSlice[action.board.id] = newBoard;
       return newSlice;
 
@@ -39,7 +46,7 @@ export const boardsReducer = (boardsSlice = {}, action) => {
       newSlice = {};
       action.boards.forEach( (board) => {
         newBoard = merge({}, board);
-        newBoard.stage = 'start';
+        newBoard.stage = START;
         newSlice[board.id] = newBoard;
       });
       return newSlice;

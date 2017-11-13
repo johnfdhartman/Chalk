@@ -1,6 +1,12 @@
 import PlaybackContainer from '../playback/playback_container';
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {
+  START,
+  RUNNING,
+  FINISHED,
+  POST_FINISHED
+} from '../board_stages.js';
 
 class BoardThumbnail extends React.Component {
   constructor(props) {
@@ -14,7 +20,7 @@ class BoardThumbnail extends React.Component {
   }
 
   componentDidMount() {
-    this.props.updateBoardStage('running');
+    this.props.updateBoardStage(RUNNING);
     this.updateDimensions.bind(this)();
     window.addEventListener('resize', this.handleResize.bind(this), false);
   }
