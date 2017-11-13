@@ -10,7 +10,7 @@ import {
   closeBioEditor
 } from '../../../actions/ui_actions';
 
-import UserInfo from './user_info';
+import Bio from './user_info';
 
 const mapStateToProps = (state, ownProps) => ({
   userId: ownProps.userId,
@@ -32,4 +32,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
   closeBioEditor: () => dispatch(closeBioEditor())
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(Bio);

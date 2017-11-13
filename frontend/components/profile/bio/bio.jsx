@@ -1,6 +1,6 @@
 import React from 'react';
 
-class UserInfo extends React.Component {
+class Bio extends React.Component {
   constructor(props){
     super(props);
     this.renderDisplayBio = this.renderDisplayBio.bind(this);
@@ -104,7 +104,7 @@ class UserInfo extends React.Component {
     return (
       <div className='bio-container edit'>
         <textarea
-          className='bio bio-edit'
+          className='bio-text bio-edit'
           rows='5'
           cols='50'
           defaultValue={this.state.bio}
@@ -121,8 +121,8 @@ class UserInfo extends React.Component {
     let bioText = this.renderBioText.bind(this)();
     let editButton = this.renderEditButton();
     return (
-      <div className='bio-container display'>
-        <div className='bio'>
+      <div className='bio-text-container display'>
+        <div className='bio-text'>
           {bioText}
         </div>
         {editButton}
@@ -135,12 +135,12 @@ class UserInfo extends React.Component {
   render() {
     let bio = this.renderBio.bind(this)();
     return(
-      <div className='user-info'>
-        <h2>UserInfo!</h2>
+      <div className='bio'>
+        <h2>Bio!</h2>
         {bio}
       </div>
     );
   }
 }
 
-export default UserInfo;
+export default Bio;

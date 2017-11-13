@@ -77,10 +77,12 @@ class Profile extends React.Component {
   render() {
     return(
       <div className='profile'>
-        {this.renderDisplayPicture.bind(this)()}
-        <UserInfoContainer
-          userId={this.props.userId}
-          isCurrentUser={this.props.isCurrentUser}/>
+        <div className='bio-picture-container'>
+          {this.renderDisplayPicture.bind(this)()}
+          <UserInfoContainer
+            userId={this.props.userId}
+            isCurrentUser={this.props.isCurrentUser}/>
+        </div>
         <div className='thumbnails'>
           {this.state.thumbnails}
         </div>

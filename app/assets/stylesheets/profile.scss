@@ -5,6 +5,11 @@
   color: black;
 }
 
+.bio-picture-container {
+  display: flex;
+  flex-direction: column;
+}
+
 .thumbnails {
   display: flex;
   flex-wrap: wrap;
@@ -25,4 +30,10 @@
   height: 30%;
   width: auto;
   border: 1px solid black;
+}
+
+.display-picture {
+  display: flex;
+  height: 50%;
+  width: 50%;
 }
