@@ -3,6 +3,8 @@ import {findDOMNode} from 'react-dom';
 import merge from 'lodash/merge';
 import {drawToCanvas} from 'draw-to-canvas';
 
+import {START, RUNNING, FINISHED} from '../board_stages.js';
+
 class Playback extends React.Component {
   constructor(props) {
     super(props);
@@ -46,7 +48,7 @@ class Playback extends React.Component {
   }
 
   clearBoard() {
-    this.props.updateBoardStage('start');
+    this.props.updateBoardStage(START);
     this.intervals.forEach( (interval) => {
       clearInterval(interval);
     });
@@ -92,8 +94,8 @@ class Playback extends React.Component {
     }
 
     if (this.state.paths
-      && this.props.stage === 'start'
-      && nextProps.stage === 'running') {
+      && this.props.stage === START
+      && nextProps.stage === RUNNING) {
         this.setTimers.bind(this)();
     }
 
@@ -133,7 +135,7 @@ class Playback extends React.Component {
         } else {
           clearInterval(drawPathInterval);
           if (this.numActiveTimers === 0) {
-            this.props.updateBoardStage('finished', this.props.boardId);
+            this.props.updateBoardStage(FINISHED, this.props.boardId);
           }
         }
       }, 16

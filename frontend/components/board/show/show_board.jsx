@@ -3,6 +3,7 @@ import {findDOMNode} from 'react-dom';
 import {merge} from 'lodash/merge';
 import ClockContainer from '../../clock/clock_container';
 import PlaybackContainer from '../playback/playback_container';
+import {START, RUNNING, FINISHED} from '../board_stages.js';
 
 // let width = Math.max(document.documentElement.clientWidth,
 //   window.innerWidth || 0);
@@ -14,7 +15,7 @@ class ShowBoard extends React.Component {
     super(props);
     this.state = {
     };
-    this.props.updateBoardStage('start', this.props.boardId);
+    this.props.updateBoardStage(START, this.props.boardId);
   }
 
   renderCredits() {

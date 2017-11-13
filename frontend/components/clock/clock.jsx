@@ -2,6 +2,13 @@
 import React from 'react';
 import merge from 'lodash/merge';
 
+import {
+  START,
+  RUNNING,
+  FINISHED,
+  POST_FINISHED
+} from '../board/board_stages.js';
+
 class Clock extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +24,7 @@ class Clock extends React.Component {
 
 
   componentDidMount() {
-    this.props.updateBoardStage('start');
+    this.props.updateBoardStage(START);
   }
 
   componentWillReceiveProps(nextProps){
@@ -26,13 +33,13 @@ class Clock extends React.Component {
       return null;
     }
     if (this.props.board
-      && this.props.board.stage === 'start'
-      && nextProps.board.stage === 'running') {
+      && this.props.board.stage === START
+      && nextProps.board.stage === RUNNING) {
         this.runClock.bind(this)();
       }
     if (this.props.board
-      && this.props.board.stage === 'running'
-      && nextProps.board.stage === 'finished'
+      && this.props.board.stage === RUNNING
+      && nextProps.board.stage === FINISHED
     ) {
       clearInterval(this.clockInterval);
     }
@@ -40,7 +47,7 @@ class Clock extends React.Component {
 
   resetClock() {
     clearInterval(this.clockInterval);
-    this.props.updateBoardStage('start');
+    this.props.updateBoardStage(START);
     this.setState({
       time: {
         minutes: 0,
@@ -88,9 +95,9 @@ class Clock extends React.Component {
   }
 
   handleShowClick() {
-    let newStage = 'post-finished';
-    if (this.props.board.stage === 'start') {
-      newStage = 'running';
+    let newStage = POST_FINISHED;
+    if (this.props.board.stage === START) {
+      newStage = RUNNING;
       this.runClock.bind(this)();
     } else {
       newStage = this.props.board.stage;
@@ -100,43 +107,43 @@ class Clock extends React.Component {
 
 
   handleCreateClick() {
-    let newStage = 'finished';
-    if (this.props.board.stage === 'start') {
-      newStage = 'running';
+    let newStage = FINISHED;
+    if (this.props.board.stage === START) {
+      newStage = RUNNING;
       this.runClock.bind(this)();
-    } else if (this.props.board.stage === 'running') {
-      newStage = 'finished';
-    } else if (this.props.board.stage === 'finished') {
-      newStage = 'finished';
+    } else if (this.props.board.stage === RUNNING) {
+      newStage = FINISHED;
+    } else if (this.props.board.stage === FINISHED) {
+      newStage = FINISHED;
     }
     this.props.updateBoardStage(newStage);
   }
 
   createDisplayText() {
     switch(this.props.board.stage) {
-      case 'start':
+      case START:
         return 'Start Recording';
 
-      case 'running':
+      case RUNNING:
         return `${this.state.time.minutes}:${this.state.time.seconds}`;
 
-      case 'finished':
+      case FINISHED:
         return `Finished Recording`;
 
-      case 'post-finished':
+      case POST_FINISHED:
         return 'Finished Recording';
     }
   }
 
   showDisplayText() {
     switch(this.props.board.stage) {
-      case 'start':
+      case START:
         return 'Start Playback';
 
-      case 'running':
+      case RUNNING:
         return `${this.state.time.minutes}:${this.state.time.seconds}`;
 
-      case 'finished':
+      case FINISHED:
         return 'Playback Done';
 
       default:

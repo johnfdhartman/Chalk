@@ -7,6 +7,8 @@ import {
   clearBoard
 } from '../../../actions/board_actions';
 
+import {START, RUNNING, FINISHED} from '../board_stages.js';
+
 const mapStateToProps = (state, ownProps) => {
   let thisBoard = state.boards[ownProps.boardId];
   let pathsProp;
@@ -19,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
   if (thisBoard && thisBoard.stage) {
     stageProp = thisBoard.stage;
   } else {
-    stageProp = 'start';
+    stageProp = START;
   }
   return {
     boardId: ownProps.boardId,

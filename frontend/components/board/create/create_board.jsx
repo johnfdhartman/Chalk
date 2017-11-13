@@ -6,10 +6,12 @@ import ClockContainer from '../../clock/clock_container';
 import Modal from 'react-modal';
 import {withRouter} from 'react-router-dom';
 
+import {START, RUNNING, FINISHED} from '../board_stages.js';
+
 class CreateBoard extends React.Component {
   constructor(props){
     super(props);
-    this.props.updateBoardStage('start', 'current');
+    this.props.updateBoardStage(START, 'current');
     this.state = {
       brush: {
         lineWidth: '3',
@@ -86,7 +88,7 @@ class CreateBoard extends React.Component {
       this.setState({
         lessonStartTime: Date.now()
       });
-      this.props.updateBoardStage('running');
+      this.props.updateBoardStage(RUNNING);
     }
     this.addPosToPath.bind(this)(this.pointer);
     this.setState({pathStartTime: Date.now()});
@@ -242,7 +244,7 @@ class CreateBoard extends React.Component {
         transform             : 'translate(-50%, -50%)',
       }
     };
-    let isOpen = (this.props.board && this.props.board.stage === 'finished');
+    let isOpen = (this.props.board && this.props.board.stage === FINISHED);
     return (
       <Modal
         id='create-modal'
