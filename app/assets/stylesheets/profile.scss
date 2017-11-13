@@ -22,6 +22,7 @@
 
 .user-info {
   display: flex;
+  flex-direction: column;
   width: 30vw;
 }
 
@@ -34,6 +35,7 @@
 
 .display-picture {
   display: flex;
-  height: 50%;
-  width: 50%;
+  justify-content: center;
+  width: 20vw;
+  height: 20vw;
 }

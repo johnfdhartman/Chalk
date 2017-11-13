@@ -77,7 +77,7 @@ class Profile extends React.Component {
   render() {
     return(
       <div className='profile'>
-        <div className='bio-picture-container'>
+        <div className='user-info'>
           {this.renderDisplayPicture.bind(this)()}
           <UserInfoContainer
             userId={this.props.userId}
