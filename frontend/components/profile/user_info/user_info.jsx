@@ -13,6 +13,11 @@ class UserInfo extends React.Component {
 
   componentWillMount(){
     this.props.requestUser(this.props.userId);
+    if (this.props.user && this.props.user.bio) {
+      this.setState({
+        bio: this.props.user.bio
+      });
+    }
   }
 
   componentWillReceiveProps(nextProps){
