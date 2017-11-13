@@ -13,9 +13,6 @@ class UserInfo extends React.Component {
 
   componentWillMount(){
     this.props.requestUser(this.props.userId);
-    console.log('this.props.userId', this.props.userId);
-    console.log('this.props.currentUserId', this.props.currentUserId);
-    console.log('this.props.isCurrentUser', this.props.isCurrentUser);
   }
 
   componentWillReceiveProps(nextProps){
@@ -35,14 +32,6 @@ class UserInfo extends React.Component {
   }
 
   renderBio() {
-    console.log('this.props', this.props);
-    // if (this.props.user
-    //   !(this.props.user.bio === undefined) ||
-    //     (!this.props.ui
-    //     && !this.props.ui.profile
-    //     && !this.props.ui.profile.bio
-    //     && !this.props.ui.profile.bio.editing
-    //   )) {
     if (
       this.props.user && this.props.user.bio !== undefined
         && this.props.ui
