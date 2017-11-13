@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => ({
   errors: state.errors,
   boards: state.boards,
   userId: ownProps.match.params.userId,
+  user: state.users[ownProps.match.params.userId],
   isCurrentUser: (state.session.currentUser &&
     (state.session.currentUser.id === ownProps.match.params.userId)),
   ui: state.ui

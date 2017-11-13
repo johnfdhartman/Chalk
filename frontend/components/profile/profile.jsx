@@ -61,10 +61,23 @@ class Profile extends React.Component {
     }
   }
 
+  renderDisplayPicture() {
+    if (this.props.user && this.props.user.displayPictureUrl) {
+      return (
+        <img
+          src={this.props.user.displayPictureUrl}
+          className='display-picture'/>
+      );
+    } else {
+      return (<div/>);
+    }
+  }
+
 
   render() {
     return(
       <div className='profile'>
+        {this.renderDisplayPicture.bind(this)()}
         <UserInfoContainer
           userId={this.props.userId}
           isCurrentUser={this.props.isCurrentUser}/>
