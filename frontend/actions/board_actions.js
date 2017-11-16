@@ -10,7 +10,6 @@ export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
 export const RECEIVE_BOARDS_ERRORS = 'RECEIVE_BOARDS_ERRORS';
 export const CLEAR_BOARD = 'CLEAR_BOARD';
-export const ASSIGN_BOARDS_TO_PAGE = 'ASSIGN_BOARDS_TO_PAGE';
 
 export const updateBoardStage = (stage, boardId) => {
   return {
