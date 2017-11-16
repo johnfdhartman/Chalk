@@ -1,10 +1,10 @@
 import {
   OPEN_BIO_EDITOR,
   CLOSE_BIO_EDITOR,
-  OPEN_USER_PROFILE
+  OPEN_USER_PROFILE,
+  ASSIGN_BOARDS_TO_PAGE,
+  UPDATE_CURRENT_PAGE_NUM
 } from '../actions/ui_actions.js';
-
-import { ASSIGN_BOARDS_TO_PAGE } from '../actions/board_actions';
 
 import merge from 'lodash/merge';
 
@@ -40,6 +40,11 @@ export const uiReducer = (uiSlice = {}, action) => {
       newSlice.pages[action.page] = action.boards.map(
         board => board.id
       );
+      return newSlice;
+
+    case UPDATE_CURRENT_PAGE_NUM:
+      newSlice = merge({}, uiSlice);
+      newSlice.currentPageNum = action.currentPageNum;
       return newSlice;
 
     default:
