@@ -1,7 +1,7 @@
 export const OPEN_BIO_EDITOR = 'OPEN_BIO_EDITOR';
 export const CLOSE_BIO_EDITOR = 'CLOSE_BIO_EDITOR';
 export const OPEN_USER_PROFILE = 'OPEN_USER_PROFILE';
-export const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE_NUM';
+export const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE';
 export const ASSIGN_BOARDS_TO_PAGE = 'ASSIGN_BOARDS_TO_PAGE';
 
 export const openBioEditor = () => ({

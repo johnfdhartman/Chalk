@@ -3,7 +3,7 @@ import {
   CLOSE_BIO_EDITOR,
   OPEN_USER_PROFILE,
   ASSIGN_BOARDS_TO_PAGE,
-  UPDATE_CURRENT_PAGE_NUM
+  UPDATE_CURRENT_PAGE
 } from '../actions/ui_actions.js';
 
 import merge from 'lodash/merge';
@@ -42,7 +42,7 @@ export const uiReducer = (uiSlice = {}, action) => {
       );
       return newSlice;
 
-    case UPDATE_CURRENT_PAGE_NUM:
+    case UPDATE_CURRENT_PAGE:
       newSlice = merge({}, uiSlice);
       newSlice.currentPageNum = action.pageNum;
       return newSlice;
