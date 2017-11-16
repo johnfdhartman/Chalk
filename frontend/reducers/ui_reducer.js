@@ -4,6 +4,8 @@ import {
   OPEN_USER_PROFILE
 } from '../actions/ui_actions.js';
 
+import { ASSIGN_BOARDS_TO_PAGE } from '../actions/board_actions';
+
 import merge from 'lodash/merge';
 
 export const uiReducer = (uiSlice = {}, action) => {
@@ -29,6 +31,15 @@ export const uiReducer = (uiSlice = {}, action) => {
       newSlice.profile = newSlice.profile || {};
       newSlice.profile.userId = action.userId;
       newSlice.profile.editing = false;
+      return newSlice;
+
+    case ASSIGN_BOARDS_TO_PAGE:
+      //assigns an array of board IDs to a page number
+      newSlice = merge({}, uiSlice);
+      newSlice.pages = newSlice.pages || {};
+      newSlice.pages[action.page] = action.boards.map(
+        board => board.id
+      );
       return newSlice;
 
     default:

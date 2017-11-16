@@ -8,6 +8,7 @@ export const RECEIVE_BOARD = 'RECEIVE_BOARD';
 export const RECEIVE_BOARDS = 'RECEIVE_BOARDS';
 export const RECEIVE_BOARDS_ERRORS = 'RECEIVE_BOARDS_ERRORS';
 export const CLEAR_BOARD = 'CLEAR_BOARD';
+export const ASSIGN_BOARDS_TO_PAGE = 'ASSIGN_BOARDS_TO_PAGE';
 
 export const updateBoardStage = (stage, boardId) => {
   return {
@@ -87,6 +88,14 @@ export const receiveBoardsErrors = (boardsErrors) => ({
   boardsErrors
 });
 
+export const assignBoardsToPage = (boards, page) => ({
+  //Receives a some boards and a page number, to save in the state
+  //for pagination
+  type: ASSIGN_BOARDS_TO_PAGE,
+  boards,
+  page
+});
+
 export const saveBoard = (board) => (dispatch) => (
   Api.saveBoard(board).then(
     (successData) => dispatch(successfulSaveBoard(successData)),
@@ -99,8 +108,6 @@ export const saveBoard = (board) => (dispatch) => (
 export const requestBoard = id => dispatch => (
   Api.fetchBoard(id).then(
     board => dispatch(receiveBoard(board)),
-
-
     errors => dispatch(receiveBoardErrors(
       id, errors.responseJSON.errors)
     )
@@ -109,10 +116,13 @@ export const requestBoard = id => dispatch => (
 
 export const requestUserBoards = (id, page) => dispatch => (
   Api.fetchUserBoards(id, page).then(
-    boards => dispatch(receiveBoards(boards)),
-
+    boards => {
+      dispatch(receiveBoards(boards));
+      dispatch(assignBoardsToPage(boards.boards,page));
+    },
     errors => dispatch(receiveBoardsErrors(errors))
   )
+
 );
 
 export const requestRecentBoards = (page) => dispatch => (
