@@ -9,8 +9,11 @@ const mapStateToProps = state => ({
   boards: state.boards
 });
 
-const mapDispatchToProps = dispatch => ({
-  updateCurrentPage: pageNum => dispatch(updateCurrentPage(pageNum))
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  updateCurrentPage: pageNum => dispatch(updateCurrentPage(pageNum)),
+  //ownProps.requestBoards is passed down by the containing component,
+  //specifying what sort of boards are being given to it
+  requestBoards: pageNum => dispatch(ownProps.requestPage(pageNum))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ThumbnailList);

@@ -6,6 +6,8 @@ class ThumbnailList extends React.Component {
     super(props);
   }
 
+  
+
 }
 
 export default ThumbnailList;
