@@ -1,6 +1,8 @@
 import * as Api from '../util/board_util';
 import merge from 'lodash/merge';
 
+import { assignBoardsToPage }  from './ui_actions';
+
 export const UPDATE_BOARD_STAGE = 'UPDATE_BOARD_STAGE';
 export const SUCCESSFUL_SAVE_BOARD = 'SUCCESSFUL_SAVE_BOARD';
 export const RECEIVE_BOARD_ERRORS = 'RECEIVE_BOARD_ERRORS';
@@ -88,13 +90,6 @@ export const receiveBoardsErrors = (boardsErrors) => ({
   boardsErrors
 });
 
-export const assignBoardsToPage = (boards, page) => ({
-  //Receives a some boards and a page number, to save in the state
-  //for pagination
-  type: ASSIGN_BOARDS_TO_PAGE,
-  boards,
-  page
-});
 
 export const saveBoard = (board) => (dispatch) => (
   Api.saveBoard(board).then(

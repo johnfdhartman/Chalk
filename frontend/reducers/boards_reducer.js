@@ -15,6 +15,7 @@ import {
   POST_FINISHED
 } from '../components/board/board_stages';
 
+
 export const boardsReducer = (boardsSlice = {}, action) => {
   Object.freeze(boardsSlice);
   let newSlice;
