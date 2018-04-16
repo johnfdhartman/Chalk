@@ -20,7 +20,7 @@ class BoardThumbnail extends React.Component {
   }
 
   componentDidMount() {
-    this.props.updateBoardStage(RUNNING);
+    this.props.updateBoardStage(RUNNING, this.props.boardId);
     this.updateDimensions.bind(this)();
     window.addEventListener('resize', this.handleResize.bind(this), false);
   }

@@ -16,7 +16,8 @@ class Profile extends React.Component {
   }
 
   componentWillMount() {
-    this.props.requestUserBoards(this.props.userId, 1);
+    console.log('THIS.PROPS', this.props);
+    this.props.requestUserBoards(parseInt(this.props.userId), 1);
   }
 
   storeThumbnails(boards) {
