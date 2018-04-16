@@ -10,6 +10,7 @@ class ThumbnailList extends React.Component {
   }
 
   componentWillMount() {
+    this.props.updateCurrentPage(1);
     this.props.requestBoards(1);
   }
 
@@ -30,15 +31,26 @@ class ThumbnailList extends React.Component {
     );
   }
 
+  renderLoading() {
+    return (
+      <h2>
+        Page Loading...
+      </h2>
+    );
+  }
 
   render() {
-    let currentPage = this.props.ui.pages[this.props.ui.currentPage];
-    let thumbs = currentPage.map(boardId => this.renderThumbnail(boardId));
-    return(
-      <div className='thumbnail-list'>
-        {thumbs}
-      </div>
-    );
+    if (this.props.pages && this.props.currentPage) {
+      let currentPage = this.props.pages[this.props.currentPage];
+      let thumbs = currentPage.map(boardId => this.renderThumbnail(boardId));
+      return(
+        <div className='thumbnail-list'>
+          {thumbs}
+        </div>
+      );
+    } else {
+      return this.renderLoading();
+    }
   }
 
 }

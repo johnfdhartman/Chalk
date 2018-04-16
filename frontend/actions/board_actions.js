@@ -121,7 +121,10 @@ export const requestUserBoards = (id, page) => dispatch => (
 
 export const requestRecentBoards = (page) => dispatch => (
   Api.fetchRecentBoards(page).then(
-    boards => dispatch(receiveBoards(boards)),
+    boards => {
+      dispatch(receiveBoards(boards));
+      dispatch(assignBoardsToPage(boards.boards, page));
+    },
     errors => dispatch(receiveBoardsErrors(errors))
   )
 );

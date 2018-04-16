@@ -44,7 +44,7 @@ export const uiReducer = (uiSlice = {}, action) => {
 
     case UPDATE_CURRENT_PAGE:
       newSlice = merge({}, uiSlice);
-      newSlice.currentPageNum = action.pageNum;
+      newSlice.currentPage = action.pageNum;
       return newSlice;
 
     default:
