@@ -15,7 +15,7 @@
   transition: background-color 0.2s ease-in;
 }
 
-#clock.running {
+#clock.RUNNING {
   background-color: #c12222;
   color: white;
   font-size: 3.5vw;
@@ -24,12 +24,12 @@
   border: none;
 }
 
-#clock.running:hover {
+#clock.RUNNING:hover {
   background-color: #a31616;
   transition: background-color 0.1s ease-in;
 }
 
-#clock.finished, #create-board-wrapper.clock.post-finished {
+#clock.FINISHED, #create-board-wrapper.clock.post-finished {
   background-color: #c12222;
   color: white;
 }

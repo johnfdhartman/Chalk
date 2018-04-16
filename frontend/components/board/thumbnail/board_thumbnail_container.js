@@ -8,7 +8,7 @@ import {
 
 const mapStateToProps = (state, ownProps) => ({
   boardId: ownProps.boardId,
-  board: state.boards[ownProps.boardId],
+  board: getBoardWithStage(state, ownProps.boardId)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
