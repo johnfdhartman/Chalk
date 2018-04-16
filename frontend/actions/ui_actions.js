@@ -5,7 +5,7 @@ export const UPDATE_CURRENT_PAGE = 'UPDATE_CURRENT_PAGE';
 export const ASSIGN_BOARDS_TO_PAGE = 'ASSIGN_BOARDS_TO_PAGE';
 export const UPDATE_BOARD_STAGE = 'UPDATE_BOARD_STAGE';
 export const CLEAR_BOARD = 'CLEAR_BOARD';
-export const INITIALIZE_BOARDS = 'INITIALIZE_BOARDS';
+export const UPDATE_ALL_BOARD_STAGES = 'UPDATE_ALL_BOARD_STAGES';
 
 export const openBioEditor = () => ({
   type: OPEN_BIO_EDITOR
@@ -48,9 +48,10 @@ export const clearBoard = (id) => {
   };
 };
 
-export const initializeBoards = () => {
+export const updateAllBoardStages = (stage) => {
   //gives all stored board entities the 'START' stage
   return {
-    type: INITIALIZE_BOARDS
+    type: UPDATE_ALL_BOARD_STAGES,
+    stage
   };
 };

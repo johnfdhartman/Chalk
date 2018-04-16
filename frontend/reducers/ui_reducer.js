@@ -6,7 +6,7 @@ import {
   UPDATE_CURRENT_PAGE,
   UPDATE_BOARD_STAGE,
   CLEAR_BOARD,
-  INITIALIZE_BOARDS
+  UPDATE_ALL_BOARD_STAGES
 } from '../actions/ui_actions.js';
 
 import {
@@ -78,14 +78,15 @@ export const uiReducer = (uiSlice = {}, action) => {
       delete newSlice.boardStages[action.board.id];
       return newSlice;
 
-    case INITIALIZE_BOARDS:
+    case UPDATE_ALL_BOARD_STAGES:
       newSlice = _.merge({}, uiSlice);
       const newStages = {};
       _.keys(newSlice.boardStages).forEach(boardId => {
-        newStages[boardId] = START;
+        newStages[boardId] = action.stage;
       });
       newSlice.boardStages = newStages;
       return newSlice;
+
 
     // case RECEIVE_BOARD:
     //   newSlice = _.merge({}, uiSlice);
