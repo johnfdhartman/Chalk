@@ -3,9 +3,12 @@ import Playback from './playback.jsx';
 import {withRouter} from 'react-router';
 import {
   requestBoard,
+} from '../../../actions/board_actions';
+
+import {
   updateBoardStage,
   clearBoard
-} from '../../../actions/board_actions';
+} from '../../../actions/ui_actions';
 
 import {START, RUNNING, FINISHED} from '../board_stages.js';
 

@@ -17,7 +17,10 @@ class Playback extends React.Component {
   }
 
   componentWillMount() {
-    if (this.props.board.paths.length === 0) {
+    console.log('this.props', this.props);
+    if (!this.props.board
+      || !this.props.board.path
+      || this.props.board.paths.length === 0) {
       this.props.requestBoard(this.props.boardId);
     } else {
       this.setupPaths.bind(this)(this.props.board.paths);
@@ -177,12 +180,20 @@ class Playback extends React.Component {
 
 
   render() {
-    return (
-      <canvas
-        ref={(canvas) => { this.canvasRef = canvas; }}
-        id={this.props.canvasId}>
-      </canvas>
-    );
+    if (this.props.board) {
+      return (
+        <canvas
+          ref={(canvas) => { this.canvasRef = canvas; }}
+          id={this.props.canvasId}>
+        </canvas>
+      );
+    } else {
+      return (
+        <div>
+          Loading...
+        </div>
+      );
+    }
   }
 }
 
