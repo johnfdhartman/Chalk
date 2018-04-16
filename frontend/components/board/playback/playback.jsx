@@ -17,7 +17,6 @@ class Playback extends React.Component {
   }
 
   componentWillMount() {
-    console.log('this.props', this.props);
     if (!this.props.board
       || !this.props.board.path
       || this.props.board.paths.length === 0) {
@@ -180,6 +179,7 @@ class Playback extends React.Component {
 
 
   render() {
+    console.log('PLAYBACK PROPS', this.props);
     if (this.props.board) {
       return (
         <canvas

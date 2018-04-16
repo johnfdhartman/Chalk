@@ -10,7 +10,7 @@ import {
 const mapStateToProps = (state, ownProps) => ({
   path: ownProps.match.path,
   boardId: ownProps.boardId,
-  board: getCurrentBoardWithStage(state, ownProps)
+  board: getCurrentBoardWithStage(state, ownProps.boardId)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

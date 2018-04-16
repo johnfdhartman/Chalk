@@ -5,8 +5,8 @@ import { createSelector } from 'reselect';
 const getStaticBoards = state => state.boards;
 const getBoardStages = state => state.ui.boardStages;
 
-const getCurrentStaticBoard = (state, ownProps) => (
-  state.boards[ownProps.boardId]
+const getCurrentStaticBoard = (state, boardId) => (
+  state.boards[boardId]
 );
 
 

@@ -17,7 +17,7 @@ import {getCurrentBoardWithStage} from '../../../selectors/board_selectors';
 const mapStateToProps = (state, ownProps) => {
   return {
     boardId: ownProps.boardId,
-    board: getCurrentBoardWithStage(state, ownProps),
+    board: getCurrentBoardWithStage(state, ownProps.boardId),
     dims: ownProps.dims,
     canvasId: ownProps.canvasId
   };
