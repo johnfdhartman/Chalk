@@ -26,7 +26,7 @@ export const getBoardsWithStages = createSelector(
 export const getCurrentBoardWithStage = createSelector(
   [getCurrentStaticBoard, getBoardStages],
   (currentBoard, boardStages) => {
-    console.log('CURRENTBOARD', currentBoard);
+    // console.log('CURRENTBOARD', currentBoard);
     let newBoard = _.merge({}, currentBoard);
     newBoard.stage = boardStages[newBoard.id];
     return newBoard;

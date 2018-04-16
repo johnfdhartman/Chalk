@@ -9,24 +9,12 @@ import {
 
 import {START, RUNNING, FINISHED} from '../board_stages.js';
 
+import {getCurrentBoardWithStage} from '../../../selectors/board_selectors';
+
 const mapStateToProps = (state, ownProps) => {
-  let thisBoard = state.boards[ownProps.boardId];
-  let pathsProp;
-  if (thisBoard && thisBoard.paths) {
-    pathsProp = thisBoard.paths;
-  } else {
-    pathsProp = [];
-  }
-  let stageProp;
-  if (thisBoard && thisBoard.stage) {
-    stageProp = thisBoard.stage;
-  } else {
-    stageProp = START;
-  }
   return {
     boardId: ownProps.boardId,
-    stage: stageProp,
-    paths: pathsProp,
+    board: getCurrentBoardWithStage(state, ownProps),
     dims: ownProps.dims,
     canvasId: ownProps.canvasId
   };

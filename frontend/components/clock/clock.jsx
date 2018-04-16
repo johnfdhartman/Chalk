@@ -162,7 +162,6 @@ class Clock extends React.Component {
   }
 
   render() {
-    console.log('THIS.PROPS.BOARD', this.props.board);
     if (this.props.board) {
       return(
         <button

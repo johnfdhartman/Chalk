@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.boardId;
   return {
     boardId: id,
-    board: getCurrentBoardWithStage(state, id)
+    board: getCurrentBoardWithStage(state, ownProps)
   };
 };
 
