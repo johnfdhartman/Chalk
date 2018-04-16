@@ -22,6 +22,7 @@ class Profile extends React.Component {
 
   storeThumbnails(boards) {
     let thumbnails = Object.values(boards);
+    console.log('THUMBNAILS', thumbnails);
     let thumbnailComponents = thumbnails.map( (thumbnail) => (
       <div key={thumbnail.id}
         className='thumbnail-wrapper'>
@@ -76,6 +77,7 @@ class Profile extends React.Component {
 
 
   render() {
+    console.log('thumbnails', this.state.thumbnails);
     return(
       <div className='profile'>
         <div className='user-info'>

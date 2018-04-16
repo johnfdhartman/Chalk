@@ -34,7 +34,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
   requestBoard: (id) => (dispatch(requestBoard(id))),
-  updateBoardStage: (stage, id) => (dispatch(updateBoardStage(stage, id))),
+  updateBoardStage: (stage) => (dispatch(updateBoardStage(stage, ownProps.boardId))),
   clearBoard: () => (dispatch(clearBoard(ownProps.boardId)))
 });
 
