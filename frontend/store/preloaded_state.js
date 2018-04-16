@@ -5,7 +5,7 @@ let preloadedState =  {
     usersErrors: []
   },
   ui: {
-    
+    boardStages: {}
   },
   session: {
 

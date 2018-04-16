@@ -64,11 +64,11 @@ export const uiReducer = (uiSlice = {}, action) => {
 
     case UPDATE_BOARD_STAGE:
       newSlice = merge({}, uiSlice);
-      if (newSlice.activeBoards[action.board.id]) {
-        newSlice.boardStages[action.board.id] = action.stage;
+      if (newSlice.boardStages[action.boardId]) {
+        newSlice.boardStages[action.boardId] = action.stage;
       } else {
         console.log('this should not be happening');
-        newSlice.boardStages[action.board.id] = action.stage;
+        newSlice.boardStages[action.boardId] = action.stage;
       }
       return newSlice;
 
@@ -88,7 +88,7 @@ export const uiReducer = (uiSlice = {}, action) => {
         newSlice.boardStages[board.id] = START;
       });
       return newSlice;
-      
+
     default:
       return uiSlice;
   }

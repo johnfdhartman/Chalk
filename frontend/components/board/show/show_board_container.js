@@ -1,13 +1,18 @@
 import {connect} from 'react-redux';
 import ShowBoard from './show_board.jsx';
 import {withRouter} from 'react-router';
-import {requestBoard, updateBoardStage} from '../../../actions/board_actions';
+import {requestBoard} from '../../../actions/board_actions';
+import {updateBoardStage} from '../../../actions/ui_actions';
+import {
+  getBoardsWithStages,
+  getCurrentBoardWithStage
+} from '../../../selectors/board_selectors';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.boardId;
   return {
     boardId: id,
-    board: state.boards[id]
+    board: getCurrentBoardWithStage(state, id)
   };
 };
 
