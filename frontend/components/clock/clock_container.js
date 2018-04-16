@@ -3,14 +3,13 @@ import {connect} from 'react-redux';
 import Clock from './clock';
 import {updateBoardStage} from '../../actions/ui_actions';
 import {
-  getBoardsWithStages,
-  getCurrentBoardWithStage
+  getBoardWithStage
 } from '../../selectors/board_selectors';
 
 const mapStateToProps = (state, ownProps) => ({
   path: ownProps.match.path,
   boardId: ownProps.boardId,
-  board: getCurrentBoardWithStage(state, ownProps.boardId)
+  board: getBoardWithStage(state, ownProps.boardId)
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

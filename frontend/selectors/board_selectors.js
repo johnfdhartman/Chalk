@@ -5,7 +5,7 @@ import { createSelector } from 'reselect';
 const getStaticBoards = state => state.boards;
 const getBoardStages = state => state.ui.boardStages;
 
-const getCurrentStaticBoard = (state, boardId) => (
+const getStaticBoard = (state, boardId) => (
   state.boards[boardId]
 );
 
@@ -23,11 +23,11 @@ export const getBoardsWithStages = createSelector(
   }
 );
 
-export const getCurrentBoardWithStage = createSelector(
-  [getCurrentStaticBoard, getBoardStages],
-  (currentBoard, boardStages) => {
-    // console.log('CURRENTBOARD', currentBoard);
-    let newBoard = _.merge({}, currentBoard);
+export const getBoardWithStage = createSelector(
+  [getStaticBoard, getBoardStages],
+  (staticBoard, boardStages) => {
+    // console.log('CURRENTBOARD', staticBoard);
+    let newBoard = _.merge({}, staticBoard);
     newBoard.stage = boardStages[newBoard.id];
     return newBoard;
   }

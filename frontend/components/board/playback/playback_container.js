@@ -12,12 +12,12 @@ import {
 
 import {START, RUNNING, FINISHED} from '../board_stages.js';
 
-import {getCurrentBoardWithStage} from '../../../selectors/board_selectors';
+import {getBoardWithStage} from '../../../selectors/board_selectors';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     boardId: ownProps.boardId,
-    board: getCurrentBoardWithStage(state, ownProps.boardId),
+    board: getBoardWithStage(state, ownProps.boardId),
     dims: ownProps.dims,
     canvasId: ownProps.canvasId
   };

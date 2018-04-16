@@ -4,15 +4,14 @@ import {withRouter} from 'react-router';
 import {requestBoard} from '../../../actions/board_actions';
 import {updateBoardStage} from '../../../actions/ui_actions';
 import {
-  getBoardsWithStages,
-  getCurrentBoardWithStage
+  getBoardWithStage
 } from '../../../selectors/board_selectors';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.boardId;
   return {
     boardId: id,
-    board: getCurrentBoardWithStage(state, id)
+    board: getBoardWithStage(state, id)
   };
 };
 
