@@ -179,7 +179,6 @@ class Playback extends React.Component {
 
 
   render() {
-    console.log('PLAYBACK PROPS', this.props);
     if (this.props.board) {
       return (
         <canvas
